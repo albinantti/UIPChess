@@ -1,0 +1,729 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Resources/Themes/Fonts/font_Game_40.tres" type="Theme" id=1]
+[ext_resource path="res://Resources/images/exit.png" type="Texture" id=2]
+[ext_resource path="res://Resources/images/undo.png" type="Texture" id=3]
+[ext_resource path="res://Resources/images/floppy-disk.png" type="Texture" id=4]
+[ext_resource path="res://Resources/images/redo.png" type="Texture" id=5]
+[ext_resource path="res://Resources/images/mute.png" type="Texture" id=6]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.4, 0.643137, 0.290196, 1 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.905882, 0.509804, 0.0470588, 1 )
+
+[sub_resource type="Theme" id=3]
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 1, 1, 1, 1 )
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Panel" type="Panel" parent="."]
+margin_right = 1027.0
+margin_bottom = 599.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="GridContainer" type="GridContainer" parent="Panel"]
+anchor_left = 0.226874
+anchor_top = 0.145242
+anchor_right = 0.226874
+anchor_bottom = 0.145242
+margin_right = 1027.0
+margin_bottom = 599.0
+custom_constants/vseparation = 0
+custom_constants/hseparation = 0
+columns = 8
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="ColorRect" type="ColorRect" parent="Panel/GridContainer"]
+margin_right = 50.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+color = Color( 0.0980392, 0.160784, 0.0705882, 1 )
+
+[node name="ColorRect2" type="ColorRect" parent="Panel/GridContainer"]
+margin_left = 50.0
+margin_right = 100.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+color = Color( 0.678431, 0.741176, 0.647059, 1 )
+
+[node name="ColorRect9" type="ColorRect" parent="Panel/GridContainer"]
+margin_left = 100.0
+margin_right = 150.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+color = Color( 0.0980392, 0.160784, 0.0705882, 1 )
+
+[node name="ColorRect10" type="ColorRect" parent="Panel/GridContainer"]
+margin_left = 150.0
+margin_right = 200.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+color = Color( 0.678431, 0.741176, 0.647059, 1 )
+
+[node name="ColorRect3" type="ColorRect" parent="Panel/GridContainer"]
+margin_left = 200.0
+margin_right = 250.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+color = Color( 0.0980392, 0.160784, 0.0705882, 1 )
+
+[node name="ColorRect4" type="ColorRect" parent="Panel/GridContainer"]
+margin_left = 250.0
+margin_right = 300.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+color = Color( 0.678431, 0.741176, 0.647059, 1 )
+
+[node name="ColorRect5" type="ColorRect" parent="Panel/GridContainer"]
+margin_left = 300.0
+margin_right = 350.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+color = Color( 0.0980392, 0.160784, 0.0705882, 1 )
+
+[node name="ColorRect6" type="ColorRect" parent="Panel/GridContainer"]
+margin_left = 350.0
+margin_right = 400.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+color = Color( 0.678431, 0.741176, 0.647059, 1 )
+
+[node name="ColorRect8" type="ColorRect" parent="Panel/GridContainer"]
+margin_top = 50.0
+margin_right = 50.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 50, 50 )
+color = Color( 0.678431, 0.741176, 0.647059, 1 )
+
+[node name="ColorRect7" type="ColorRect" parent="Panel/GridContainer"]
+margin_left = 50.0
+margin_top = 50.0
+margin_right = 100.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 50, 50 )
+color = Color( 0.0980392, 0.160784, 0.0705882, 1 )
+
+[node name="ColorRect11" type="ColorRect" parent="Panel/GridContainer"]
+margin_left = 100.0
+margin_top = 50.0
+margin_right = 150.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 50, 50 )
+color = Color( 0.678431, 0.741176, 0.647059, 1 )
+
+[node name="ColorRect12" type="ColorRect" parent="Panel/GridContainer"]
+margin_left = 150.0
+margin_top = 50.0
+margin_right = 200.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 50, 50 )
+color = Color( 0.0980392, 0.160784, 0.0705882, 1 )
+
+[node name="ColorRect13" type="ColorRect" parent="Panel/GridContainer"]
+margin_left = 200.0
+margin_top = 50.0
+margin_right = 250.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 50, 50 )
+color = Color( 0.678431, 0.741176, 0.647059, 1 )
+
+[node name="ColorRect14" type="ColorRect" parent="Panel/GridContainer"]
+margin_left = 250.0
+margin_top = 50.0
+margin_right = 300.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 50, 50 )
+color = Color( 0.0980392, 0.160784, 0.0705882, 1 )
+
+[node name="ColorRect15" type="ColorRect" parent="Panel/GridContainer"]
+margin_left = 300.0
+margin_top = 50.0
+margin_right = 350.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 50, 50 )
+color = Color( 0.678431, 0.741176, 0.647059, 1 )
+
+[node name="ColorRect16" type="ColorRect" parent="Panel/GridContainer"]
+margin_left = 350.0
+margin_top = 50.0
+margin_right = 400.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 50, 50 )
+color = Color( 0.0980392, 0.160784, 0.0705882, 1 )
+
+[node name="ColorRect18" type="ColorRect" parent="Panel/GridContainer"]
+margin_top = 100.0
+margin_right = 50.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 50, 50 )
+color = Color( 0.0980392, 0.160784, 0.0705882, 1 )
+
+[node name="ColorRect17" type="ColorRect" parent="Panel/GridContainer"]
+margin_left = 50.0
+margin_top = 100.0
+margin_right = 100.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 50, 50 )
+color = Color( 0.678431, 0.741176, 0.647059, 1 )
+
+[node name="ColorRect19" type="ColorRect" parent="Panel/GridContainer"]
+margin_left = 100.0
+margin_top = 100.0
+margin_right = 150.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 50, 50 )
+color = Color( 0.0980392, 0.160784, 0.0705882, 1 )
+
+[node name="ColorRect20" type="ColorRect" parent="Panel/GridContainer"]
+margin_left = 150.0
+margin_top = 100.0
+margin_right = 200.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 50, 50 )
+color = Color( 0.678431, 0.741176, 0.647059, 1 )
+
+[node name="ColorRect21" type="ColorRect" parent="Panel/GridContainer"]
+margin_left = 200.0
+margin_top = 100.0
+margin_right = 250.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 50, 50 )
+color = Color( 0.0980392, 0.160784, 0.0705882, 1 )
+
+[node name="ColorRect22" type="ColorRect" parent="Panel/GridContainer"]
+margin_left = 250.0
+margin_top = 100.0
+margin_right = 300.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 50, 50 )
+color = Color( 0.678431, 0.741176, 0.647059, 1 )
+
+[node name="ColorRect23" type="ColorRect" parent="Panel/GridContainer"]
+margin_left = 300.0
+margin_top = 100.0
+margin_right = 350.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 50, 50 )
+color = Color( 0.0980392, 0.160784, 0.0705882, 1 )
+
+[node name="ColorRect24" type="ColorRect" parent="Panel/GridContainer"]
+margin_left = 350.0
+margin_top = 100.0
+margin_right = 400.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 50, 50 )
+color = Color( 0.678431, 0.741176, 0.647059, 1 )
+
+[node name="ColorRect26" type="ColorRect" parent="Panel/GridContainer"]
+margin_top = 150.0
+margin_right = 50.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 50, 50 )
+color = Color( 0.678431, 0.741176, 0.647059, 1 )
+
+[node name="ColorRect25" type="ColorRect" parent="Panel/GridContainer"]
+margin_left = 50.0
+margin_top = 150.0
+margin_right = 100.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 50, 50 )
+color = Color( 0.0980392, 0.160784, 0.0705882, 1 )
+
+[node name="ColorRect27" type="ColorRect" parent="Panel/GridContainer"]
+margin_left = 100.0
+margin_top = 150.0
+margin_right = 150.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 50, 50 )
+color = Color( 0.678431, 0.741176, 0.647059, 1 )
+
+[node name="ColorRect28" type="ColorRect" parent="Panel/GridContainer"]
+margin_left = 150.0
+margin_top = 150.0
+margin_right = 200.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 50, 50 )
+color = Color( 0.0980392, 0.160784, 0.0705882, 1 )
+
+[node name="ColorRect29" type="ColorRect" parent="Panel/GridContainer"]
+margin_left = 200.0
+margin_top = 150.0
+margin_right = 250.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 50, 50 )
+color = Color( 0.678431, 0.741176, 0.647059, 1 )
+
+[node name="ColorRect30" type="ColorRect" parent="Panel/GridContainer"]
+margin_left = 250.0
+margin_top = 150.0
+margin_right = 300.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 50, 50 )
+color = Color( 0.0980392, 0.160784, 0.0705882, 1 )
+
+[node name="ColorRect31" type="ColorRect" parent="Panel/GridContainer"]
+margin_left = 300.0
+margin_top = 150.0
+margin_right = 350.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 50, 50 )
+color = Color( 0.678431, 0.741176, 0.647059, 1 )
+
+[node name="ColorRect32" type="ColorRect" parent="Panel/GridContainer"]
+margin_left = 350.0
+margin_top = 150.0
+margin_right = 400.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 50, 50 )
+color = Color( 0.0980392, 0.160784, 0.0705882, 1 )
+
+[node name="ColorRect34" type="ColorRect" parent="Panel/GridContainer"]
+margin_top = 200.0
+margin_right = 50.0
+margin_bottom = 250.0
+rect_min_size = Vector2( 50, 50 )
+color = Color( 0.0980392, 0.160784, 0.0705882, 1 )
+
+[node name="ColorRect33" type="ColorRect" parent="Panel/GridContainer"]
+margin_left = 50.0
+margin_top = 200.0
+margin_right = 100.0
+margin_bottom = 250.0
+rect_min_size = Vector2( 50, 50 )
+color = Color( 0.678431, 0.741176, 0.647059, 1 )
+
+[node name="ColorRect35" type="ColorRect" parent="Panel/GridContainer"]
+margin_left = 100.0
+margin_top = 200.0
+margin_right = 150.0
+margin_bottom = 250.0
+rect_min_size = Vector2( 50, 50 )
+color = Color( 0.0980392, 0.160784, 0.0705882, 1 )
+
+[node name="ColorRect36" type="ColorRect" parent="Panel/GridContainer"]
+margin_left = 150.0
+margin_top = 200.0
+margin_right = 200.0
+margin_bottom = 250.0
+rect_min_size = Vector2( 50, 50 )
+color = Color( 0.678431, 0.741176, 0.647059, 1 )
+
+[node name="ColorRect37" type="ColorRect" parent="Panel/GridContainer"]
+margin_left = 200.0
+margin_top = 200.0
+margin_right = 250.0
+margin_bottom = 250.0
+rect_min_size = Vector2( 50, 50 )
+color = Color( 0.0980392, 0.160784, 0.0705882, 1 )
+
+[node name="ColorRect38" type="ColorRect" parent="Panel/GridContainer"]
+margin_left = 250.0
+margin_top = 200.0
+margin_right = 300.0
+margin_bottom = 250.0
+rect_min_size = Vector2( 50, 50 )
+color = Color( 0.678431, 0.741176, 0.647059, 1 )
+
+[node name="ColorRect39" type="ColorRect" parent="Panel/GridContainer"]
+margin_left = 300.0
+margin_top = 200.0
+margin_right = 350.0
+margin_bottom = 250.0
+rect_min_size = Vector2( 50, 50 )
+color = Color( 0.0980392, 0.160784, 0.0705882, 1 )
+
+[node name="ColorRect40" type="ColorRect" parent="Panel/GridContainer"]
+margin_left = 350.0
+margin_top = 200.0
+margin_right = 400.0
+margin_bottom = 250.0
+rect_min_size = Vector2( 50, 50 )
+color = Color( 0.678431, 0.741176, 0.647059, 1 )
+
+[node name="ColorRect42" type="ColorRect" parent="Panel/GridContainer"]
+margin_top = 250.0
+margin_right = 50.0
+margin_bottom = 300.0
+rect_min_size = Vector2( 50, 50 )
+color = Color( 0.678431, 0.741176, 0.647059, 1 )
+
+[node name="ColorRect41" type="ColorRect" parent="Panel/GridContainer"]
+margin_left = 50.0
+margin_top = 250.0
+margin_right = 100.0
+margin_bottom = 300.0
+rect_min_size = Vector2( 50, 50 )
+color = Color( 0.0980392, 0.160784, 0.0705882, 1 )
+
+[node name="ColorRect43" type="ColorRect" parent="Panel/GridContainer"]
+margin_left = 100.0
+margin_top = 250.0
+margin_right = 150.0
+margin_bottom = 300.0
+rect_min_size = Vector2( 50, 50 )
+color = Color( 0.678431, 0.741176, 0.647059, 1 )
+
+[node name="ColorRect44" type="ColorRect" parent="Panel/GridContainer"]
+margin_left = 150.0
+margin_top = 250.0
+margin_right = 200.0
+margin_bottom = 300.0
+rect_min_size = Vector2( 50, 50 )
+color = Color( 0.0980392, 0.160784, 0.0705882, 1 )
+
+[node name="ColorRect45" type="ColorRect" parent="Panel/GridContainer"]
+margin_left = 200.0
+margin_top = 250.0
+margin_right = 250.0
+margin_bottom = 300.0
+rect_min_size = Vector2( 50, 50 )
+color = Color( 0.678431, 0.741176, 0.647059, 1 )
+
+[node name="ColorRect46" type="ColorRect" parent="Panel/GridContainer"]
+margin_left = 250.0
+margin_top = 250.0
+margin_right = 300.0
+margin_bottom = 300.0
+rect_min_size = Vector2( 50, 50 )
+color = Color( 0.0980392, 0.160784, 0.0705882, 1 )
+
+[node name="ColorRect47" type="ColorRect" parent="Panel/GridContainer"]
+margin_left = 300.0
+margin_top = 250.0
+margin_right = 350.0
+margin_bottom = 300.0
+rect_min_size = Vector2( 50, 50 )
+color = Color( 0.678431, 0.741176, 0.647059, 1 )
+
+[node name="ColorRect48" type="ColorRect" parent="Panel/GridContainer"]
+margin_left = 350.0
+margin_top = 250.0
+margin_right = 400.0
+margin_bottom = 300.0
+rect_min_size = Vector2( 50, 50 )
+color = Color( 0.0980392, 0.160784, 0.0705882, 1 )
+
+[node name="ColorRect50" type="ColorRect" parent="Panel/GridContainer"]
+margin_top = 300.0
+margin_right = 50.0
+margin_bottom = 350.0
+rect_min_size = Vector2( 50, 50 )
+color = Color( 0.0980392, 0.160784, 0.0705882, 1 )
+
+[node name="ColorRect49" type="ColorRect" parent="Panel/GridContainer"]
+margin_left = 50.0
+margin_top = 300.0
+margin_right = 100.0
+margin_bottom = 350.0
+rect_min_size = Vector2( 50, 50 )
+color = Color( 0.678431, 0.741176, 0.647059, 1 )
+
+[node name="ColorRect51" type="ColorRect" parent="Panel/GridContainer"]
+margin_left = 100.0
+margin_top = 300.0
+margin_right = 150.0
+margin_bottom = 350.0
+rect_min_size = Vector2( 50, 50 )
+color = Color( 0.0980392, 0.160784, 0.0705882, 1 )
+
+[node name="ColorRect52" type="ColorRect" parent="Panel/GridContainer"]
+margin_left = 150.0
+margin_top = 300.0
+margin_right = 200.0
+margin_bottom = 350.0
+rect_min_size = Vector2( 50, 50 )
+color = Color( 0.678431, 0.741176, 0.647059, 1 )
+
+[node name="ColorRect53" type="ColorRect" parent="Panel/GridContainer"]
+margin_left = 200.0
+margin_top = 300.0
+margin_right = 250.0
+margin_bottom = 350.0
+rect_min_size = Vector2( 50, 50 )
+color = Color( 0.0980392, 0.160784, 0.0705882, 1 )
+
+[node name="ColorRect54" type="ColorRect" parent="Panel/GridContainer"]
+margin_left = 250.0
+margin_top = 300.0
+margin_right = 300.0
+margin_bottom = 350.0
+rect_min_size = Vector2( 50, 50 )
+color = Color( 0.678431, 0.741176, 0.647059, 1 )
+
+[node name="ColorRect55" type="ColorRect" parent="Panel/GridContainer"]
+margin_left = 300.0
+margin_top = 300.0
+margin_right = 350.0
+margin_bottom = 350.0
+rect_min_size = Vector2( 50, 50 )
+color = Color( 0.0980392, 0.160784, 0.0705882, 1 )
+
+[node name="ColorRect56" type="ColorRect" parent="Panel/GridContainer"]
+margin_left = 350.0
+margin_top = 300.0
+margin_right = 400.0
+margin_bottom = 350.0
+rect_min_size = Vector2( 50, 50 )
+color = Color( 0.678431, 0.741176, 0.647059, 1 )
+
+[node name="ColorRect58" type="ColorRect" parent="Panel/GridContainer"]
+margin_top = 350.0
+margin_right = 50.0
+margin_bottom = 400.0
+rect_min_size = Vector2( 50, 50 )
+color = Color( 0.678431, 0.741176, 0.647059, 1 )
+
+[node name="ColorRect57" type="ColorRect" parent="Panel/GridContainer"]
+margin_left = 50.0
+margin_top = 350.0
+margin_right = 100.0
+margin_bottom = 400.0
+rect_min_size = Vector2( 50, 50 )
+color = Color( 0.0980392, 0.160784, 0.0705882, 1 )
+
+[node name="ColorRect59" type="ColorRect" parent="Panel/GridContainer"]
+margin_left = 100.0
+margin_top = 350.0
+margin_right = 150.0
+margin_bottom = 400.0
+rect_min_size = Vector2( 50, 50 )
+color = Color( 0.678431, 0.741176, 0.647059, 1 )
+
+[node name="ColorRect60" type="ColorRect" parent="Panel/GridContainer"]
+margin_left = 150.0
+margin_top = 350.0
+margin_right = 200.0
+margin_bottom = 400.0
+rect_min_size = Vector2( 50, 50 )
+color = Color( 0.0980392, 0.160784, 0.0705882, 1 )
+
+[node name="ColorRect61" type="ColorRect" parent="Panel/GridContainer"]
+margin_left = 200.0
+margin_top = 350.0
+margin_right = 250.0
+margin_bottom = 400.0
+rect_min_size = Vector2( 50, 50 )
+color = Color( 0.678431, 0.741176, 0.647059, 1 )
+
+[node name="ColorRect62" type="ColorRect" parent="Panel/GridContainer"]
+margin_left = 250.0
+margin_top = 350.0
+margin_right = 300.0
+margin_bottom = 400.0
+rect_min_size = Vector2( 50, 50 )
+color = Color( 0.0980392, 0.160784, 0.0705882, 1 )
+
+[node name="ColorRect63" type="ColorRect" parent="Panel/GridContainer"]
+margin_left = 300.0
+margin_top = 350.0
+margin_right = 350.0
+margin_bottom = 400.0
+rect_min_size = Vector2( 50, 50 )
+color = Color( 0.678431, 0.741176, 0.647059, 1 )
+
+[node name="ColorRect64" type="ColorRect" parent="Panel/GridContainer"]
+margin_left = 350.0
+margin_top = 350.0
+margin_right = 400.0
+margin_bottom = 400.0
+rect_min_size = Vector2( 50, 50 )
+color = Color( 0.0980392, 0.160784, 0.0705882, 1 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+margin_left = 772.0
+margin_top = 2.0
+margin_right = 1023.0
+margin_bottom = 599.0
+custom_constants/separation = 0
+
+[node name="PanelContainer" type="PanelContainer" parent="Panel/VBoxContainer"]
+margin_right = 251.0
+margin_bottom = 153.0
+custom_styles/panel = SubResource( 2 )
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer/PanelContainer"]
+margin_right = 251.0
+margin_bottom = 153.0
+theme = SubResource( 3 )
+custom_constants/margin_right = 20
+custom_constants/margin_top = 20
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer/PanelContainer/MarginContainer"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 231.0
+margin_bottom = 133.0
+custom_constants/separation = 15
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+margin_right = 211.0
+margin_bottom = 49.0
+alignment = 1
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_right = 103.0
+margin_bottom = 49.0
+size_flags_horizontal = 3
+size_flags_vertical = 7
+theme = ExtResource( 1 )
+text = "01:27"
+
+[node name="Label2" type="Label" parent="Panel/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_left = 107.0
+margin_right = 211.0
+margin_bottom = 49.0
+size_flags_horizontal = 3
+size_flags_vertical = 7
+theme = ExtResource( 1 )
+text = "Red"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+margin_top = 64.0
+margin_right = 211.0
+margin_bottom = 113.0
+alignment = 1
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+margin_right = 89.0
+margin_bottom = 49.0
+size_flags_horizontal = 3
+size_flags_vertical = 7
+theme = ExtResource( 1 )
+text = "01:27"
+
+[node name="Label2" type="Label" parent="Panel/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+margin_left = 93.0
+margin_right = 211.0
+margin_bottom = 49.0
+size_flags_horizontal = 3
+size_flags_vertical = 7
+theme = ExtResource( 1 )
+text = "White"
+
+[node name="PanelContainer2" type="PanelContainer" parent="Panel/VBoxContainer"]
+margin_top = 153.0
+margin_right = 251.0
+margin_bottom = 527.0
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 4 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer/PanelContainer2"]
+margin_right = 251.0
+margin_bottom = 374.0
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer"]
+margin_right = 251.0
+margin_bottom = 49.0
+theme = ExtResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "History"
+align = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer"]
+margin_top = 53.0
+margin_right = 251.0
+margin_bottom = 374.0
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/ScrollContainer"]
+margin_right = 251.0
+margin_bottom = 321.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/ScrollContainer/VBoxContainer"]
+margin_right = 251.0
+margin_bottom = 14.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "history 1"
+
+[node name="Label2" type="Label" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/ScrollContainer/VBoxContainer"]
+margin_top = 18.0
+margin_right = 251.0
+margin_bottom = 32.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "History2"
+
+[node name="PanelContainer3" type="PanelContainer" parent="Panel/VBoxContainer"]
+margin_top = 527.0
+margin_right = 251.0
+margin_bottom = 597.0
+custom_styles/panel = SubResource( 5 )
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer/PanelContainer3"]
+margin_right = 251.0
+margin_bottom = 70.0
+custom_constants/margin_top = 15
+custom_constants/margin_bottom = 15
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer/PanelContainer3/MarginContainer"]
+margin_top = 15.0
+margin_right = 251.0
+margin_bottom = 55.0
+custom_constants/separation = 23
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Panel/VBoxContainer/PanelContainer3/MarginContainer/HBoxContainer"]
+margin_left = 11.0
+margin_right = 51.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 40 )
+size_flags_horizontal = 0
+size_flags_vertical = 3
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 5
+
+[node name="TextureRect2" type="TextureRect" parent="Panel/VBoxContainer/PanelContainer3/MarginContainer/HBoxContainer"]
+margin_left = 74.0
+margin_right = 114.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 40 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 5
+
+[node name="TextureRect3" type="TextureRect" parent="Panel/VBoxContainer/PanelContainer3/MarginContainer/HBoxContainer"]
+margin_left = 137.0
+margin_right = 177.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 40 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 5
+
+[node name="TextureRect4" type="TextureRect" parent="Panel/VBoxContainer/PanelContainer3/MarginContainer/HBoxContainer"]
+margin_left = 200.0
+margin_right = 240.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 40 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 5
+
+[node name="TextureRect" type="TextureRect" parent="Panel"]
+margin_left = 20.0
+margin_top = 13.0
+margin_right = 79.0
+margin_bottom = 63.0
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 5
