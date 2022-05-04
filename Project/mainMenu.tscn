@@ -6,6 +6,7 @@
 [ext_resource path="res://Resources/chesspieces.png" type="Texture" id=4]
 [ext_resource path="res://Resources/Themes/Fonts/HomePageFont.tres" type="Theme" id=5]
 [ext_resource path="res://StartGameButton.gd" type="Script" id=6]
+[ext_resource path="res://change_language.gd" type="Script" id=3]
 
 [node name="Control" type="Control"]
 margin_left = 3.0
@@ -104,3 +105,24 @@ size_flags_vertical = 3
 theme = ExtResource( 5 )
 text = "ChessGame"
 align = 1
+[node name="Label" type="Label" parent="."]
+margin_left = 615.0
+margin_top = 99.0
+margin_right = 784.0
+margin_bottom = 113.0
+text = "HELLO"
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 617.0
+margin_top = 127.0
+margin_right = 786.0
+margin_bottom = 141.0
+text = "GOODBYE_TEXT"
+
+[node name="Button" type="Button" parent="."]
+margin_left = 613.0
+margin_top = 47.0
+margin_right = 757.0
+margin_bottom = 92.0
+text = "CHANGE_LANGUAGE"
+script = ExtResource( 3 )
