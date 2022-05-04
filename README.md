@@ -3,6 +3,14 @@ Project repository for group 6 in User Interface Programming 2
 
 Course project details can be found [here](https://uppsala.instructure.com/courses/45525/pages/course-project?module_item_id=481824).
 
+## Translations
+
+Translations are done in `translation.csv` where you enter the translation key and the translation for swedish and english.
+The translation key is then entered as text on e.g. a button or label and will automatically be translated.
+Translations are automatically imported when you make changes to the csv file
+
+**Important!** The csv file can not be edited via Microsoft Excel since godot requires the csv to be saved with UTF-8 without BOM. Excel saves it in ANSI ([Read more here](https://docs.godotengine.org/en/stable/tutorials/assets_pipeline/importing_translations.html#doc-importing-translations)). The easiest is to use VS code or LibreOffice.
+
 ## Project requirements
 From the course perspective, the following requirements apply: 
 
