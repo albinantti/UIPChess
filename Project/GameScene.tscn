@@ -841,7 +841,7 @@ margin_left = 200.0
 margin_right = 240.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 40, 40 )
-hint_tooltip = "Exit game without saving."
+hint_tooltip = "EXIT_ACTIVE_GAME_BUTTON_TOOLTIP"
 texture_normal = ExtResource( 2 )
 expand = true
 script = ExtResource( 8 )
@@ -853,8 +853,8 @@ margin_right = -392.0
 margin_bottom = -190.0
 rect_min_size = Vector2( 200, 100 )
 popup_exclusive = true
-window_title = "Exit game"
-dialog_text = "Do you really wish to exit? All progress since your last save will be lost!"
+window_title = "EXIT_GAME_POPUP_TITLE"
+dialog_text = "EXIT_ACTIVE_GAME_POPUP_CONTENT"
 dialog_autowrap = true
 
 [node name="TextureRect" type="TextureRect" parent="Panel"]

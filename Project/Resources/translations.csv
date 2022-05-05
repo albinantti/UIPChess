@@ -1,4 +1,13 @@
 keys,en,sv
 HELLO,Hello,Hej
 GOODBYE_TEXT,Goodbye,Hej då
-CHANGE_LANGUAGE,Change Language, Byt språk
+CHANGE_LANGUAGE,Change Language,Byt språk
+EXIT_ACTIVE_GAME_BUTTON_TOOLTIP,Exit game without saving.,Avsluta partiet utan att spara.
+EXIT_ACTIVE_GAME_POPUP_CONTENT,Do you wish to exit the game? All unsaved moves will be lost!,Vill du avsluta partiet? Alla osparade drag kommer tas bort!
+EXIT_GAME_POPUP_TITLE,Exit game?,Avsluta parti?
+POPUP_OK,OK,OK
+POPUP_CANCEL,Cancel,Avbryt
+EXIT_MAIN_BUTTON_TEXT,Exit,Avsluta
+EXIT_MAIN_GAME_BUTTON_TOOLTIP,Exit the game.,Avsluta spelet.
+EXIT_MAIN_GAME_POPUP_CONTENT,Do you wish to exit the game?,Vill du avsluta spelet?
+GAME_TITLE,ChessGame,SchackSpel

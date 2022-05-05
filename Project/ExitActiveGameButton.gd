@@ -4,6 +4,8 @@ extends TextureButton
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	self.get_node("ExitConfirmationPopup").get_ok().connect("pressed", self, "confirmed")
+	self.get_node("ExitConfirmationPopup").get_ok().set_text("POPUP_OK")
+	self.get_node("ExitConfirmationPopup").get_cancel().set_text("POPUP_CANCEL")
 	self.get_node("ExitConfirmationPopup").get_close_button().hide()
 
 
