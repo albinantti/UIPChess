@@ -1,12 +1,14 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://ExitButton.gd" type="Script" id=1]
-[ext_resource path="res://Resources/Themes/MainMenuButtonTheme.tres" type="Theme" id=2]
+[ext_resource path="res://Resources/Themes/MainMenuTheme.tres" type="Theme" id=2]
 [ext_resource path="res://change_language.gd" type="Script" id=3]
 [ext_resource path="res://Resources/chesspieces.png" type="Texture" id=4]
 [ext_resource path="res://Resources/Themes/Fonts/HomePageFont.tres" type="Theme" id=5]
 [ext_resource path="res://StartGameButton.gd" type="Script" id=6]
 [ext_resource path="res://Resources/mainmenu_background.png" type="Texture" id=7]
+[ext_resource path="res://Resources/images/english.png" type="Texture" id=8]
+[ext_resource path="res://Resources/images/swedish.png" type="Texture" id=9]
 
 [node name="Control" type="Control"]
 margin_left = 3.0
@@ -131,9 +133,20 @@ margin_bottom = 141.0
 text = "GOODBYE_TEXT"
 
 [node name="Button" type="Button" parent="."]
-margin_left = 613.0
-margin_top = 47.0
-margin_right = 757.0
-margin_bottom = 92.0
+margin_left = 820.0
+margin_top = 38.0
+margin_right = 964.0
+margin_bottom = 83.0
 text = "CHANGE_LANGUAGE"
 script = ExtResource( 3 )
+
+[node name="OptionButton" type="OptionButton" parent="."]
+margin_left = 717.0
+margin_top = 97.0
+margin_right = 859.0
+margin_bottom = 144.0
+theme = ExtResource( 2 )
+text = "EN"
+icon = ExtResource( 8 )
+items = [ "EN", ExtResource( 8 ), false, 0, null, "SV", ExtResource( 9 ), false, 1, null ]
+selected = 0
