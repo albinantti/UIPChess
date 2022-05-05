@@ -1,4 +1,10 @@
 keys,en,sv
-HELLO,Hello,Hej
-GOODBYE_TEXT,Goodbye,Hej då
-CHANGE_LANGUAGE,Change Language, Byt språk
+CHANGE_LANGUAGE,Change Language,Byt språk
+NEW_GAME,New Game,Nytt Spel
+LOAD_GAME,Load Game,Ladda Spel
+TUTORIAL,Tutorial,Handledning
+SETTINGS,Settings,Inställningar
+EXIT,Exit,Avsluta
+HISTORY,History,Historik
+RED,Red,Röd
+WHITE,White,Vit
