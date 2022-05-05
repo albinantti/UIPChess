@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Resources/Themes/Fonts/font_Game_40.tres" type="Theme" id=1]
 [ext_resource path="res://Resources/images/exit.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Resources/images/redo.png" type="Texture" id=5]
 [ext_resource path="res://Resources/images/mute.png" type="Texture" id=6]
 [ext_resource path="res://GameScene.gd" type="Script" id=7]
+[ext_resource path="res://ExitActiveGameButton.gd" type="Script" id=8]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.4, 0.643137, 0.290196, 1 )
@@ -835,16 +836,26 @@ texture = ExtResource( 4 )
 expand = true
 stretch_mode = 5
 
-[node name="TextureRect4" type="TextureRect" parent="Panel/VBoxContainer/PanelContainer3/MarginContainer/HBoxContainer"]
+[node name="ExitActiveGameButton" type="TextureButton" parent="Panel/VBoxContainer/PanelContainer3/MarginContainer/HBoxContainer"]
 margin_left = 200.0
 margin_right = 240.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 40, 40 )
-size_flags_horizontal = 0
-size_flags_vertical = 0
-texture = ExtResource( 2 )
+hint_tooltip = "Exit game without saving."
+texture_normal = ExtResource( 2 )
 expand = true
-stretch_mode = 5
+script = ExtResource( 8 )
+
+[node name="ExitConfirmationPopup" type="ConfirmationDialog" parent="Panel/VBoxContainer/PanelContainer3/MarginContainer/HBoxContainer/ExitActiveGameButton"]
+margin_left = -592.0
+margin_top = -290.0
+margin_right = -392.0
+margin_bottom = -190.0
+rect_min_size = Vector2( 200, 100 )
+popup_exclusive = true
+window_title = "Exit game"
+dialog_text = "Do you really wish to exit? All progress since your last save will be lost!"
+dialog_autowrap = true
 
 [node name="TextureRect" type="TextureRect" parent="Panel"]
 margin_left = 20.0

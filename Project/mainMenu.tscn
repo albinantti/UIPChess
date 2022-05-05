@@ -15,10 +15,10 @@ margin_bottom = 609.0
 rect_pivot_offset = Vector2( -90, -26 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
-margin_left = -5.0
-margin_top = 3.0
-margin_right = 1203.0
-margin_bottom = 1213.0
+margin_left = -16.0
+margin_top = -311.0
+margin_right = 1192.0
+margin_bottom = 899.0
 texture = ExtResource( 3 )
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
@@ -79,6 +79,15 @@ theme = ExtResource( 2 )
 toggle_mode = true
 text = "Exit"
 script = ExtResource( 1 )
+
+[node name="ExitConfirmation" type="ConfirmationDialog" parent="MarginContainer/GridContainer/Exit Button"]
+margin_right = 400.0
+margin_bottom = 140.0
+rect_min_size = Vector2( 400, 140 )
+popup_exclusive = true
+window_title = "Exit game?"
+dialog_text = "Do you really wish to exit the game?"
+dialog_autowrap = true
 
 [node name="GridContainer" type="GridContainer" parent="."]
 margin_left = 360.0
