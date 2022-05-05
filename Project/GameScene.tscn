@@ -272,8 +272,6 @@ size_flags_vertical = 3
 color = Color( 0.678431, 0.741176, 0.647059, 1 )
 
 [node name="A5" type="ColorRect" parent="Panel/Chessboard"]
-anchor_left = 0.00191939
-anchor_right = 0.00191939
 margin_top = 195.0
 margin_right = 65.0
 margin_bottom = 260.0
