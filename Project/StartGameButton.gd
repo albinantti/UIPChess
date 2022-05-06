@@ -16,4 +16,21 @@ func _ready():
 #	pass
 
 func _pressed():
-	get_tree().change_scene("res://GameScene.tscn")
+	get_node("NewGameSettingsBG").visible = true
+	#get_tree().change_scene("res://GameScene.tscn")
+
+
+func _on_Load_Game_pressed():
+	get_node("NewGameSettingsBG").visible = false
+
+
+func _on_Tutorial_pressed():
+	get_node("NewGameSettingsBG").visible = false
+
+
+func _on_Settings_pressed():
+	get_node("NewGameSettingsBG").visible = false
+
+
+func _on_ExitButton_pressed():
+	get_node("NewGameSettingsBG").visible = false
