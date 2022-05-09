@@ -76,11 +76,11 @@ custom_constants/vseparation = 16
 [node name="New Game" type="Button" parent="MarginContainer/GridContainer"]
 margin_right = 192.0
 margin_bottom = 72.0
-hint_tooltip = "Start a new game of chess."
+hint_tooltip = "MAIN_MENU_BUTTON_NEW_GAME_TOOLTIP"
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 2 )
-text = "MENU_NEW_GAME_BUTTON"
+text = "MAIN_MENU_BUTTON_NEW_GAME"
 clip_text = true
 script = ExtResource( 6 )
 
@@ -204,39 +204,45 @@ script = ExtResource( 11 )
 margin_top = 88.0
 margin_right = 192.0
 margin_bottom = 160.0
+hint_tooltip = "MAIN_MENU_BUTTON_LOAD_GAME_TOOLTIP"
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 2 )
-text = "Load Game"
+text = "MAIN_MENU_BUTTON_LOAD_GAME"
+clip_text = true
 
 [node name="Tutorial" type="Button" parent="MarginContainer/GridContainer"]
 margin_top = 176.0
 margin_right = 192.0
 margin_bottom = 248.0
+hint_tooltip = "MAIN_MENU_BUTTON_TUTORIAL_TOOLTIP"
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 2 )
-text = "Tutorial"
+text = "MAIN_MENU_BUTTON_TUTORIAL"
+clip_text = true
 
 [node name="Settings" type="Button" parent="MarginContainer/GridContainer"]
 margin_top = 264.0
 margin_right = 192.0
 margin_bottom = 336.0
+hint_tooltip = "MAIN_MENU_BUTTON_SETTINGS_TOOLTIP"
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 2 )
-text = "Settings"
+text = "MAIN_MENU_BUTTON_SETTINGS"
+clip_text = true
 
 [node name="ExitButton" type="Button" parent="MarginContainer/GridContainer"]
 margin_top = 352.0
 margin_right = 192.0
 margin_bottom = 424.0
-hint_tooltip = "EXIT_MAIN_GAME_BUTTON_TOOLTIP"
+hint_tooltip = "MAIN_MENU_BUTTON_EXIT_GAME_TOOLTIP"
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 2 )
 toggle_mode = true
-text = "EXIT_MAIN_BUTTON_TEXT"
+text = "MAIN_MENU_BUTTON_EXIT_GAME"
 clip_text = true
 script = ExtResource( 1 )
 
