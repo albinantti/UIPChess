@@ -31,6 +31,7 @@ shadow_color = Color( 0, 0, 0, 0.207843 )
 margin_right = 1022.0
 margin_bottom = 608.0
 rect_pivot_offset = Vector2( -90, -26 )
+mouse_filter = 2
 
 [node name="TextureRect" type="TextureRect" parent="."]
 margin_left = -5.0
