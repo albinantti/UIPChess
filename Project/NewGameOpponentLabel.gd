@@ -19,16 +19,16 @@ func _ready():
 
 func _on_NewGameOpponentCPU_pressed():
 	opponent = "cpu"
-	get_node("NewGameOpponentCPU").set_modulate(Color("#bada55"))
-	get_node("NewGameOpponentHuman").set_modulate(Color("#ffffff"))
+	get_node("NewGameOpponentCPU").set_theme(load("res://Resources/Themes/NewGameSelectedButtonTheme.tres"))
+	get_node("NewGameOpponentHuman").set_theme(load("res://Resources/Themes/NewGameButtonTheme.tres"))
 	get_node("../NewGameDifficultyLabel").visible = true
 	get_node("../NewGameStartGame").check_validity()
 
 
 func _on_NewGameOpponentHuman_pressed():
 	opponent = "human"
-	get_node("NewGameOpponentHuman").set_modulate(Color("#bada55"))
-	get_node("NewGameOpponentCPU").set_modulate(Color("#ffffff"))
+	get_node("NewGameOpponentCPU").set_theme(load("res://Resources/Themes/NewGameButtonTheme.tres"))
+	get_node("NewGameOpponentHuman").set_theme(load("res://Resources/Themes/NewGameSelectedButtonTheme.tres"))
 	get_node("../NewGameDifficultyLabel").visible = false
 	get_node("../NewGameStartGame").check_validity()
 

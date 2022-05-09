@@ -4,10 +4,10 @@ extends Button
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-var ready = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	
 	pass # Replace with function body.
 
 
@@ -23,14 +23,11 @@ func _ready():
 func check_validity():
 	if(get_node("../NewGameOpponentLabel").get_opponent() == "cpu"):
 		if(get_node("../NewGameDifficultyLabel").get_difficulty() > 0):
-			self.set_modulate(Color("#8bc34a"))
-			ready = true
+			self.disabled = false
 		else:
-			self.set_modulate(Color("#ffffff"))
-			ready = false
+			self.disabled = true
 	elif(get_node("../NewGameOpponentLabel").get_opponent() == "human"):
-		self.set_modulate(Color("#8bc34a"))
-		ready = true
+		self.disabled = false
 		
 
 
