@@ -31,12 +31,12 @@ margin_right = 276.0
 margin_bottom = 526.0
 
 [node name="GridContainer" type="GridContainer" parent="MarginContainer"]
-margin_right = 192.0
+margin_right = 427.0
 margin_bottom = 426.0
 custom_constants/vseparation = 16
 
 [node name="New Game" type="Button" parent="MarginContainer/GridContainer"]
-margin_right = 192.0
+margin_right = 427.0
 margin_bottom = 72.0
 hint_tooltip = "Start a new game of chess."
 size_flags_horizontal = 3
@@ -47,7 +47,7 @@ script = ExtResource( 6 )
 
 [node name="Load Game" type="Button" parent="MarginContainer/GridContainer"]
 margin_top = 88.0
-margin_right = 192.0
+margin_right = 427.0
 margin_bottom = 160.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -56,7 +56,7 @@ text = "Load Game"
 
 [node name="Tutorial" type="Button" parent="MarginContainer/GridContainer"]
 margin_top = 176.0
-margin_right = 192.0
+margin_right = 427.0
 margin_bottom = 248.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -65,7 +65,7 @@ text = "Tutorial"
 
 [node name="Settings" type="Button" parent="MarginContainer/GridContainer"]
 margin_top = 264.0
-margin_right = 192.0
+margin_right = 427.0
 margin_bottom = 336.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -74,7 +74,7 @@ text = "Settings"
 
 [node name="ExitButton" type="Button" parent="MarginContainer/GridContainer"]
 margin_top = 352.0
-margin_right = 192.0
+margin_right = 427.0
 margin_bottom = 424.0
 hint_tooltip = "EXIT_MAIN_GAME_BUTTON_TOOLTIP"
 size_flags_horizontal = 3
