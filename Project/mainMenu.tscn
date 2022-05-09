@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://ExitButton.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Themes/MainMenuButtonTheme.tres" type="Theme" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Resources/Themes/Fonts/HomePageFont.tres" type="Theme" id=5]
 [ext_resource path="res://StartGameButton.gd" type="Script" id=6]
 [ext_resource path="res://Resources/mainmenu_background.png" type="Texture" id=7]
+[ext_resource path="res://Resources/sounds/ButtonPress.wav" type="AudioStream" id=8]
 
 [node name="Control" type="Control"]
 margin_left = 3.0
@@ -29,12 +30,12 @@ margin_right = 276.0
 margin_bottom = 526.0
 
 [node name="GridContainer" type="GridContainer" parent="MarginContainer"]
-margin_right = 192.0
+margin_right = 427.0
 margin_bottom = 426.0
 custom_constants/vseparation = 16
 
 [node name="New Game" type="Button" parent="MarginContainer/GridContainer"]
-margin_right = 192.0
+margin_right = 427.0
 margin_bottom = 72.0
 hint_tooltip = "Start a new game of chess."
 size_flags_horizontal = 3
@@ -45,7 +46,7 @@ script = ExtResource( 6 )
 
 [node name="Load Game" type="Button" parent="MarginContainer/GridContainer"]
 margin_top = 88.0
-margin_right = 192.0
+margin_right = 427.0
 margin_bottom = 160.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -54,7 +55,7 @@ text = "Load Game"
 
 [node name="Tutorial" type="Button" parent="MarginContainer/GridContainer"]
 margin_top = 176.0
-margin_right = 192.0
+margin_right = 427.0
 margin_bottom = 248.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -63,7 +64,7 @@ text = "Tutorial"
 
 [node name="Settings" type="Button" parent="MarginContainer/GridContainer"]
 margin_top = 264.0
-margin_right = 192.0
+margin_right = 427.0
 margin_bottom = 336.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -72,7 +73,7 @@ text = "Settings"
 
 [node name="ExitButton" type="Button" parent="MarginContainer/GridContainer"]
 margin_top = 352.0
-margin_right = 192.0
+margin_right = 427.0
 margin_bottom = 424.0
 hint_tooltip = "EXIT_MAIN_GAME_BUTTON_TOOLTIP"
 size_flags_horizontal = 3
@@ -137,3 +138,8 @@ margin_right = 757.0
 margin_bottom = 92.0
 text = "CHANGE_LANGUAGE"
 script = ExtResource( 3 )
+
+[node name="ButtonPressedSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+pitch_scale = 1.19
+mix_target = 2
