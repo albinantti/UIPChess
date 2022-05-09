@@ -236,6 +236,31 @@ window_title = "EXIT_GAME_POPUP_TITLE"
 dialog_text = "EXIT_MAIN_GAME_POPUP_CONTENT"
 dialog_autowrap = true
 
+[node name="GridContainer" type="GridContainer" parent="."]
+margin_left = 360.0
+margin_top = 175.0
+margin_right = 1025.0
+margin_bottom = 407.0
+
+[node name="TextureRect" type="TextureRect" parent="GridContainer"]
+margin_right = 665.0
+margin_bottom = 109.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="GridContainer"]
+margin_top = 113.0
+margin_right = 665.0
+margin_bottom = 232.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 5 )
+text = "GAME_TITLE"
+align = 1
+
 [node name="Label" type="Label" parent="."]
 visible = false
 margin_left = 615.0
