@@ -118,35 +118,14 @@ theme = ExtResource( 5 )
 text = "GAME_TITLE"
 align = 1
 
-[node name="Label" type="Label" parent="."]
-margin_left = 615.0
-margin_top = 99.0
-margin_right = 784.0
-margin_bottom = 113.0
-text = "HELLO"
-
-[node name="Label2" type="Label" parent="."]
-margin_left = 617.0
-margin_top = 127.0
-margin_right = 786.0
-margin_bottom = 141.0
-text = "GOODBYE_TEXT"
-
-[node name="Button" type="Button" parent="."]
-margin_left = 820.0
-margin_top = 38.0
-margin_right = 964.0
-margin_bottom = 83.0
-text = "CHANGE_LANGUAGE"
-script = ExtResource( 3 )
-
 [node name="OptionButton" type="OptionButton" parent="."]
-margin_left = 717.0
-margin_top = 97.0
-margin_right = 859.0
-margin_bottom = 144.0
+margin_left = 847.0
+margin_top = 33.0
+margin_right = 989.0
+margin_bottom = 80.0
 theme = ExtResource( 2 )
 text = "EN"
 icon = ExtResource( 8 )
 items = [ "EN", ExtResource( 8 ), false, 0, null, "SV", ExtResource( 9 ), false, 1, null ]
 selected = 0
+script = ExtResource( 3 )
