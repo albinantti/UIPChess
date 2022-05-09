@@ -1,6 +1,7 @@
-[gd_resource type="Theme" load_steps=4 format=2]
+[gd_resource type="Theme" load_steps=5 format=2]
 
 [ext_resource path="res://Resources/GreatPrimer.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Resources/Themes/MenuButtonColor.tres" type="StyleBox" id=2]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.898039, 0.603922, 0.0745098, 1 )
@@ -8,6 +9,10 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
+expand_margin_left = 5.0
+expand_margin_right = 5.0
+expand_margin_top = 5.0
+expand_margin_bottom = 5.0
 
 [sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0.905882, 0.509804, 0.0470588, 1 )
@@ -30,3 +35,4 @@ Button/styles/focus = null
 Button/styles/hover = SubResource( 1 )
 Button/styles/normal = SubResource( 2 )
 Button/styles/pressed = null
+Panel/styles/panel = ExtResource( 2 )
