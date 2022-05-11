@@ -47,3 +47,4 @@ SETTINGS_THEME_BLACK_WHITE,Black/White,Svart/Vit
 SETTINGS_VALIDATE_MOVES,Validate moves,Validera drag
 SETTINGS_VALIDATE_MOVES_TOOLTIP,Whether or not illegal moves should be allowed.,Huruvida olagliga drag ska tillåtas.
 TUTORIAL_START_BUTTON,Start tutorial,Starta handledning
+TUTORIAL_RICH_TEXT,This tutorial will guide you through the basics of chess. Press start to get started!,Denna handledning kommer lära dig grunderna i schack. Tryck på starta för att komma igång!

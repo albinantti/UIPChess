@@ -276,7 +276,6 @@ text = "MAIN_MENU_BUTTON_TUTORIAL"
 clip_text = true
 
 [node name="TutorialPanel" type="Panel" parent="MarginContainer/MainMenuContainer/Tutorial"]
-visible = false
 anchor_top = -2.356
 anchor_bottom = -2.356
 margin_left = 242.0
@@ -292,6 +291,14 @@ margin_right = 628.0
 margin_bottom = 53.0
 theme = ExtResource( 2 )
 text = "MAIN_MENU_BUTTON_TUTORIAL"
+
+[node name="TutorialText" type="Label" parent="MarginContainer/MainMenuContainer/Tutorial/TutorialPanel"]
+margin_left = 32.0
+margin_top = 67.0
+margin_right = 602.0
+margin_bottom = 146.0
+text = "TUTORIAL_RICH_TEXT"
+autowrap = true
 
 [node name="TutorialButton" type="Button" parent="MarginContainer/MainMenuContainer/Tutorial/TutorialPanel"]
 margin_left = 398.0
@@ -319,6 +326,7 @@ text = "MAIN_MENU_BUTTON_SETTINGS"
 clip_text = true
 
 [node name="SettingsPanel" type="Panel" parent="MarginContainer/MainMenuContainer/Settings"]
+visible = false
 anchor_top = -3.6
 anchor_bottom = -3.6
 margin_left = 242.0
