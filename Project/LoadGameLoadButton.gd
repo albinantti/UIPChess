@@ -8,7 +8,8 @@ extends Button
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	self.get_node("../LoadedFileLabel").set_text(tr("LOAD_GAME_LOADED_FILE").format({file=tr("CONSTANT_NONE")}))
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -17,5 +18,13 @@ func _ready():
 
 
 func _on_LoadGameSelectFileButton_pressed():
-	self.get_node("MarginContainer/MainMenuContainer/LoadGame/LoadGamePanel/LoadGameFileDialog").popup()
+	self.get_node("LoadGameFileDialog").popup_centered()
 
+
+
+func _on_LoadGameFileDialog_file_selected(path):
+	self.get_node("../LoadedFileLabel").set_text(tr("LOAD_GAME_LOADED_FILE").format({file=tr(path)}))
+	self.disabled = false
+	
+func _pressed():
+	get_tree().change_scene("res://GameScene.tscn")

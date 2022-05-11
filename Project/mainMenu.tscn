@@ -217,7 +217,6 @@ clip_text = true
 script = ExtResource( 15 )
 
 [node name="LoadGamePanel" type="Panel" parent="MarginContainer/MainMenuContainer/LoadGame"]
-visible = false
 anchor_top = -1.222
 anchor_bottom = -1.222
 margin_left = 242.0
@@ -234,6 +233,22 @@ margin_bottom = 53.0
 theme = ExtResource( 2 )
 text = "LOAD_GAME_PANEL_LABEL"
 
+[node name="LoadGameSelectFileButton" type="Button" parent="MarginContainer/MainMenuContainer/LoadGame/LoadGamePanel"]
+margin_left = 104.0
+margin_top = 92.0
+margin_right = 542.0
+margin_bottom = 130.0
+theme = ExtResource( 9 )
+text = "LOAD_GAME_SELECT_FILE"
+
+[node name="LoadedFileLabel" type="Label" parent="MarginContainer/MainMenuContainer/LoadGame/LoadGamePanel"]
+margin_left = 30.0
+margin_top = 163.0
+margin_right = 600.0
+margin_bottom = 242.0
+text = "LOAD_FILE_LOAD"
+autowrap = true
+
 [node name="LoadGameLoadButton" type="Button" parent="MarginContainer/MainMenuContainer/LoadGame/LoadGamePanel"]
 margin_left = 398.0
 margin_top = 378.0
@@ -249,20 +264,20 @@ text = "MAIN_MENU_BUTTON_LOAD_GAME"
 clip_text = true
 script = ExtResource( 17 )
 
-[node name="LoadGameFileDialog" type="FileDialog" parent="MarginContainer/MainMenuContainer/LoadGame/LoadGamePanel"]
-margin_left = 8.0
-margin_top = 75.0
-margin_right = 612.0
-margin_bottom = 360.0
-rect_min_size = Vector2( 400, 140 )
-
-[node name="LoadGameSelectFileButton" type="Button" parent="MarginContainer/MainMenuContainer/LoadGame/LoadGamePanel"]
-margin_left = 98.0
-margin_top = 173.0
-margin_right = 516.0
-margin_bottom = 211.0
-theme = ExtResource( 9 )
-text = "LOAD_GAME_SELECT_FILE"
+[node name="LoadGameFileDialog" type="FileDialog" parent="MarginContainer/MainMenuContainer/LoadGame/LoadGamePanel/LoadGameLoadButton"]
+margin_left = -519.0
+margin_top = -430.0
+margin_right = 281.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 800, 500 )
+popup_exclusive = true
+window_title = "Load a game."
+dialog_text = "LOAD_GAME_SELECT_FILE"
+mode_overrides_title = false
+mode = 0
+access = 2
+current_dir = "/Users/albin/prog/UIPChess/Project"
+current_path = "/Users/albin/prog/UIPChess/Project/"
 
 [node name="Tutorial" type="Button" parent="MarginContainer/MainMenuContainer"]
 margin_top = 192.0
@@ -276,6 +291,7 @@ text = "MAIN_MENU_BUTTON_TUTORIAL"
 clip_text = true
 
 [node name="TutorialPanel" type="Panel" parent="MarginContainer/MainMenuContainer/Tutorial"]
+visible = false
 anchor_top = -2.356
 anchor_bottom = -2.356
 margin_left = 242.0
@@ -301,16 +317,15 @@ text = "TUTORIAL_RICH_TEXT"
 autowrap = true
 
 [node name="TutorialButton" type="Button" parent="MarginContainer/MainMenuContainer/Tutorial/TutorialPanel"]
-margin_left = 398.0
+margin_left = 184.0
 margin_top = 378.0
-margin_right = 603.0
+margin_right = 609.0
 margin_bottom = 442.0
 grow_horizontal = 0
 rect_min_size = Vector2( 300, 0 )
 hint_tooltip = "MAIN_MENU_BUTTON_LOAD_GAME_TOOLTIP"
 theme = ExtResource( 9 )
 custom_styles/normal = SubResource( 1 )
-disabled = true
 text = "TUTORIAL_START_BUTTON"
 script = ExtResource( 11 )
 
@@ -444,7 +459,7 @@ window_title = "EXIT_GAME_POPUP_TITLE"
 dialog_text = "EXIT_MAIN_GAME_POPUP_CONTENT"
 dialog_autowrap = true
 
-[node name="OptionButton" type="OptionButton" parent="."]
+[node name="TranslationDropdown" type="OptionButton" parent="."]
 margin_left = 847.0
 margin_top = 33.0
 margin_right = 989.0
@@ -467,6 +482,7 @@ script = ExtResource( 3 )
 [connection signal="pressed" from="MarginContainer/MainMenuContainer/LoadGame" to="MarginContainer/MainMenuContainer" method="_on_LoadGame_pressed"]
 [connection signal="pressed" from="MarginContainer/MainMenuContainer/LoadGame" to="MarginContainer/MainMenuContainer/New Game" method="_on_Load_Game_pressed"]
 [connection signal="pressed" from="MarginContainer/MainMenuContainer/LoadGame/LoadGamePanel/LoadGameSelectFileButton" to="MarginContainer/MainMenuContainer/LoadGame/LoadGamePanel/LoadGameLoadButton" method="_on_LoadGameSelectFileButton_pressed"]
+[connection signal="file_selected" from="MarginContainer/MainMenuContainer/LoadGame/LoadGamePanel/LoadGameLoadButton/LoadGameFileDialog" to="MarginContainer/MainMenuContainer/LoadGame/LoadGamePanel/LoadGameLoadButton" method="_on_LoadGameFileDialog_file_selected"]
 [connection signal="pressed" from="MarginContainer/MainMenuContainer/Tutorial" to="MarginContainer/MainMenuContainer" method="_on_Tutorial_pressed"]
 [connection signal="pressed" from="MarginContainer/MainMenuContainer/Tutorial" to="MarginContainer/MainMenuContainer/New Game" method="_on_Tutorial_pressed"]
 [connection signal="pressed" from="MarginContainer/MainMenuContainer/Settings" to="MarginContainer/MainMenuContainer" method="_on_Settings_pressed"]

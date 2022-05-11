@@ -2,6 +2,7 @@ keys,en,sv
 CHANGE_LANGUAGE,Change Language,Byt språk
 CHESS_GAME_HISTORY,History,Historik
 CONSTANT_MINUTES,Minutes,Minuter
+CONSTANT_NONE,None,Ingen
 CONSTANT_RED,Red,Röd
 CONSTANT_SECONDS,Seconds,Sekunder
 CONSTANT_WHITE,White,Vit
@@ -12,6 +13,7 @@ EXIT_MAIN_GAME_POPUP_CONTENT,Do you wish to exit the game?,Vill du avsluta spele
 GAME_TITLE,ChessGame,SchackSpel
 LOAD_GAME_PANEL_LABEL,Load game,Ladda parti
 LOAD_GAME_SELECT_FILE,Choose save file,Välj sparfil
+LOAD_GAME_LOADED_FILE,Loaded file: {file},Laddad fil: {file}
 MAIN_MENU_BUTTON_EXIT_GAME_TOOLTIP,Exit the game.,Avsluta spelet.
 MAIN_MENU_BUTTON_EXIT_GAME,Exit game,Avsluta spel
 MAIN_MENU_BUTTON_LOAD_GAME_TOOLTIP,Load a saved game of chess.,Ladda ett sparat parti schack.
