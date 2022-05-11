@@ -4,12 +4,12 @@ var chosen_piece
 signal square_pos(pos)
 #signal move_piece(piece_name, target_pos)
 
-var pawn = preload("res://Resources/ChessPieces/pawn.svg")
-var rook = preload("res://Resources/ChessPieces/rook.svg")
-var knight = preload("res://Resources/ChessPieces/knight.svg")
-var bishop = preload("res://Resources/ChessPieces/bishop.svg")
-var king = preload("res://Resources/ChessPieces/king.svg")
-var queen = preload("res://Resources/ChessPieces/queen.svg")
+var white_pawn = preload("res://Resources/ChessPieces/pawn.svg")
+var white_rook = preload("res://Resources/ChessPieces/rook.svg")
+var white_knight = preload("res://Resources/ChessPieces/knight.svg")
+var white_bishop = preload("res://Resources/ChessPieces/bishop.svg")
+var white_king = preload("res://Resources/ChessPieces/king.svg")
+var white_queen = preload("res://Resources/ChessPieces/queen.svg")
 
 var red_pawn = preload("res://Resources/ChessPieces/pawn_red.svg")
 var red_rook = preload("res://Resources/ChessPieces/rook_red.svg")
@@ -70,7 +70,6 @@ func _create_collisionshape(node: Node, sprite_x:float, sprite_y:float)->Collisi
 func _chosen_piece(piece):
 	chosen_piece = piece
 	print("chosen piece ", chosen_piece.name)
-	var H6 = get_node("Panel/Chessboard/H6").set_pickable(true)
 
 func _send_position(square):
 	print("send pos " + square.name)
@@ -92,80 +91,86 @@ func _connect_send_square_position(piece_name):
 	var piece = get_node(dir)
 	self.connect("square_pos", piece, "_move_piece")
 
+func _place_all_pieces(chessboard):
+	var all_pieces = {
+		"white_pawns": {
+			"nodes": ["A2", "B2", "C2", "D2", "E2", "F2", "G2", "H2"],
+			"texture": white_pawn,
+			"name_prefix": "Wpawn"
+		},
+		"white_rooks": {
+			"nodes": ["A1", "H1"],
+			"texture": white_rook,
+			"name_prefix": "Wrook"
+		},
+		"white_knights": {
+			"nodes": ["B1", "G1"],
+			"texture": white_knight,
+			"name_prefix": "Wknight"
+		},
+		"white_bishops": {
+			"nodes": ["C1", "F1"],
+			"texture": white_bishop,
+			"name_prefix": "Wbishop"
+		},
+		"white_queen": {
+			"nodes": ["D1"],
+			"texture": white_queen,
+			"name_prefix": "Wqueen"
+		},
+		"white_king": {
+			"nodes": ["E1"],
+			"texture": white_king,
+			"name_prefix": "Wking"
+		},
+		"red_pawns": {
+			"nodes": ["A7", "B7", "C7", "D7", "E7", "F7", "G7", "H7"],
+			"texture": red_pawn,
+			"name_prefix": "Rpawn"
+		},
+		"red_rooks": {
+			"nodes": ["A8", "H8"],
+			"texture": red_rook,
+			"name_prefix": "Rrook"
+		},
+		"red_knights": {
+			"nodes": ["B8", "G8"],
+			"texture": red_knight,
+			"name_prefix": "Rknight"
+		},
+		"red_bishops": {
+			"nodes": ["C8", "F8"],
+			"texture": red_bishop,
+			"name_prefix": "Rbishop"
+		},
+		"red_queen": {
+			"nodes": ["D8"],
+			"texture": red_queen,
+			"name_prefix": "Rqueen"
+		},
+		"red_king": {
+			"nodes": ["E8"],
+			"texture": red_king,
+			"name_prefix": "Rking"
+		},
+	}
+
+	for key in all_pieces:
+		var current_pieces = all_pieces[key]
+		var counter = 0
+
+		for node_name in current_pieces['nodes']:
+			var piece_name = current_pieces.name_prefix + str(counter)
+			place_piece(chessboard, node_name, current_pieces['texture'], piece_name)
+			_connect_piece_to_game_manager(piece_name)
+			_connect_send_square_position(piece_name)
+			counter += 1
 
 func _ready():
 	var chessboard = get_node("Panel/Chessboard")
-	var white_pawn_nodes = ["A2", "B2", "C2", "D2", "E2", "F2", "G2", "H2"]
-	var white_rook_nodes = ["A1", "H1"]
-	var white_knight_nodes = ["B1", "G1"]
-	var white_bishop_nodes = ["C1", "F1"]
-
-	var red_pawn_nodes = ["A7", "B7", "C7", "D7", "E7", "F7", "G7", "H7"]
-	var red_rook_nodes = ["A8", "H8"]
-	var red_knight_nodes = ["B8", "G8"]
-	var red_bishop_nodes = ["C8", "F8"]
+	for square in chessboard.get_children():
+		_connect_square_to_game_manager(square.name)
 	
-	# Place white pieces
-	var counter = 0
-	var piece_name = ""
-	for node_name in white_pawn_nodes:
-		piece_name = "W" + "pawn" + str(counter)  
-		place_piece(chessboard, node_name, pawn, piece_name)
-		counter = counter +1 
+	chessboard.get_node("H6").set_pickable(true)
+	_place_all_pieces(chessboard)
 	
-	_connect_square_to_game_manager("H6")
-	counter = 0
-	for node_name in white_rook_nodes:
-		piece_name = "W" + "rook" + str(counter)  
-		place_piece(chessboard, node_name, rook, piece_name)
-		_connect_piece_to_game_manager(piece_name)
-		_connect_square_to_game_manager(node_name)
-		_connect_send_square_position(piece_name)
-		counter = counter +1 
-	
-	counter = 0
-	for node_name in white_knight_nodes:
-		piece_name = "W" + "knight" + str(counter) 
-		place_piece(chessboard, node_name, knight, piece_name)
-		counter = counter +1 
-	
-	counter = 0
-	for node_name in white_bishop_nodes:
-		piece_name = "W" + "bishop" + str(counter) 
-		place_piece(chessboard, node_name, bishop, piece_name)
-		counter = counter +1 
-	
-	piece_name = "W" + "queen"
-	place_piece(chessboard, "D1", queen, piece_name)
-	piece_name = "W" + "king"
-	place_piece(chessboard, "E1", king, piece_name)	
-	
-	# Place red pieces
-	counter = 0
-	for node_name in red_pawn_nodes:
-		piece_name = "R" + "pawn" + str(counter)
-		place_piece(chessboard, node_name, red_pawn, piece_name)
-		counter = counter +1 
-	
-	counter = 0
-	for node_name in red_rook_nodes:
-		piece_name = "R" + "rook" + str(counter)
-		place_piece(chessboard, node_name, red_rook, piece_name)
-		counter = counter +1 
-		
-	counter = 0	
-	for node_name in red_knight_nodes:
-		piece_name = "R" + "knight" + str(counter)
-		place_piece(chessboard, node_name, red_knight, piece_name)
-		counter = counter +1 
-	
-	counter = 0
-	for node_name in red_bishop_nodes:
-		piece_name = "R" + "bishop" + str(counter)
-		place_piece(chessboard, node_name, red_bishop, piece_name)
-		counter = counter +1 
-	
-	piece_name = "R" + "queen"	
-	place_piece(chessboard, "D8", red_queen, piece_name)
-	piece_name = "R" + "king"	
-	place_piece(chessboard, "E8", red_king, piece_name)
