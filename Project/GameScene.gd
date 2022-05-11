@@ -20,46 +20,51 @@ var red_queen = preload("res://Resources/ChessPieces/queen_red.svg")
 
 ## Places a chess piece on the chessboard on the node with node_name (i.e A1, B5)
 ## and applies the texture to the chesspiece
-func place_piece(chessboard: Node, node_name: String, texture: Resource, piece_name:String) -> void:
+func place_piece(chessboard: Node, node_name: String, texture: Resource, piece_name: String) -> void:
+	var chessboard_square = chessboard.get_node(node_name)
 	
-	var node_rect = node_name + "_rect"
-	var area = chessboard.get_node(node_name)
-	var	node = area.get_node(node_rect)
+	# Get the color rectangle for the square
+	var color_rect_name = node_name + "_rect"
+	var color_rect = chessboard_square.get_node(color_rect_name)
+	
+	# Create Area2D that will contain the piece
+	var area2d = Area2D.new()
+	area2d.set_script(load("res://Piece_logic.gd"))
+	area2d.name = piece_name # set name of the piece to the pieces name
+	area2d.input_pickable = true # Make piece clickable
+	
+	var area2d_x = chessboard_square.get_position().x
+	var area2d_y = chessboard_square.get_position().y
+	area2d.set_position(Vector2(area2d_x, area2d_y))
+	
 	var sprite = Sprite.new()
-	var sprite_x = area.get_position().x + node.get_size().x / 2
-	var sprite_y = area.get_position().y + node.get_size().y / 2
-	sprite.set_position(Vector2(sprite_x, sprite_y))
 	sprite.texture = texture
+	sprite.centered = false
 	sprite.set_scale(Vector2(0.433, 0.433))
 	
-	var piece = _create_area2d(piece_name)
-	var collisionShape = _create_collisionshape(node, sprite_x, sprite_y)
+	var collisionShape = _create_collisionshape(color_rect, area2d_x, area2d_y)
 	
+	# Add Tween for movement animation
 	var tween = Tween.new()
-	piece.add_child(sprite)
-	piece.add_child(tween)
-	chessboard.add_child(piece)
-		
-#Create the body of a piece
-func _create_area2d(piece_name:String)->Area2D:
-	var area = Area2D.new()
-	area.set_script(load("res://Piece_logic.gd"))
-	area.name = piece_name #set name to every 
-	area.input_pickable = true #in order to click on it
-	area.z_index = 1
-	return area
 	tween.name = "Tween"
+	
+	area2d.add_child(collisionShape)
+	area2d.add_child(sprite)
+	area2d.add_child(tween)
+	chessboard.add_child(area2d)
 
-# Create a collisonshape for a piece where the mouse clicks will be identified
+## Create a collisonshape for a piece where the mouse clicks will be identified
 func _create_collisionshape(node: Node, sprite_x:float, sprite_y:float)->CollisionShape2D:
 	var collisionShape = CollisionShape2D.new()
 	var shape = RectangleShape2D.new()
 	
-	var size = node.get_size() 
-	shape.set_extents(Vector2(size)) #set the size of the collsionshape as the node
+	# set position and extents to half the square size since the origin of the
+	# shape is in the center
+	var shape_size = node.get_size()/2
+	shape.set_extents(shape_size)
+	collisionShape.position = shape_size
+	
 	collisionShape.set_shape(shape)
-	collisionShape.set_scale(Vector2(0.433, 0.433)) #set the scale to the same as the sprite
-	collisionShape.set_position(Vector2(sprite_x, sprite_y)) #set the position to the same as the sprite
 	return collisionShape
 
 func _chosen_piece(piece):
@@ -164,9 +169,3 @@ func _ready():
 	place_piece(chessboard, "D8", red_queen, piece_name)
 	piece_name = "R" + "king"	
 	place_piece(chessboard, "E8", red_king, piece_name)
-	
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
