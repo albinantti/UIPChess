@@ -12,7 +12,7 @@ func _ready():
 
 # Set the collisionshape to the same size as the ColorRectangle
 func _set_collisionshape_size():
-	var collisionShape =self.get_node("CollisionShape2D")
+	var collisionShape = self.get_node("CollisionShape2D")
 	var shape = collisionShape.get_shape()
 	var rect_name = self.name + "_rect"
 	var rect = self.get_node(rect_name)

@@ -30,18 +30,14 @@ func _process(state):
 #		emit_signal('piece_chosen', self.name)
 
 func _move_piece(new_position):
-		print("here Im")
-		var current_position = get_position().floor()
-#		var new_position = Vector2(0, 70) if current_position != Vector2(100, 100) else Vector2(300, 300)
-		print(new_position)
-		print(current_position)
-		#var TweenNode = self.get_node("Tween")
-		var TweenNode = self.get_child(2)
-		TweenNode.interpolate_property(self, "position", current_position, new_position, 2,
-			Tween.TRANS_EXPO, Tween.EASE_IN_OUT)
-		TweenNode.start()
+	var TweenNode = get_node("Tween")
+	TweenNode.interpolate_property(
+		self, "position", get_position(), new_position, 
+		2, Tween.TRANS_EXPO, Tween.EASE_IN_OUT
+	)
+	TweenNode.start()
 
-		
+
 func _input_event(viewport, event, shape_idx):
 	if  event is InputEventMouseButton and event.pressed and event.button_index == BUTTON_LEFT:
 		emit_signal('piece_chosen', self)
