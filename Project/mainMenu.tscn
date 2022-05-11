@@ -217,6 +217,7 @@ clip_text = true
 script = ExtResource( 15 )
 
 [node name="LoadGamePanel" type="Panel" parent="MarginContainer/MainMenuContainer/LoadGame"]
+visible = false
 anchor_top = -1.222
 anchor_bottom = -1.222
 margin_left = 242.0
