@@ -10,6 +10,8 @@ EXIT_ACTIVE_GAME_POPUP_CONTENT,Do you wish to exit the game? All unsaved moves w
 EXIT_GAME_POPUP_TITLE,Exit game?,Avsluta parti?
 EXIT_MAIN_GAME_POPUP_CONTENT,Do you wish to exit the game?,Vill du avsluta spelet?
 GAME_TITLE,ChessGame,SchackSpel
+LOAD_GAME_PANEL_LABEL,Load game,Ladda parti
+LOAD_GAME_SELECT_FILE,Choose save file,Välj sparfil
 MAIN_MENU_BUTTON_EXIT_GAME_TOOLTIP,Exit the game.,Avsluta spelet.
 MAIN_MENU_BUTTON_EXIT_GAME,Exit game,Avsluta spel
 MAIN_MENU_BUTTON_LOAD_GAME_TOOLTIP,Load a saved game of chess.,Ladda ett sparat parti schack.
@@ -36,3 +38,12 @@ NEW_GAME_TIME_VALUE,{value} Minutes,{value} Minuter
 NEW_GAME_TIME,Clock time,Klocktid
 POPUP_CANCEL,Cancel,Avbryt
 POPUP_OK,OK,OK
+SETTINGS_THEME,Theme,Tema
+SETTINGS_THEME_TOOLTIP,How the game piecesshould look.,Hur spelpjäserna ska se ut.
+SETTINGS_THEME_RED_GREEN,Red/Green,Röd/Grön
+SETTINGS_THEME_RED_WHITE,Red/White,Röd/Vit
+SETTINGS_THEME_GREEN_WHITE,Green/White,Grön/Vit
+SETTINGS_THEME_BLACK_WHITE,Black/White,Svart/Vit
+SETTINGS_VALIDATE_MOVES,Validate moves,Validera drag
+SETTINGS_VALIDATE_MOVES_TOOLTIP,Whether or not illegal moves should be allowed.,Huruvida olagliga drag ska tillåtas.
+TUTORIAL_START_BUTTON,Start tutorial,Starta handledning
