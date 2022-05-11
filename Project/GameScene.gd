@@ -1,5 +1,7 @@
 extends Node2D
 
+var chosen_piece
+signal square_pos(pos)
 #signal move_piece(piece_name, target_pos)
 
 var pawn = preload("res://Resources/ChessPieces/pawn.svg")
@@ -33,16 +35,19 @@ func place_piece(chessboard: Node, node_name: String, texture: Resource, piece_n
 	var piece = _create_area2d(piece_name)
 	var collisionShape = _create_collisionshape(node, sprite_x, sprite_y)
 	
+	var tween = Tween.new()
 	piece.add_child(collisionShape)
 	piece.add_child(sprite)
+	piece.add_child(tween)
 	chessboard.add_child(piece)
-	
+		
 #Create the body of a piece
 func _create_area2d(piece_name:String)->Area2D:
 	var area = Area2D.new()
 	area.set_script(load("res://Piece_logic.gd"))
 	area.name = piece_name #set name to every 
 	area.input_pickable = true #in order to click on it
+	area.z_index = 1
 	return area
 
 # Create a collisonshape for a piece where the mouse clicks will be identified
@@ -51,22 +56,37 @@ func _create_collisionshape(node: Node, sprite_x:float, sprite_y:float)->Collisi
 	var shape = RectangleShape2D.new()
 	
 	var size = node.get_size() 
-	print(size)
 	shape.set_extents(Vector2(size)) #set the size of the collsionshape as the node
 	collisionShape.set_shape(shape)
 	collisionShape.set_scale(Vector2(0.433, 0.433)) #set the scale to the same as the sprite
 	collisionShape.set_position(Vector2(sprite_x, sprite_y)) #set the position to the same as the sprite
 	return collisionShape
 
-func _chosen_piece(piece_name):
+func _chosen_piece(piece):
 	print("chosen piece!")
-	print(piece_name)
-	pass
+	chosen_piece = piece
+	print(piece.name)
+
+func _send_position(square):
+	print(square.name)
+	if chosen_piece != null:
+		print("in if")
+		emit_signal("square_pos", square.get_position()) #to piece med pos
 	
-func _connect_pieces_to_input_event(piece_name:String)-> void:
+func _connect_piece_to_game_manager(piece_name):
 	var dir = "Panel/Chessboard/" + piece_name
 	var rigid = get_node(dir)
-	rigid.connect("input_event", rigid, "_on_RigidBody2D_input_event")
+	rigid.connect("piece_chosen", self, "_chosen_piece")
+
+func _connect_square_to_game_manager(square_name):
+	var dir = "Panel/Chessboard/" + square_name
+	var square = get_node(dir)
+	square.connect("square_chosen", self, "_send_position")
+
+func _connect_send_square_position(square_name):
+	var dir = "Panel/Chessboard/" + square_name
+	var square = get_node(dir)
+	self.connect("square_pos", square, "_move_piece")
 	
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -93,7 +113,9 @@ func _ready():
 	for node_name in white_rook_nodes:
 		piece_name = "W" + "rook" + str(counter)  
 		place_piece(chessboard, node_name, rook, piece_name)
-		_connect_pieces_to_input_event(piece_name)
+		_connect_piece_to_game_manager(piece_name)
+		_connect_square_to_game_manager(node_name)
+		_connect_send_square_position(node_name)
 		counter = counter +1 
 	
 	counter = 0
@@ -142,10 +164,6 @@ func _ready():
 	place_piece(chessboard, "D8", red_queen, piece_name)
 	piece_name = "R" + "king"	
 	place_piece(chessboard, "E8", red_king, piece_name)
-	
-	var dir = "Panel/Chessboard/" + "Wrook1"
-	var rigid = get_node(dir)
-	rigid.connect("piece_chosen", self, "_chosen_piece")
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

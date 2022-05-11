@@ -1,6 +1,6 @@
 extends Area2D
 
-
+signal square_chosen(square)
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -12,10 +12,8 @@ func _ready():
 
 # Set the collisionshape to the same size as the ColorRectangle
 func _set_collisionshape_size():
-	var coll_index = 1
-	var collisionShape = self.get_child(coll_index)
+	var collisionShape =self.get_node("CollisionShape2D")
 	var shape = collisionShape.get_shape()
-	
 	var rect_name = self.name + "_rect"
 	var rect = self.get_node(rect_name)
 	
@@ -32,4 +30,5 @@ func _set_collisionshape_size():
 		
 func _input_event(viewport, event, shape_idx):
 	if  event is InputEventMouseButton and event.pressed and event.button_index == BUTTON_LEFT:
-		print(self.name)
+		print("random text")
+		emit_signal("square_chosen", self)

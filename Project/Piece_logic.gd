@@ -1,6 +1,6 @@
 extends Area2D
 
-signal piece_chosen(piece_name)
+signal piece_chosen(piece)
 
 var velocity = Vector2()
 # Declare member variables here. Examples:
@@ -18,17 +18,30 @@ func _ready():
 #	pass
 
 func _process(state):
-	#move()
-	#self.AddForce ((target - .transform.position) * travelSpeed)
 	pass
-	
 #func move():
 #	if Input.is_action_pressed('ui_right'):
 #		apply_central_impulse(Vector2(0, 10))
 	
-func _on_Area2D_input_event(viewport, event, shape_idx):
-	if  event is InputEventMouseButton and event.pressed and event.button_index == BUTTON_LEFT:
-		print("lol it works")
-		print(self.name)
-		emit_signal('piece_chosen', self.name)
+#func _on_Area2D_input_event(viewport, event, shape_idx):
+#	if  event is InputEventMouseButton and event.pressed and event.button_index == BUTTON_LEFT:
+#		print("lol it works")
+#		print(self.name)
+#		emit_signal('piece_chosen', self.name)
 
+func _move_piece(new_position):
+		print("here Im")
+		var current_position = get_position().floor()
+#		var new_position = Vector2(0, 70) if current_position != Vector2(100, 100) else Vector2(300, 300)
+		print(new_position)
+		print(current_position)
+		#var TweenNode = self.get_node("Tween")
+		var TweenNode = self.get_child(2)
+		TweenNode.interpolate_property(self, "position", current_position, new_position, 2,
+			Tween.TRANS_EXPO, Tween.EASE_IN_OUT)
+		TweenNode.start()
+
+		
+func _input_event(viewport, event, shape_idx):
+	if  event is InputEventMouseButton and event.pressed and event.button_index == BUTTON_LEFT:
+		emit_signal('piece_chosen', self)
