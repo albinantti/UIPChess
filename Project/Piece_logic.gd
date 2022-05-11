@@ -1,4 +1,4 @@
-extends RigidBody2D
+extends Area2D
 
 signal piece_chosen(piece_name)
 
@@ -17,16 +17,16 @@ func _ready():
 #func _process(delta):
 #	pass
 
-#func _integrate_forces(state):
+func _process(state):
 	#move()
 	#self.AddForce ((target - .transform.position) * travelSpeed)
-#	pass
+	pass
 	
 #func move():
 #	if Input.is_action_pressed('ui_right'):
 #		apply_central_impulse(Vector2(0, 10))
 	
-func _on_RigidBody2D_input_event(viewport, event, shape_idx):
+func _on_Area2D_input_event(viewport, event, shape_idx):
 	if  event is InputEventMouseButton and event.pressed and event.button_index == BUTTON_LEFT:
 		print("lol it works")
 		print(self.name)

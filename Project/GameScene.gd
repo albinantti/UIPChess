@@ -30,22 +30,20 @@ func place_piece(chessboard: Node, node_name: String, texture: Resource, piece_n
 	sprite.texture = texture
 	sprite.set_scale(Vector2(0.433, 0.433))
 	
-	var rigidBody = _create_rigidBody(piece_name)
+	var piece = _create_area2d(piece_name)
 	var collisionShape = _create_collisionshape(node, sprite_x, sprite_y)
 	
-	rigidBody.add_child(collisionShape)
-	rigidBody.add_child(sprite)
-	chessboard.add_child(rigidBody)
+	piece.add_child(collisionShape)
+	piece.add_child(sprite)
+	chessboard.add_child(piece)
 	
 #Create the body of a piece
-func _create_rigidBody(piece_name:String)->RigidBody2D:
-	var rigidBody = RigidBody2D.new()
-	rigidBody.set_script(load("res://Piece_logic.gd"))
-	rigidBody.name = piece_name #set name to every 
-	rigidBody.set_mode(2) #2 means character body
-	rigidBody.input_pickable = true #in order to click on it
-	rigidBody.gravity_scale = 0
-	return rigidBody
+func _create_area2d(piece_name:String)->Area2D:
+	var area = Area2D.new()
+	area.set_script(load("res://Piece_logic.gd"))
+	area.name = piece_name #set name to every 
+	area.input_pickable = true #in order to click on it
+	return area
 
 # Create a collisonshape for a piece where the mouse clicks will be identified
 func _create_collisionshape(node: Node, sprite_x:float, sprite_y:float)->CollisionShape2D:
@@ -153,5 +151,4 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
-
 
