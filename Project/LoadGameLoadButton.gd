@@ -16,3 +16,6 @@ func _ready():
 #	pass
 
 
+func _on_LoadGameSelectFileButton_pressed():
+	self.get_node("MarginContainer/MainMenuContainer/LoadGame/LoadGamePanel/LoadGameFileDialog").popup()
+

@@ -33,3 +33,4 @@ func check_validity():
 
 func _on_NewGameStartGame_pressed():
 	get_tree().change_scene("res://GameScene.tscn")
+
