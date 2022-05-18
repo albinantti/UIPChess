@@ -58,7 +58,6 @@ __meta__ = {
 }
 
 [node name="A8" type="Area2D" parent="Panel/Chessboard"]
-input_pickable = false
 script = ExtResource( 11 )
 
 [node name="A8_rect" type="ColorRect" parent="Panel/Chessboard/A8"]
@@ -75,7 +74,6 @@ shape = SubResource( 9 )
 
 [node name="B8" type="Area2D" parent="Panel/Chessboard"]
 position = Vector2( 65, 0 )
-input_pickable = false
 script = ExtResource( 11 )
 
 [node name="B8_rect" type="ColorRect" parent="Panel/Chessboard/B8"]
@@ -92,7 +90,6 @@ shape = SubResource( 10 )
 
 [node name="C8" type="Area2D" parent="Panel/Chessboard"]
 position = Vector2( 130, 0 )
-input_pickable = false
 script = ExtResource( 11 )
 
 [node name="C8_rect" type="ColorRect" parent="Panel/Chessboard/C8"]
@@ -109,7 +106,6 @@ shape = SubResource( 11 )
 
 [node name="D8" type="Area2D" parent="Panel/Chessboard"]
 position = Vector2( 195, 0 )
-input_pickable = false
 script = ExtResource( 11 )
 
 [node name="D8_rect" type="ColorRect" parent="Panel/Chessboard/D8"]
@@ -126,7 +122,6 @@ shape = SubResource( 11 )
 
 [node name="E8" type="Area2D" parent="Panel/Chessboard"]
 position = Vector2( 260, 0 )
-input_pickable = false
 script = ExtResource( 11 )
 
 [node name="E8_rect" type="ColorRect" parent="Panel/Chessboard/E8"]
@@ -143,7 +138,6 @@ shape = SubResource( 11 )
 
 [node name="F8" type="Area2D" parent="Panel/Chessboard"]
 position = Vector2( 325, 0 )
-input_pickable = false
 script = ExtResource( 11 )
 
 [node name="F8_rect" type="ColorRect" parent="Panel/Chessboard/F8"]
@@ -160,7 +154,6 @@ shape = SubResource( 11 )
 
 [node name="G8" type="Area2D" parent="Panel/Chessboard"]
 position = Vector2( 390, 0 )
-input_pickable = false
 script = ExtResource( 11 )
 
 [node name="G8_rect" type="ColorRect" parent="Panel/Chessboard/G8"]
@@ -177,7 +170,6 @@ shape = SubResource( 11 )
 
 [node name="H8" type="Area2D" parent="Panel/Chessboard"]
 position = Vector2( 455, 0 )
-input_pickable = false
 script = ExtResource( 11 )
 
 [node name="H8_rect" type="ColorRect" parent="Panel/Chessboard/H8"]
@@ -194,7 +186,6 @@ shape = SubResource( 11 )
 
 [node name="A7" type="Area2D" parent="Panel/Chessboard"]
 position = Vector2( 0, 65 )
-input_pickable = false
 script = ExtResource( 11 )
 
 [node name="A7_rect" type="ColorRect" parent="Panel/Chessboard/A7"]
@@ -211,7 +202,6 @@ shape = SubResource( 11 )
 
 [node name="B7" type="Area2D" parent="Panel/Chessboard"]
 position = Vector2( 65, 65 )
-input_pickable = false
 script = ExtResource( 11 )
 
 [node name="B7_rect" type="ColorRect" parent="Panel/Chessboard/B7"]
@@ -228,7 +218,6 @@ shape = SubResource( 11 )
 
 [node name="C7" type="Area2D" parent="Panel/Chessboard"]
 position = Vector2( 130, 65 )
-input_pickable = false
 script = ExtResource( 11 )
 
 [node name="C7_rect" type="ColorRect" parent="Panel/Chessboard/C7"]
@@ -245,7 +234,6 @@ shape = SubResource( 11 )
 
 [node name="D7" type="Area2D" parent="Panel/Chessboard"]
 position = Vector2( 195, 65 )
-input_pickable = false
 script = ExtResource( 11 )
 
 [node name="D7_rect" type="ColorRect" parent="Panel/Chessboard/D7"]
@@ -262,7 +250,6 @@ shape = SubResource( 11 )
 
 [node name="E7" type="Area2D" parent="Panel/Chessboard"]
 position = Vector2( 260, 65 )
-input_pickable = false
 script = ExtResource( 11 )
 
 [node name="E7_rect" type="ColorRect" parent="Panel/Chessboard/E7"]
@@ -279,7 +266,6 @@ shape = SubResource( 11 )
 
 [node name="F7" type="Area2D" parent="Panel/Chessboard"]
 position = Vector2( 325, 65 )
-input_pickable = false
 script = ExtResource( 11 )
 
 [node name="F7_rect" type="ColorRect" parent="Panel/Chessboard/F7"]
@@ -296,7 +282,6 @@ shape = SubResource( 11 )
 
 [node name="G7" type="Area2D" parent="Panel/Chessboard"]
 position = Vector2( 390, 65 )
-input_pickable = false
 script = ExtResource( 11 )
 
 [node name="G7_rect" type="ColorRect" parent="Panel/Chessboard/G7"]
@@ -313,7 +298,6 @@ shape = SubResource( 11 )
 
 [node name="H7" type="Area2D" parent="Panel/Chessboard"]
 position = Vector2( 455, 65 )
-input_pickable = false
 script = ExtResource( 11 )
 
 [node name="H7_rect" type="ColorRect" parent="Panel/Chessboard/H7"]
@@ -330,7 +314,6 @@ shape = SubResource( 11 )
 
 [node name="A6" type="Area2D" parent="Panel/Chessboard"]
 position = Vector2( 0, 130 )
-input_pickable = false
 script = ExtResource( 11 )
 
 [node name="A6_rect" type="ColorRect" parent="Panel/Chessboard/A6"]
@@ -347,7 +330,6 @@ shape = SubResource( 11 )
 
 [node name="B6" type="Area2D" parent="Panel/Chessboard"]
 position = Vector2( 65, 130 )
-input_pickable = false
 script = ExtResource( 11 )
 
 [node name="B6_rect" type="ColorRect" parent="Panel/Chessboard/B6"]
@@ -364,7 +346,6 @@ shape = SubResource( 11 )
 
 [node name="C6" type="Area2D" parent="Panel/Chessboard"]
 position = Vector2( 130, 130 )
-input_pickable = false
 script = ExtResource( 11 )
 
 [node name="C6_rect" type="ColorRect" parent="Panel/Chessboard/C6"]
@@ -381,7 +362,6 @@ shape = SubResource( 11 )
 
 [node name="D6" type="Area2D" parent="Panel/Chessboard"]
 position = Vector2( 195, 130 )
-input_pickable = false
 script = ExtResource( 11 )
 
 [node name="D6_rect" type="ColorRect" parent="Panel/Chessboard/D6"]
@@ -398,7 +378,6 @@ shape = SubResource( 11 )
 
 [node name="E6" type="Area2D" parent="Panel/Chessboard"]
 position = Vector2( 260, 130 )
-input_pickable = false
 script = ExtResource( 11 )
 
 [node name="E6_rect" type="ColorRect" parent="Panel/Chessboard/E6"]
@@ -415,7 +394,6 @@ shape = SubResource( 11 )
 
 [node name="F6" type="Area2D" parent="Panel/Chessboard"]
 position = Vector2( 325, 130 )
-input_pickable = false
 script = ExtResource( 11 )
 
 [node name="F6_rect" type="ColorRect" parent="Panel/Chessboard/F6"]
@@ -432,7 +410,6 @@ shape = SubResource( 11 )
 
 [node name="G6" type="Area2D" parent="Panel/Chessboard"]
 position = Vector2( 390, 130 )
-input_pickable = false
 script = ExtResource( 11 )
 
 [node name="G6_rect" type="ColorRect" parent="Panel/Chessboard/G6"]
@@ -449,7 +426,6 @@ shape = SubResource( 11 )
 
 [node name="H6" type="Area2D" parent="Panel/Chessboard"]
 position = Vector2( 455, 130 )
-input_pickable = false
 script = ExtResource( 11 )
 
 [node name="H6_rect" type="ColorRect" parent="Panel/Chessboard/H6"]
@@ -466,7 +442,6 @@ shape = SubResource( 11 )
 
 [node name="A5" type="Area2D" parent="Panel/Chessboard"]
 position = Vector2( 0, 195 )
-input_pickable = false
 script = ExtResource( 11 )
 
 [node name="A5_rect" type="ColorRect" parent="Panel/Chessboard/A5"]
@@ -483,7 +458,6 @@ shape = SubResource( 11 )
 
 [node name="B5" type="Area2D" parent="Panel/Chessboard"]
 position = Vector2( 65, 195 )
-input_pickable = false
 script = ExtResource( 11 )
 
 [node name="B5_rect" type="ColorRect" parent="Panel/Chessboard/B5"]
@@ -500,7 +474,6 @@ shape = SubResource( 11 )
 
 [node name="C5" type="Area2D" parent="Panel/Chessboard"]
 position = Vector2( 130, 195 )
-input_pickable = false
 script = ExtResource( 11 )
 
 [node name="C5_rect" type="ColorRect" parent="Panel/Chessboard/C5"]
@@ -517,7 +490,6 @@ shape = SubResource( 11 )
 
 [node name="D5" type="Area2D" parent="Panel/Chessboard"]
 position = Vector2( 195, 195 )
-input_pickable = false
 script = ExtResource( 11 )
 
 [node name="D5_rect" type="ColorRect" parent="Panel/Chessboard/D5"]
@@ -534,7 +506,6 @@ shape = SubResource( 11 )
 
 [node name="E5" type="Area2D" parent="Panel/Chessboard"]
 position = Vector2( 260, 195 )
-input_pickable = false
 script = ExtResource( 11 )
 
 [node name="E5_rect" type="ColorRect" parent="Panel/Chessboard/E5"]
@@ -551,7 +522,6 @@ shape = SubResource( 11 )
 
 [node name="F5" type="Area2D" parent="Panel/Chessboard"]
 position = Vector2( 325, 195 )
-input_pickable = false
 script = ExtResource( 11 )
 
 [node name="F5_rect" type="ColorRect" parent="Panel/Chessboard/F5"]
@@ -568,7 +538,6 @@ shape = SubResource( 11 )
 
 [node name="G5" type="Area2D" parent="Panel/Chessboard"]
 position = Vector2( 390, 195 )
-input_pickable = false
 script = ExtResource( 11 )
 
 [node name="G5_rect" type="ColorRect" parent="Panel/Chessboard/G5"]
@@ -585,7 +554,6 @@ shape = SubResource( 11 )
 
 [node name="H5" type="Area2D" parent="Panel/Chessboard"]
 position = Vector2( 455, 195 )
-input_pickable = false
 script = ExtResource( 11 )
 
 [node name="H5_rect" type="ColorRect" parent="Panel/Chessboard/H5"]
@@ -602,7 +570,6 @@ shape = SubResource( 11 )
 
 [node name="A4" type="Area2D" parent="Panel/Chessboard"]
 position = Vector2( 0, 260 )
-input_pickable = false
 script = ExtResource( 11 )
 
 [node name="A4_rect" type="ColorRect" parent="Panel/Chessboard/A4"]
@@ -619,7 +586,6 @@ shape = SubResource( 11 )
 
 [node name="B4" type="Area2D" parent="Panel/Chessboard"]
 position = Vector2( 65, 260 )
-input_pickable = false
 script = ExtResource( 11 )
 
 [node name="B4_rect" type="ColorRect" parent="Panel/Chessboard/B4"]
@@ -636,7 +602,6 @@ shape = SubResource( 11 )
 
 [node name="C4" type="Area2D" parent="Panel/Chessboard"]
 position = Vector2( 130, 260 )
-input_pickable = false
 script = ExtResource( 11 )
 
 [node name="C4_rect" type="ColorRect" parent="Panel/Chessboard/C4"]
@@ -653,7 +618,6 @@ shape = SubResource( 11 )
 
 [node name="D4" type="Area2D" parent="Panel/Chessboard"]
 position = Vector2( 195, 260 )
-input_pickable = false
 script = ExtResource( 11 )
 
 [node name="D4_rect" type="ColorRect" parent="Panel/Chessboard/D4"]
@@ -670,7 +634,6 @@ shape = SubResource( 11 )
 
 [node name="E4" type="Area2D" parent="Panel/Chessboard"]
 position = Vector2( 260, 260 )
-input_pickable = false
 script = ExtResource( 11 )
 
 [node name="E4_rect" type="ColorRect" parent="Panel/Chessboard/E4"]
@@ -687,7 +650,6 @@ shape = SubResource( 11 )
 
 [node name="F4" type="Area2D" parent="Panel/Chessboard"]
 position = Vector2( 325, 260 )
-input_pickable = false
 script = ExtResource( 11 )
 
 [node name="F4_rect" type="ColorRect" parent="Panel/Chessboard/F4"]
@@ -704,7 +666,6 @@ shape = SubResource( 11 )
 
 [node name="G4" type="Area2D" parent="Panel/Chessboard"]
 position = Vector2( 390, 260 )
-input_pickable = false
 script = ExtResource( 11 )
 
 [node name="G4_rect" type="ColorRect" parent="Panel/Chessboard/G4"]
@@ -721,7 +682,6 @@ shape = SubResource( 11 )
 
 [node name="H4" type="Area2D" parent="Panel/Chessboard"]
 position = Vector2( 455, 260 )
-input_pickable = false
 script = ExtResource( 11 )
 
 [node name="H4_rect" type="ColorRect" parent="Panel/Chessboard/H4"]
@@ -738,7 +698,6 @@ shape = SubResource( 11 )
 
 [node name="A3" type="Area2D" parent="Panel/Chessboard"]
 position = Vector2( 0, 325 )
-input_pickable = false
 script = ExtResource( 11 )
 
 [node name="A3_rect" type="ColorRect" parent="Panel/Chessboard/A3"]
@@ -755,7 +714,6 @@ shape = SubResource( 11 )
 
 [node name="B3" type="Area2D" parent="Panel/Chessboard"]
 position = Vector2( 65, 325 )
-input_pickable = false
 script = ExtResource( 11 )
 
 [node name="B3_rect" type="ColorRect" parent="Panel/Chessboard/B3"]
@@ -772,7 +730,6 @@ shape = SubResource( 11 )
 
 [node name="C3" type="Area2D" parent="Panel/Chessboard"]
 position = Vector2( 130, 325 )
-input_pickable = false
 script = ExtResource( 11 )
 
 [node name="C3_rect" type="ColorRect" parent="Panel/Chessboard/C3"]
@@ -789,7 +746,6 @@ shape = SubResource( 11 )
 
 [node name="D3" type="Area2D" parent="Panel/Chessboard"]
 position = Vector2( 195, 325 )
-input_pickable = false
 script = ExtResource( 11 )
 
 [node name="D3_rect" type="ColorRect" parent="Panel/Chessboard/D3"]
@@ -806,7 +762,6 @@ shape = SubResource( 11 )
 
 [node name="E3" type="Area2D" parent="Panel/Chessboard"]
 position = Vector2( 260, 325 )
-input_pickable = false
 script = ExtResource( 11 )
 
 [node name="E3_rect" type="ColorRect" parent="Panel/Chessboard/E3"]
@@ -823,7 +778,6 @@ shape = SubResource( 11 )
 
 [node name="F3" type="Area2D" parent="Panel/Chessboard"]
 position = Vector2( 325, 325 )
-input_pickable = false
 script = ExtResource( 11 )
 
 [node name="F3_rect" type="ColorRect" parent="Panel/Chessboard/F3"]
@@ -840,7 +794,6 @@ shape = SubResource( 11 )
 
 [node name="G3" type="Area2D" parent="Panel/Chessboard"]
 position = Vector2( 390, 325 )
-input_pickable = false
 script = ExtResource( 11 )
 
 [node name="G3_rect" type="ColorRect" parent="Panel/Chessboard/G3"]
@@ -857,7 +810,6 @@ shape = SubResource( 11 )
 
 [node name="H3" type="Area2D" parent="Panel/Chessboard"]
 position = Vector2( 455, 325 )
-input_pickable = false
 script = ExtResource( 11 )
 
 [node name="H3_rect" type="ColorRect" parent="Panel/Chessboard/H3"]
@@ -874,7 +826,6 @@ shape = SubResource( 11 )
 
 [node name="A2" type="Area2D" parent="Panel/Chessboard"]
 position = Vector2( 0, 390 )
-input_pickable = false
 script = ExtResource( 11 )
 
 [node name="A2_rect" type="ColorRect" parent="Panel/Chessboard/A2"]
@@ -891,7 +842,6 @@ shape = SubResource( 11 )
 
 [node name="B2" type="Area2D" parent="Panel/Chessboard"]
 position = Vector2( 65, 390 )
-input_pickable = false
 script = ExtResource( 11 )
 
 [node name="B2_rect" type="ColorRect" parent="Panel/Chessboard/B2"]
@@ -908,7 +858,6 @@ shape = SubResource( 11 )
 
 [node name="C2" type="Area2D" parent="Panel/Chessboard"]
 position = Vector2( 130, 390 )
-input_pickable = false
 script = ExtResource( 11 )
 
 [node name="C2_rect" type="ColorRect" parent="Panel/Chessboard/C2"]
@@ -925,7 +874,6 @@ shape = SubResource( 11 )
 
 [node name="D2" type="Area2D" parent="Panel/Chessboard"]
 position = Vector2( 195, 390 )
-input_pickable = false
 script = ExtResource( 11 )
 
 [node name="D2_rect" type="ColorRect" parent="Panel/Chessboard/D2"]
@@ -942,7 +890,6 @@ shape = SubResource( 11 )
 
 [node name="E2" type="Area2D" parent="Panel/Chessboard"]
 position = Vector2( 260, 390 )
-input_pickable = false
 script = ExtResource( 11 )
 
 [node name="E2_rect" type="ColorRect" parent="Panel/Chessboard/E2"]
@@ -959,7 +906,6 @@ shape = SubResource( 11 )
 
 [node name="F2" type="Area2D" parent="Panel/Chessboard"]
 position = Vector2( 325, 390 )
-input_pickable = false
 script = ExtResource( 11 )
 
 [node name="F2_rect" type="ColorRect" parent="Panel/Chessboard/F2"]
@@ -976,7 +922,6 @@ shape = SubResource( 11 )
 
 [node name="G2" type="Area2D" parent="Panel/Chessboard"]
 position = Vector2( 390, 390 )
-input_pickable = false
 script = ExtResource( 11 )
 
 [node name="G2_rect" type="ColorRect" parent="Panel/Chessboard/G2"]
@@ -993,7 +938,6 @@ shape = SubResource( 11 )
 
 [node name="H2" type="Area2D" parent="Panel/Chessboard"]
 position = Vector2( 455, 390 )
-input_pickable = false
 script = ExtResource( 11 )
 
 [node name="H2_rect" type="ColorRect" parent="Panel/Chessboard/H2"]
@@ -1010,7 +954,6 @@ shape = SubResource( 11 )
 
 [node name="A1" type="Area2D" parent="Panel/Chessboard"]
 position = Vector2( 0, 455 )
-input_pickable = false
 script = ExtResource( 11 )
 
 [node name="A1_rect" type="ColorRect" parent="Panel/Chessboard/A1"]
@@ -1027,7 +970,6 @@ shape = SubResource( 11 )
 
 [node name="B1" type="Area2D" parent="Panel/Chessboard"]
 position = Vector2( 65, 455 )
-input_pickable = false
 script = ExtResource( 11 )
 
 [node name="B1_rect" type="ColorRect" parent="Panel/Chessboard/B1"]
@@ -1044,7 +986,6 @@ shape = SubResource( 9 )
 
 [node name="C1" type="Area2D" parent="Panel/Chessboard"]
 position = Vector2( 130, 455 )
-input_pickable = false
 script = ExtResource( 11 )
 
 [node name="C1_rect" type="ColorRect" parent="Panel/Chessboard/C1"]
@@ -1061,7 +1002,6 @@ shape = SubResource( 9 )
 
 [node name="D1" type="Area2D" parent="Panel/Chessboard"]
 position = Vector2( 195, 455 )
-input_pickable = false
 script = ExtResource( 11 )
 
 [node name="D1_rect" type="ColorRect" parent="Panel/Chessboard/D1"]
@@ -1078,7 +1018,6 @@ shape = SubResource( 9 )
 
 [node name="E1" type="Area2D" parent="Panel/Chessboard"]
 position = Vector2( 260, 455 )
-input_pickable = false
 script = ExtResource( 11 )
 
 [node name="E1_rect" type="ColorRect" parent="Panel/Chessboard/E1"]
@@ -1095,7 +1034,6 @@ shape = SubResource( 9 )
 
 [node name="F1" type="Area2D" parent="Panel/Chessboard"]
 position = Vector2( 325, 455 )
-input_pickable = false
 script = ExtResource( 11 )
 
 [node name="F1_rect" type="ColorRect" parent="Panel/Chessboard/F1"]
@@ -1112,7 +1050,6 @@ shape = SubResource( 9 )
 
 [node name="G1" type="Area2D" parent="Panel/Chessboard"]
 position = Vector2( 390, 455 )
-input_pickable = false
 script = ExtResource( 11 )
 
 [node name="G1_rect" type="ColorRect" parent="Panel/Chessboard/G1"]
@@ -1129,7 +1066,6 @@ shape = SubResource( 9 )
 
 [node name="H1" type="Area2D" parent="Panel/Chessboard"]
 position = Vector2( 455, 455 )
-input_pickable = false
 script = ExtResource( 11 )
 
 [node name="H1_rect" type="ColorRect" parent="Panel/Chessboard/H1"]

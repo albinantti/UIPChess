@@ -29,13 +29,14 @@ func _process(state):
 #		print(self.name)
 #		emit_signal('piece_chosen', self.name)
 
-func _move_piece(new_position):
-	var TweenNode = get_node("Tween")
-	TweenNode.interpolate_property(
-		self, "position", get_position(), new_position, 
-		2, Tween.TRANS_EXPO, Tween.EASE_IN_OUT
-	)
-	TweenNode.start()
+func _move_piece(new_position, chosen_piece):
+	if chosen_piece.name == self.name:
+		var TweenNode = get_node("Tween")
+		TweenNode.interpolate_property(
+			self, "position", get_position(), new_position, 
+			2, Tween.TRANS_EXPO, Tween.EASE_IN_OUT
+		)
+		TweenNode.start()
 
 
 func _input_event(viewport, event, shape_idx):
