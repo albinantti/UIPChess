@@ -13,6 +13,23 @@ func _ready():
 #func _process(delta):
 	# pass
 
-func _pressed():
-	get_tree().change_scene("res://GameScene.tscn")
 
+# Changes button color, basically
+
+
+# Checks if all settings have been entered so the game can be started.
+func check_validity():
+	if(get_node("../NewGameOpponentLabel").get_opponent() == "cpu"):
+		if(get_node("../NewGameDifficultyLabel").get_difficulty() > 0):
+			self.disabled = false
+		else:
+			self.disabled = true
+	elif(get_node("../NewGameOpponentLabel").get_opponent() == "human"):
+		self.disabled = false
+
+
+
+func _on_NewGameStartGame_pressed():
+	var error_code = get_tree().change_scene("res://GameScene.tscn")
+	if error_code != OK:
+		print("ERROR: ", error_code)
