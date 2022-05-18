@@ -37,7 +37,14 @@ func _move_piece(new_position, chosen_piece):
 			2, Tween.TRANS_EXPO, Tween.EASE_IN_OUT
 		)
 		TweenNode.start()
-
+	elif new_position == self.get_position():
+		var t = Timer.new()
+		t.set_wait_time(1)
+		add_child(t)
+		t.start()
+		yield(t, "timeout")
+		self.visible = false
+		self.input_pickable = false
 
 func _input_event(viewport, event, shape_idx):
 	if  event is InputEventMouseButton and event.pressed and event.button_index == BUTTON_LEFT:
