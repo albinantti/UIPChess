@@ -27,4 +27,6 @@ func _on_LoadGameFileDialog_file_selected(path):
 	self.disabled = false
 	
 func _pressed():
-	get_tree().change_scene("res://GameScene.tscn")
+	var error_code = get_tree().change_scene("res://GameScene.tscn")
+	if error_code != OK:
+		print("ERROR: ", error_code)

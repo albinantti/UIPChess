@@ -1,23 +1,22 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=19 format=2]
 
-[ext_resource path="res://ExitButton.gd" type="Script" id=1]
+[ext_resource path="res://Resources/Script/MenuScripts/ExitButton.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Themes/MainMenuTheme.tres" type="Theme" id=2]
-[ext_resource path="res://change_language.gd" type="Script" id=3]
+[ext_resource path="res://Resources/Script/MenuScripts/change_language.gd" type="Script" id=3]
 [ext_resource path="res://Resources/chesspieces.png" type="Texture" id=4]
 [ext_resource path="res://Resources/Themes/Fonts/HomePageFont.tres" type="Theme" id=5]
-[ext_resource path="res://StartGameButton.gd" type="Script" id=6]
 [ext_resource path="res://Resources/mainmenu_background.png" type="Texture" id=7]
-[ext_resource path="res://PlayTimeLabel.gd" type="Script" id=8]
+[ext_resource path="res://Resources/Script/MenuScripts/PlayTimeLabel.gd" type="Script" id=8]
 [ext_resource path="res://Resources/Themes/NewGameButtons/NewGameButtonTheme.tres" type="Theme" id=9]
-[ext_resource path="res://NewGameOpponentLabel.gd" type="Script" id=10]
-[ext_resource path="res://NewGameStartGame.gd" type="Script" id=11]
-[ext_resource path="res://NewGameDifficultyLabel.gd" type="Script" id=12]
+[ext_resource path="res://Resources/Script/MenuScripts/NewGameOpponentLabel.gd" type="Script" id=10]
+[ext_resource path="res://Resources/Script/MenuScripts/NewGameStartGame.gd" type="Script" id=11]
+[ext_resource path="res://Resources/Script/MenuScripts/NewGameDifficultyLabel.gd" type="Script" id=12]
 [ext_resource path="res://Resources/images/english.png" type="Texture" id=13]
 [ext_resource path="res://Resources/images/swedish.png" type="Texture" id=14]
-[ext_resource path="res://LoadGame.gd" type="Script" id=15]
-[ext_resource path="res://MainMenuContainer.gd" type="Script" id=16]
-[ext_resource path="res://LoadGameLoadButton.gd" type="Script" id=17]
+[ext_resource path="res://Resources/Script/MenuScripts/MainMenuContainer.gd" type="Script" id=16]
+[ext_resource path="res://Resources/Script/MenuScripts/LoadGameLoadButton.gd" type="Script" id=17]
 [ext_resource path="res://Resources/Themes/SettingsDropdown/SettingsDropdownTheme.tres" type="Theme" id=18]
+[ext_resource path="res://Resources/Script/MenuScripts/TutorialButton.gd" type="Script" id=19]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.0980392, 0.85098, 0.223529, 1 )
@@ -87,7 +86,6 @@ size_flags_vertical = 3
 theme = ExtResource( 2 )
 text = "MAIN_MENU_BUTTON_NEW_GAME"
 clip_text = true
-script = ExtResource( 6 )
 
 [node name="NewGamePanel" type="Panel" parent="MarginContainer/MainMenuContainer/New Game"]
 visible = false
@@ -215,7 +213,6 @@ size_flags_vertical = 3
 theme = ExtResource( 2 )
 text = "MAIN_MENU_BUTTON_LOAD_GAME"
 clip_text = true
-script = ExtResource( 15 )
 
 [node name="LoadGamePanel" type="Panel" parent="MarginContainer/MainMenuContainer/LoadGame"]
 visible = false
@@ -329,7 +326,7 @@ hint_tooltip = "MAIN_MENU_BUTTON_TUTORIAL_TOOLTIP"
 theme = ExtResource( 9 )
 custom_styles/normal = SubResource( 1 )
 text = "TUTORIAL_START_BUTTON"
-script = ExtResource( 11 )
+script = ExtResource( 19 )
 
 [node name="Settings" type="Button" parent="MarginContainer/MainMenuContainer"]
 margin_top = 288.0
@@ -482,12 +479,8 @@ script = ExtResource( 3 )
 [connection signal="pressed" from="MarginContainer/MainMenuContainer/New Game/NewGamePanel/NewGameDifficultyLabel/NewGameDifficultyHard" to="MarginContainer/MainMenuContainer/New Game/NewGamePanel/NewGameDifficultyLabel" method="_on_NewGameDifficultyHard_pressed"]
 [connection signal="pressed" from="MarginContainer/MainMenuContainer/New Game/NewGamePanel/NewGameStartGame" to="MarginContainer/MainMenuContainer/New Game/NewGamePanel/NewGameStartGame" method="_on_NewGameStartGame_pressed"]
 [connection signal="pressed" from="MarginContainer/MainMenuContainer/LoadGame" to="MarginContainer/MainMenuContainer" method="_on_LoadGame_pressed"]
-[connection signal="pressed" from="MarginContainer/MainMenuContainer/LoadGame" to="MarginContainer/MainMenuContainer/New Game" method="_on_Load_Game_pressed"]
 [connection signal="pressed" from="MarginContainer/MainMenuContainer/LoadGame/LoadGamePanel/LoadGameSelectFileButton" to="MarginContainer/MainMenuContainer/LoadGame/LoadGamePanel/LoadGameLoadButton" method="_on_LoadGameSelectFileButton_pressed"]
 [connection signal="file_selected" from="MarginContainer/MainMenuContainer/LoadGame/LoadGamePanel/LoadGameLoadButton/LoadGameFileDialog" to="MarginContainer/MainMenuContainer/LoadGame/LoadGamePanel/LoadGameLoadButton" method="_on_LoadGameFileDialog_file_selected"]
 [connection signal="pressed" from="MarginContainer/MainMenuContainer/Tutorial" to="MarginContainer/MainMenuContainer" method="_on_Tutorial_pressed"]
-[connection signal="pressed" from="MarginContainer/MainMenuContainer/Tutorial" to="MarginContainer/MainMenuContainer/New Game" method="_on_Tutorial_pressed"]
 [connection signal="pressed" from="MarginContainer/MainMenuContainer/Settings" to="MarginContainer/MainMenuContainer" method="_on_Settings_pressed"]
-[connection signal="pressed" from="MarginContainer/MainMenuContainer/Settings" to="MarginContainer/MainMenuContainer/New Game" method="_on_Settings_pressed"]
 [connection signal="pressed" from="MarginContainer/MainMenuContainer/ExitButton" to="MarginContainer/MainMenuContainer" method="_on_ExitButton_pressed"]
-[connection signal="pressed" from="MarginContainer/MainMenuContainer/ExitButton" to="MarginContainer/MainMenuContainer/New Game" method="_on_ExitButton_pressed"]

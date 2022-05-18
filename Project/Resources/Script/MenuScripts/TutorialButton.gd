@@ -16,3 +16,7 @@ func _ready():
 #	pass
 
 
+func _pressed():
+	var error_code = get_tree().change_scene("res://GameScene.tscn")
+	if error_code != OK:
+		print("ERROR: ", error_code)
