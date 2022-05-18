@@ -75,6 +75,7 @@ func _send_position(square):
 	print("send pos " + square.name)
 	if chosen_piece != null and square.get_position() != chosen_piece.get_position():
 		emit_signal("square_pos", square.get_position(), chosen_piece) #to piece with pos
+		chosen_piece = null
 	
 func _connect_piece_to_game_manager(piece_name):
 	var dir = "Panel/Chessboard/" + piece_name
@@ -90,7 +91,6 @@ func _connect_send_square_position(piece_name):
 	var dir = "Panel/Chessboard/" + piece_name
 	var piece = get_node(dir)
 	self.connect("square_pos", piece, "_move_piece")
-	chosen_piece = null
 
 func _place_all_pieces(chessboard):
 	var all_pieces = {
@@ -173,4 +173,3 @@ func _ready():
 		_connect_square_to_game_manager(square.name)
 
 	_place_all_pieces(chessboard)
-	

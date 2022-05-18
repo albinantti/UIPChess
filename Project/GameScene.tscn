@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Resources/Themes/Fonts/font_Game_40.tres" type="Theme" id=1]
 [ext_resource path="res://Resources/images/exit.png" type="Texture" id=2]
@@ -7,10 +7,7 @@
 [ext_resource path="res://Resources/images/redo.png" type="Texture" id=5]
 [ext_resource path="res://Resources/images/mute.png" type="Texture" id=6]
 [ext_resource path="res://GameScene.gd" type="Script" id=7]
-[ext_resource path="res://ExitActiveGameButton.gd" type="Script" id=8]
 [ext_resource path="res://Resources/ChessPieces/bishop.svg" type="Texture" id=8]
-[ext_resource path="res://Piece_logic.gd" type="Script" id=9]
-[ext_resource path="res://H1.gd" type="Script" id=10]
 [ext_resource path="res://Square_logic.gd" type="Script" id=11]
 
 [sub_resource type="StyleBoxFlat" id=1]
