@@ -4,19 +4,12 @@ var chosen_piece
 signal square_pos(pos,chosen_piece)
 #signal move_piece(piece_name, target_pos)
 
-var white_pawn = preload("res://Resources/ChessPieces/pawn.svg")
-var white_rook = preload("res://Resources/ChessPieces/rook.svg")
-var white_knight = preload("res://Resources/ChessPieces/knight.svg")
-var white_bishop = preload("res://Resources/ChessPieces/bishop.svg")
-var white_king = preload("res://Resources/ChessPieces/king.svg")
-var white_queen = preload("res://Resources/ChessPieces/queen.svg")
-
-var red_pawn = preload("res://Resources/ChessPieces/pawn_red.svg")
-var red_rook = preload("res://Resources/ChessPieces/rook_red.svg")
-var red_knight = preload("res://Resources/ChessPieces/knight_red.svg")
-var red_bishop = preload("res://Resources/ChessPieces/bishop_red.svg")
-var red_king = preload("res://Resources/ChessPieces/king_red.svg")
-var red_queen = preload("res://Resources/ChessPieces/queen_red.svg")
+var pawn = preload("res://Resources/ChessPieces/pawn.svg")
+var rook = preload("res://Resources/ChessPieces/rook.svg")
+var knight = preload("res://Resources/ChessPieces/knight.svg")
+var bishop = preload("res://Resources/ChessPieces/bishop.svg")
+var king = preload("res://Resources/ChessPieces/king.svg")
+var queen = preload("res://Resources/ChessPieces/queen.svg")
 
 ## Places a chess piece on the chessboard on the node with node_name (i.e A1, B5)
 ## and applies the texture to the chesspiece
@@ -97,62 +90,62 @@ func _place_all_pieces(chessboard):
 	var all_pieces = {
 		"white_pawns": {
 			"nodes": ["A2", "B2", "C2", "D2", "E2", "F2", "G2", "H2"],
-			"texture": white_pawn,
+			"texture": pawn,
 			"name_prefix": "Wpawn"
 		},
 		"white_rooks": {
 			"nodes": ["A1", "H1"],
-			"texture": white_rook,
+			"texture": rook,
 			"name_prefix": "Wrook"
 		},
 		"white_knights": {
 			"nodes": ["B1", "G1"],
-			"texture": white_knight,
+			"texture": knight,
 			"name_prefix": "Wknight"
 		},
 		"white_bishops": {
 			"nodes": ["C1", "F1"],
-			"texture": white_bishop,
+			"texture": bishop,
 			"name_prefix": "Wbishop"
 		},
 		"white_queen": {
 			"nodes": ["D1"],
-			"texture": white_queen,
+			"texture": queen,
 			"name_prefix": "Wqueen"
 		},
 		"white_king": {
 			"nodes": ["E1"],
-			"texture": white_king,
+			"texture": king,
 			"name_prefix": "Wking"
 		},
 		"red_pawns": {
 			"nodes": ["A7", "B7", "C7", "D7", "E7", "F7", "G7", "H7"],
-			"texture": white_pawn,
+			"texture": pawn,
 			"name_prefix": "Rpawn"
 		},
 		"red_rooks": {
 			"nodes": ["A8", "H8"],
-			"texture": white_rook,
+			"texture": rook,
 			"name_prefix": "Rrook"
 		},
 		"red_knights": {
 			"nodes": ["B8", "G8"],
-			"texture": white_knight,
+			"texture": knight,
 			"name_prefix": "Rknight"
 		},
 		"red_bishops": {
 			"nodes": ["C8", "F8"],
-			"texture": white_bishop,
+			"texture": bishop,
 			"name_prefix": "Rbishop"
 		},
 		"red_queen": {
 			"nodes": ["D8"],
-			"texture": white_queen,
+			"texture": queen,
 			"name_prefix": "Rqueen"
 		},
 		"red_king": {
 			"nodes": ["E8"],
-			"texture": white_king,
+			"texture": king,
 			"name_prefix": "Rking"
 		},
 	}
