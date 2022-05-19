@@ -68,11 +68,12 @@ func _create_collisionshape(node: Node, sprite_x:float, sprite_y:float)->Collisi
 	return collisionShape
 
 func _chosen_piece(piece):
-	chosen_piece = piece
-	print("chosen piece ", chosen_piece.name)
+	if piece != chosen_piece and piece.input_pickable and chosen_piece==null: 
+		chosen_piece = piece
+		print("chosen piece ", chosen_piece.name)
+
 
 func _send_position(square):
-	print("send pos " + square.name)
 	if chosen_piece != null and square.get_position() != chosen_piece.get_position():
 		emit_signal("square_pos", square.get_position(), chosen_piece) #to piece with pos
 		chosen_piece = null
@@ -126,32 +127,32 @@ func _place_all_pieces(chessboard):
 		},
 		"red_pawns": {
 			"nodes": ["A7", "B7", "C7", "D7", "E7", "F7", "G7", "H7"],
-			"texture": red_pawn,
+			"texture": white_pawn,
 			"name_prefix": "Rpawn"
 		},
 		"red_rooks": {
 			"nodes": ["A8", "H8"],
-			"texture": red_rook,
+			"texture": white_rook,
 			"name_prefix": "Rrook"
 		},
 		"red_knights": {
 			"nodes": ["B8", "G8"],
-			"texture": red_knight,
+			"texture": white_knight,
 			"name_prefix": "Rknight"
 		},
 		"red_bishops": {
 			"nodes": ["C8", "F8"],
-			"texture": red_bishop,
+			"texture": white_bishop,
 			"name_prefix": "Rbishop"
 		},
 		"red_queen": {
 			"nodes": ["D8"],
-			"texture": red_queen,
+			"texture": white_queen,
 			"name_prefix": "Rqueen"
 		},
 		"red_king": {
 			"nodes": ["E8"],
-			"texture": red_king,
+			"texture": white_king,
 			"name_prefix": "Rking"
 		},
 	}

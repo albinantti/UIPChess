@@ -1077,6 +1077,13 @@ color = Color( 0.0980392, 0.160784, 0.0705882, 1 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Chessboard/H1"]
 shape = SubResource( 12 )
 
+[node name="Area2D" type="Area2D" parent="Panel/Chessboard"]
+
+[node name="Sprite" type="Sprite" parent="Panel/Chessboard/Area2D"]
+modulate = Color( 0.898039, 0.219608, 0.231373, 1 )
+position = Vector2( -35.0003, 380 )
+texture = ExtResource( 8 )
+
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
 margin_left = 776.0
 margin_right = 1027.0
