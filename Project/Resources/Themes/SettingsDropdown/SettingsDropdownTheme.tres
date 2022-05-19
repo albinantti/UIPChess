@@ -1,0 +1,36 @@
+[gd_resource type="Theme" load_steps=5 format=2]
+
+[ext_resource path="res://Resources/Themes/SettingsDropdown/SettingsDropdownColor.tres" type="StyleBox" id=1]
+
+[sub_resource type="StyleBoxFlat" id=3]
+content_margin_left = 10.0
+content_margin_right = 10.0
+bg_color = Color( 0.752941, 0.752941, 0.752941, 1 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 4
+shadow_offset = Vector2( 0, 4 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+content_margin_left = 10.0
+content_margin_right = 10.0
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+shadow_size = 4
+shadow_offset = Vector2( 0, 4 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+content_margin_left = 10.0
+content_margin_right = 10.0
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 4
+shadow_offset = Vector2( 0, 4 )
+
+[resource]
+OptionButton/styles/hover = SubResource( 3 )
+OptionButton/styles/normal = ExtResource( 1 )
+OptionButton/styles/pressed = SubResource( 5 )
+PopupMenu/styles/panel = SubResource( 4 )

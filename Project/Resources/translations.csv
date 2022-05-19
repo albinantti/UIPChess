@@ -1,13 +1,52 @@
 keys,en,sv
-HELLO,Hello,Hej
-GOODBYE_TEXT,Goodbye,Hej då
 CHANGE_LANGUAGE,Change Language,Byt språk
+CHESS_GAME_HISTORY,History,Historik
+CONSTANT_MINUTES,Minutes,Minuter
+CONSTANT_NONE,None,Ingen
+CONSTANT_RED,Red,Röd
+CONSTANT_SECONDS,Seconds,Sekunder
+CONSTANT_WHITE,White,Vit
 EXIT_ACTIVE_GAME_BUTTON_TOOLTIP,Exit game without saving.,Avsluta partiet utan att spara.
 EXIT_ACTIVE_GAME_POPUP_CONTENT,Do you wish to exit the game? All unsaved moves will be lost!,Vill du avsluta partiet? Alla osparade drag kommer tas bort!
 EXIT_GAME_POPUP_TITLE,Exit game?,Avsluta parti?
-POPUP_OK,OK,OK
-POPUP_CANCEL,Cancel,Avbryt
-EXIT_MAIN_BUTTON_TEXT,Exit,Avsluta
-EXIT_MAIN_GAME_BUTTON_TOOLTIP,Exit the game.,Avsluta spelet.
 EXIT_MAIN_GAME_POPUP_CONTENT,Do you wish to exit the game?,Vill du avsluta spelet?
 GAME_TITLE,ChessGame,SchackSpel
+LOAD_GAME_PANEL_LABEL,Load game,Ladda parti
+LOAD_GAME_SELECT_FILE,Choose save file,Välj sparfil
+LOAD_GAME_LOADED_FILE,Loaded file: {file},Laddad fil: {file}
+MAIN_MENU_BUTTON_EXIT_GAME_TOOLTIP,Exit the game.,Avsluta spelet.
+MAIN_MENU_BUTTON_EXIT_GAME,Exit game,Avsluta spel
+MAIN_MENU_BUTTON_LOAD_GAME_TOOLTIP,Load a saved game of chess.,Ladda ett sparat parti schack.
+MAIN_MENU_BUTTON_LOAD_GAME,Load game,Ladda parti
+MAIN_MENU_BUTTON_NEW_GAME_TOOLTIP,Start a new game of chess.,Starta ett nytt parti schack.
+MAIN_MENU_BUTTON_NEW_GAME,New game,Nytt parti
+MAIN_MENU_BUTTON_SETTINGS_TOOLTIP,Change game settings.,Ändra spelinställningar.
+MAIN_MENU_BUTTON_SETTINGS,Settings,Inställningar
+MAIN_MENU_BUTTON_TUTORIAL_TOOLTIP,Start a tutorial.,Starta en handledning.
+MAIN_MENU_BUTTON_TUTORIAL,Tutorial,Handledning
+NEW_GAME_CPU_TOOLTIP,Play against the computer.,Spela mot datorn.
+NEW_GAME_DIFFICULTY_EASY,Easy,Lätt
+NEW_GAME_DIFFICULTY_HARD,Hard,Svår
+NEW_GAME_DIFFICULTY_MEDIUM,Medium,Medium
+NEW_GAME_DIFFICULTY,Difficulty,Svårighetsgrad
+NEW_GAME_HUMAN_TOOLTIP,Play against a friend.,Spela mot en vän.
+NEW_GAME_OPPONENT_CPU,CPU,Dator
+NEW_GAME_OPPONENT_HUMAN,2 Players,2 Spelare
+NEW_GAME_OPPONENT,Opponent,Motståndare
+NEW_GAME_START_GAME,Start game,Starta parti
+NEW_GAME_START_TOOLTIP,Start the game!,Starta partiet!
+NEW_GAME_TIME_TOOLTIP,How much time each player gets (0 for unlimited).,Hur mycket tid varje spelare får (0 för obegränsat).
+NEW_GAME_TIME_VALUE,{value} Minutes,{value} Minuter
+NEW_GAME_TIME,Clock time,Klocktid
+POPUP_CANCEL,Cancel,Avbryt
+POPUP_OK,OK,OK
+SETTINGS_THEME,Theme,Tema
+SETTINGS_THEME_TOOLTIP,How the game piecesshould look.,Hur spelpjäserna ska se ut.
+SETTINGS_THEME_RED_GREEN,Red/Green,Röd/Grön
+SETTINGS_THEME_RED_WHITE,Red/White,Röd/Vit
+SETTINGS_THEME_GREEN_WHITE,Green/White,Grön/Vit
+SETTINGS_THEME_BLACK_WHITE,Black/White,Svart/Vit
+SETTINGS_VALIDATE_MOVES,Validate moves,Validera drag
+SETTINGS_VALIDATE_MOVES_TOOLTIP,Whether or not illegal moves should be allowed.,Huruvida olagliga drag ska tillåtas.
+TUTORIAL_START_BUTTON,Start tutorial,Starta handledning
+TUTORIAL_RICH_TEXT,This tutorial will guide you through the basics of chess. Press start to get started!,Denna handledning kommer lära dig grunderna i schack. Tryck på starta för att komma igång!
