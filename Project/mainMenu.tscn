@@ -1,10 +1,11 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Resources/Script/MenuScripts/ExitButton.gd" type="Script" id=1]
 [ext_resource path="res://Resources/Themes/MainMenuTheme.tres" type="Theme" id=2]
 [ext_resource path="res://Resources/Script/MenuScripts/change_language.gd" type="Script" id=3]
 [ext_resource path="res://Resources/chesspieces.png" type="Texture" id=4]
 [ext_resource path="res://Resources/Themes/Fonts/HomePageFont.tres" type="Theme" id=5]
+[ext_resource path="res://RootControl.gd" type="Script" id=6]
 [ext_resource path="res://Resources/mainmenu_background.png" type="Texture" id=7]
 [ext_resource path="res://Resources/Script/MenuScripts/PlayTimeLabel.gd" type="Script" id=8]
 [ext_resource path="res://Resources/Themes/NewGameButtons/NewGameButtonTheme.tres" type="Theme" id=9]
@@ -32,6 +33,12 @@ margin_right = 1022.0
 margin_bottom = 608.0
 rect_pivot_offset = Vector2( -90, -26 )
 mouse_filter = 2
+script = ExtResource( 6 )
+
+[node name="ButtonPressedSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 20 )
+pitch_scale = 1.2
+mix_target = 2
 
 [node name="TextureRect" type="TextureRect" parent="."]
 margin_left = -5.0
@@ -276,8 +283,8 @@ dialog_text = "LOAD_GAME_SELECT_FILE"
 mode_overrides_title = false
 mode = 0
 access = 2
-current_dir = "/Users/danie/Documents/UIPChess/Project"
-current_path = "/Users/danie/Documents/UIPChess/Project/"
+current_dir = "/Users/albin/prog/UIPChess/Project"
+current_path = "/Users/albin/prog/UIPChess/Project/"
 
 [node name="Tutorial" type="Button" parent="MarginContainer/MainMenuContainer"]
 margin_top = 192.0
@@ -470,11 +477,6 @@ icon = ExtResource( 13 )
 items = [ "EN", ExtResource( 13 ), false, 0, null, "SV", ExtResource( 14 ), false, 1, null ]
 selected = 0
 script = ExtResource( 3 )
-
-[node name="ButtonPressedSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 20 )
-pitch_scale = 1.19
-mix_target = 2
 
 [connection signal="pressed" from="MarginContainer/MainMenuContainer/New Game" to="MarginContainer/MainMenuContainer" method="_on_New_Game_pressed"]
 [connection signal="value_changed" from="MarginContainer/MainMenuContainer/New Game/NewGamePanel/NewGameTimeLabel/PlayTimeSlider" to="MarginContainer/MainMenuContainer/New Game/NewGamePanel/NewGameTimeLabel/PlayTimeLabel" method="_on_PlayTimeSlider_value_changed"]
