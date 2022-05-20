@@ -209,3 +209,11 @@ func _input(event):
 		_undo_redo(true)
 	elif Input.is_action_pressed("redo"):
 		_undo_redo(false)
+
+
+func _on_UndoButton_pressed():
+	_undo_redo(true)
+
+
+func _on_RedoButton_pressed():
+	_undo_redo(false)

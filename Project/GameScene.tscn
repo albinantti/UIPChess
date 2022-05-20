@@ -1217,27 +1217,23 @@ margin_bottom = 55.0
 custom_constants/separation = 23
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="Panel/VBoxContainer/PanelContainer3/MarginContainer/HBoxContainer"]
+[node name="UndoButton" type="TextureButton" parent="Panel/VBoxContainer/PanelContainer3/MarginContainer/HBoxContainer"]
 margin_left = 11.0
 margin_right = 51.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 40, 40 )
-size_flags_horizontal = 0
-size_flags_vertical = 3
-texture = ExtResource( 3 )
+texture_normal = ExtResource( 3 )
 expand = true
-stretch_mode = 5
+stretch_mode = 4
 
-[node name="TextureRect2" type="TextureRect" parent="Panel/VBoxContainer/PanelContainer3/MarginContainer/HBoxContainer"]
+[node name="RedoButton" type="TextureButton" parent="Panel/VBoxContainer/PanelContainer3/MarginContainer/HBoxContainer"]
 margin_left = 74.0
 margin_right = 114.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 40, 40 )
-size_flags_horizontal = 0
-size_flags_vertical = 0
-texture = ExtResource( 5 )
+texture_normal = ExtResource( 5 )
 expand = true
-stretch_mode = 5
+stretch_mode = 4
 
 [node name="TextureRect3" type="TextureRect" parent="Panel/VBoxContainer/PanelContainer3/MarginContainer/HBoxContainer"]
 margin_left = 137.0
@@ -1279,3 +1275,6 @@ margin_bottom = 63.0
 texture = ExtResource( 6 )
 expand = true
 stretch_mode = 5
+
+[connection signal="pressed" from="Panel/VBoxContainer/PanelContainer3/MarginContainer/HBoxContainer/UndoButton" to="." method="_on_UndoButton_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/PanelContainer3/MarginContainer/HBoxContainer/RedoButton" to="." method="_on_RedoButton_pressed"]
