@@ -1,4 +1,10 @@
 keys,en,sv
+ACTIVE_GAME_UNDO_BUTTON_TOOLTIP,Undo the previous move,Ångra det senaste draget
+ACTIVE_GAME_REDO_BUTTON_TOOLTIP,Redo the previous move,Gör om det senaste draget
+ACTIVE_GAME_SAVE_BUTTON,Save the current game,Spara det nuvarande partiet
+ACTIVE_GAME_EXIT_BUTTON_TOOLTIP,Exit game without saving.,Avsluta partiet utan att spara.
+ACTIVE_GAME_EXIT_POPUP_CONTENT,Do you wish to exit the game? All unsaved moves will be lost!,Vill du avsluta partiet? Alla osparade drag kommer tas bort!
+ACTIVE_GAME_EXIT_POPUP_TITLE,Exit game?,Avsluta parti?
 CHANGE_LANGUAGE,Change Language,Byt språk
 CHESS_GAME_HISTORY,History,Historik
 CONSTANT_MINUTES,Minutes,Minuter
@@ -6,9 +12,7 @@ CONSTANT_NONE,None,Ingen
 CONSTANT_RED,Red,Röd
 CONSTANT_SECONDS,Seconds,Sekunder
 CONSTANT_WHITE,White,Vit
-EXIT_ACTIVE_GAME_BUTTON_TOOLTIP,Exit game without saving.,Avsluta partiet utan att spara.
-EXIT_ACTIVE_GAME_POPUP_CONTENT,Do you wish to exit the game? All unsaved moves will be lost!,Vill du avsluta partiet? Alla osparade drag kommer tas bort!
-EXIT_GAME_POPUP_TITLE,Exit game?,Avsluta parti?
+EXIT_GAME_POPUP_TITLE,Exit game?,Avsluta spelet?
 EXIT_MAIN_GAME_POPUP_CONTENT,Do you wish to exit the game?,Vill du avsluta spelet?
 GAME_TITLE,ChessGame,SchackSpel
 LOAD_GAME_PANEL_LABEL,Load game,Ladda parti

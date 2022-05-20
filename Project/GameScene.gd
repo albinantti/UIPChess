@@ -189,8 +189,7 @@ func _undo_redo(do_undo: bool):
 	# secondary stack, in this case the redo stack, so that the move can be
 	# redone again
 	var primary_stack = undo_stack if do_undo else redo_stack
-	var secondary_stack = redo_stack if do_undo else redo_stack
-
+	var secondary_stack = redo_stack if do_undo else undo_stack
 	if primary_stack:
 		var move = primary_stack.pop_back()
 		var squares = move.rsplit(",")
