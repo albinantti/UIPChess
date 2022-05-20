@@ -41,10 +41,11 @@ pitch_scale = 1.2
 mix_target = 2
 
 [node name="TextureRect" type="TextureRect" parent="."]
-margin_left = -5.0
-margin_top = 3.0
-margin_right = 1203.0
-margin_bottom = 1213.0
+margin_left = -100.0
+margin_top = -130.0
+margin_right = 3996.0
+margin_bottom = 3966.0
+rect_scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 7 )
 
 [node name="GridContainer2" type="GridContainer" parent="."]
