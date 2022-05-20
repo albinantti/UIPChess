@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Resources/Themes/Fonts/font_Game_40.tres" type="Theme" id=1]
 [ext_resource path="res://Resources/images/exit.png" type="Texture" id=2]
@@ -48,6 +48,18 @@ expand_margin_top = 3.0
 expand_margin_bottom = 3.0
 
 [sub_resource type="StyleBoxEmpty" id=14]
+
+[sub_resource type="InputEventAction" id=17]
+action = "undo"
+
+[sub_resource type="ShortCut" id=16]
+shortcut = SubResource( 17 )
+
+[sub_resource type="InputEventAction" id=18]
+action = "redo"
+
+[sub_resource type="ShortCut" id=19]
+shortcut = SubResource( 18 )
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 7 )
@@ -1243,6 +1255,8 @@ hint_tooltip = "ACTIVE_GAME_UNDO_BUTTON_TOOLTIP"
 mouse_default_cursor_shape = 2
 custom_styles/hover = SubResource( 13 )
 custom_styles/normal = SubResource( 14 )
+shortcut_in_tooltip = false
+shortcut = SubResource( 16 )
 icon = ExtResource( 3 )
 expand_icon = true
 
@@ -1255,6 +1269,8 @@ hint_tooltip = "ACTIVE_GAME_REDO_BUTTON_TOOLTIP"
 mouse_default_cursor_shape = 2
 custom_styles/hover = SubResource( 13 )
 custom_styles/normal = SubResource( 14 )
+shortcut_in_tooltip = false
+shortcut = SubResource( 19 )
 icon = ExtResource( 5 )
 expand_icon = true
 

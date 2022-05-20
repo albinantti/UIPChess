@@ -203,16 +203,8 @@ func _undo_redo(do_undo: bool):
 		else:
 			primary_stack.append(move)
 
-func _input(event):
-	if Input.is_action_pressed("undo"):
-		_undo_redo(true)
-	elif Input.is_action_pressed("redo"):
-		_undo_redo(false)
-
-
 func _on_UndoButton_pressed():
 	_undo_redo(true)
-
 
 func _on_RedoButton_pressed():
 	_undo_redo(false)
