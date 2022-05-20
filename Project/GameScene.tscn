@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Resources/Themes/Fonts/font_Game_40.tres" type="Theme" id=1]
 [ext_resource path="res://Resources/images/exit.png" type="Texture" id=2]
@@ -7,7 +7,7 @@
 [ext_resource path="res://Resources/images/redo.png" type="Texture" id=5]
 [ext_resource path="res://Resources/images/mute.png" type="Texture" id=6]
 [ext_resource path="res://GameScene.gd" type="Script" id=7]
-[ext_resource path="res://Resources/ChessPieces/bishop.svg" type="Texture" id=8]
+[ext_resource path="res://ExitActiveGameButton.gd" type="Script" id=9]
 [ext_resource path="res://Square_logic.gd" type="Script" id=11]
 
 [sub_resource type="StyleBoxFlat" id=1]
@@ -31,6 +31,35 @@ bg_color = Color( 1, 1, 1, 1 )
 
 [sub_resource type="StyleBoxFlat" id=5]
 bg_color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="StyleBoxFlat" id=13]
+content_margin_left = 3.0
+content_margin_right = 3.0
+content_margin_top = 3.0
+content_margin_bottom = 3.0
+bg_color = Color( 0, 0, 0, 0.290196 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 3.0
+expand_margin_right = 3.0
+expand_margin_top = 3.0
+expand_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxEmpty" id=14]
+
+[sub_resource type="InputEventAction" id=17]
+action = "undo"
+
+[sub_resource type="ShortCut" id=16]
+shortcut = SubResource( 17 )
+
+[sub_resource type="InputEventAction" id=18]
+action = "redo"
+
+[sub_resource type="ShortCut" id=19]
+shortcut = SubResource( 18 )
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 7 )
@@ -1217,58 +1246,68 @@ margin_bottom = 55.0
 custom_constants/separation = 23
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="Panel/VBoxContainer/PanelContainer3/MarginContainer/HBoxContainer"]
+[node name="UndoButton" type="Button" parent="Panel/VBoxContainer/PanelContainer3/MarginContainer/HBoxContainer"]
 margin_left = 11.0
 margin_right = 51.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 40, 40 )
-size_flags_horizontal = 0
-size_flags_vertical = 3
-texture = ExtResource( 3 )
-expand = true
-stretch_mode = 5
+hint_tooltip = "ACTIVE_GAME_UNDO_BUTTON_TOOLTIP"
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 13 )
+custom_styles/normal = SubResource( 14 )
+shortcut_in_tooltip = false
+shortcut = SubResource( 16 )
+icon = ExtResource( 3 )
+expand_icon = true
 
-[node name="TextureRect2" type="TextureRect" parent="Panel/VBoxContainer/PanelContainer3/MarginContainer/HBoxContainer"]
+[node name="RedoButton" type="Button" parent="Panel/VBoxContainer/PanelContainer3/MarginContainer/HBoxContainer"]
 margin_left = 74.0
 margin_right = 114.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 40, 40 )
-size_flags_horizontal = 0
-size_flags_vertical = 0
-texture = ExtResource( 5 )
-expand = true
-stretch_mode = 5
+hint_tooltip = "ACTIVE_GAME_REDO_BUTTON_TOOLTIP"
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 13 )
+custom_styles/normal = SubResource( 14 )
+shortcut_in_tooltip = false
+shortcut = SubResource( 19 )
+icon = ExtResource( 5 )
+expand_icon = true
 
-[node name="TextureRect3" type="TextureRect" parent="Panel/VBoxContainer/PanelContainer3/MarginContainer/HBoxContainer"]
+[node name="SaveButton" type="Button" parent="Panel/VBoxContainer/PanelContainer3/MarginContainer/HBoxContainer"]
 margin_left = 137.0
 margin_right = 177.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 40, 40 )
-size_flags_horizontal = 0
-size_flags_vertical = 0
-texture = ExtResource( 4 )
-expand = true
-stretch_mode = 5
+hint_tooltip = "ACTIVE_GAME_SAVE_BUTTON"
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 13 )
+custom_styles/normal = SubResource( 14 )
+icon = ExtResource( 4 )
+expand_icon = true
 
-[node name="ExitActiveGameButton" type="TextureButton" parent="Panel/VBoxContainer/PanelContainer3/MarginContainer/HBoxContainer"]
+[node name="ExitButton" type="Button" parent="Panel/VBoxContainer/PanelContainer3/MarginContainer/HBoxContainer"]
 margin_left = 200.0
 margin_right = 240.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 40, 40 )
-hint_tooltip = "EXIT_ACTIVE_GAME_BUTTON_TOOLTIP"
-texture_normal = ExtResource( 2 )
-expand = true
-script = ExtResource( 8 )
+hint_tooltip = "ACTIVE_GAME_EXIT_BUTTON_TOOLTIP"
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 13 )
+custom_styles/normal = SubResource( 14 )
+icon = ExtResource( 2 )
+expand_icon = true
+script = ExtResource( 9 )
 
-[node name="ExitConfirmationPopup" type="ConfirmationDialog" parent="Panel/VBoxContainer/PanelContainer3/MarginContainer/HBoxContainer/ExitActiveGameButton"]
-margin_left = -592.0
+[node name="ExitConfirmationPopup" type="ConfirmationDialog" parent="Panel/VBoxContainer/PanelContainer3/MarginContainer/HBoxContainer/ExitButton"]
+margin_left = -529.0
 margin_top = -290.0
-margin_right = -392.0
+margin_right = -320.0
 margin_bottom = -190.0
 rect_min_size = Vector2( 200, 100 )
 popup_exclusive = true
-window_title = "EXIT_GAME_POPUP_TITLE"
-dialog_text = "EXIT_ACTIVE_GAME_POPUP_CONTENT"
+window_title = "ACTIVE_GAME_EXIT_POPUP_TITLE"
+dialog_text = "ACTIVE_GAME_EXIT_POPUP_CONTENT"
 dialog_autowrap = true
 
 [node name="TextureRect" type="TextureRect" parent="Panel"]
@@ -1279,3 +1318,6 @@ margin_bottom = 63.0
 texture = ExtResource( 6 )
 expand = true
 stretch_mode = 5
+
+[connection signal="pressed" from="Panel/VBoxContainer/PanelContainer3/MarginContainer/HBoxContainer/UndoButton" to="." method="_on_UndoButton_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/PanelContainer3/MarginContainer/HBoxContainer/RedoButton" to="." method="_on_RedoButton_pressed"]

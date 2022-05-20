@@ -1,5 +1,6 @@
 extends Node2D
-
+var undo_stack = []
+var redo_stack = []
 var chosen_piece
 signal square_pos(pos,chosen_piece)
 #signal move_piece(piece_name, target_pos)
@@ -69,6 +70,16 @@ func _chosen_piece(piece):
 func _send_position(square):
 	if chosen_piece != null and square.get_position() != chosen_piece.get_position():
 		emit_signal("square_pos", square.get_position(), chosen_piece) #to piece with pos
+		var strings = PoolStringArray([
+			chosen_piece.name,
+			str(chosen_piece.get_position().x),
+			str(chosen_piece.get_position().y),
+			str(square.get_position().x),
+			str(square.get_position().y)
+		])
+		var undo_string = strings.join(",")
+		undo_stack.append(undo_string)
+		redo_stack.clear()
 		chosen_piece = null
 	
 func _connect_piece_to_game_manager(piece_name):
@@ -167,3 +178,33 @@ func _ready():
 		_connect_square_to_game_manager(square.name)
 
 	_place_all_pieces(chessboard)
+
+## Undoes the previous move if do_undo is true, if any.
+## Otherwise it redos the latest move that was undone, if any.
+func _undo_redo(do_undo: bool):
+	# The primary stack is the stack that will get it's latest move
+	# poped and reintroduced into the game.
+	# If an undo is made, the primary stack will be the undo stack,
+	# i.e. the latest move will be undone. This move is then pushed to the
+	# secondary stack, in this case the redo stack, so that the move can be
+	# redone again
+	var primary_stack = undo_stack if do_undo else redo_stack
+	var secondary_stack = redo_stack if do_undo else undo_stack
+	if primary_stack:
+		var move = primary_stack.pop_back()
+		var squares = move.rsplit(",")
+		var moved_piece = get_node("Panel/Chessboard/" + squares[0])
+		if not moved_piece.get_node("Tween").is_active():
+			var x = squares[1] if do_undo else squares[3]
+			var y = squares[2] if do_undo else squares[4]
+			var previous_position = Vector2(x, y)
+			moved_piece.set_position(previous_position)
+			secondary_stack.append(move)
+		else:
+			primary_stack.append(move)
+
+func _on_UndoButton_pressed():
+	_undo_redo(true)
+
+func _on_RedoButton_pressed():
+	_undo_redo(false)
