@@ -16,48 +16,48 @@ var queen = preload("res://Resources/ChessPieces/queen.svg")
 ## and applies the texture to the chesspiece
 func place_piece(chessboard: Node, node_name: String, texture: Resource, piece_name: String) -> void:
 	var chessboard_square = chessboard.get_node(node_name)
-	
+
 	# Get the color rectangle for the square
 	var color_rect_name = node_name + "_rect"
 	var color_rect = chessboard_square.get_node(color_rect_name)
-	
+
 	# Create Area2D that will contain the piece
 	var area2d = Area2D.new()
 	area2d.set_script(load("res://Piece_logic.gd"))
 	area2d.name = piece_name # set name of the piece to the pieces name
 	area2d.input_pickable = true # Make piece clickable
-	
+
 	var area2d_x = chessboard_square.get_position().x
 	var area2d_y = chessboard_square.get_position().y
 	area2d.set_position(Vector2(area2d_x, area2d_y))
-	
+
 	var sprite = Sprite.new()
 	sprite.texture = texture
 	sprite.centered = false
 	sprite.set_scale(Vector2(0.433, 0.433))
-	
-	var collisionShape = _create_collisionshape(color_rect, area2d_x, area2d_y)
-	
+
+	var collisionShape = _create_collisionshape(color_rect)
+
 	# Add Tween for movement animation
 	var tween = Tween.new()
 	tween.name = "Tween"
-	
+
 	area2d.add_child(collisionShape)
 	area2d.add_child(sprite)
 	area2d.add_child(tween)
 	chessboard.add_child(area2d)
 
 ## Create a collisonshape for a piece where the mouse clicks will be identified
-func _create_collisionshape(node: Node, sprite_x:float, sprite_y:float)->CollisionShape2D:
+func _create_collisionshape(node: Node)->CollisionShape2D:
 	var collisionShape = CollisionShape2D.new()
 	var shape = RectangleShape2D.new()
-	
+
 	# set position and extents to half the square size since the origin of the
 	# shape is in the center
 	var shape_size = node.get_size()/2
 	shape.set_extents(shape_size)
 	collisionShape.position = shape_size
-	
+
 	collisionShape.set_shape(shape)
 	return collisionShape
 
@@ -81,7 +81,8 @@ func _send_position(square):
 		undo_stack.append(undo_string)
 		redo_stack.clear()
 		chosen_piece = null
-	
+		_refresh_history_panel()
+
 func _connect_piece_to_game_manager(piece_name):
 	var dir = "Panel/Chessboard/" + piece_name
 	var piece = get_node(dir)
@@ -95,7 +96,9 @@ func _connect_square_to_game_manager(square_name):
 func _connect_send_square_position(piece_name):
 	var dir = "Panel/Chessboard/" + piece_name
 	var piece = get_node(dir)
-	self.connect("square_pos", piece, "_move_piece")
+	var error_msg = self.connect("square_pos", piece, "_move_piece")
+	if error_msg != OK:
+		print("ERROR: " + error_msg)
 
 func _place_all_pieces(chessboard):
 	var all_pieces = {
@@ -202,6 +205,42 @@ func _undo_redo(do_undo: bool):
 			secondary_stack.append(move)
 		else:
 			primary_stack.append(move)
+	_refresh_history_panel()
+
+
+func _refresh_history_panel():
+	var round_counter = 1
+	var output = ""
+	for line in undo_stack:
+		output += "  " + str(round_counter) + ". " + _format_unredo_stack_line(line)
+		round_counter += 1
+	self.get_node("Panel/VBoxContainer/PanelContainer2/VBoxContainer/ScrollContainer/History/UndoStackContents").set_text(output)
+
+	output = ""
+	var redo_stack_inverted = redo_stack
+	redo_stack_inverted.invert()
+	for line in redo_stack_inverted:
+		output += "  " + str(round_counter) + ". " + _format_unredo_stack_line(line)
+		round_counter += 1
+	self.get_node("Panel/VBoxContainer/PanelContainer2/VBoxContainer/ScrollContainer/History/RedoStackContents").set_text(output)
+
+func _format_unredo_stack_line(line):
+	# Formats a line from the undo/redo stack to be listed in the history panel
+	var line_split = line.split(",")
+	var from_tile = str(_pixel_to_tile_converter(line_split[1], line_split[2]))
+	var to_tile = str(_pixel_to_tile_converter(line_split[3], line_split[4]))
+	return (from_tile + " -> " + to_tile + "\n")
+
+
+func _pixel_to_tile_converter(x,y):
+	# Takes an x, y worldunit coordinate and returns a 2 character string for
+	# whichever tile it represents.
+	var ranks = ["A","B","C","D","E","F","G","H"]
+	# warning-ignore:integer_division
+	# warning-ignore:integer_division
+	return str(ranks[(int(x)/65)]) + str(8-int(y) / 65)
+
+
 
 func _on_UndoButton_pressed():
 	_undo_redo(true)
