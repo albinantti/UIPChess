@@ -80,14 +80,14 @@ margin_right = 276.0
 margin_bottom = 564.0
 
 [node name="MainMenuContainer" type="GridContainer" parent="MarginContainer"]
-margin_right = 192.0
+margin_right = 210.0
 margin_bottom = 464.0
-rect_min_size = Vector2( 0, 464 )
+rect_min_size = Vector2( 210, 464 )
 custom_constants/vseparation = 16
 script = ExtResource( 16 )
 
 [node name="New Game" type="Button" parent="MarginContainer/MainMenuContainer"]
-margin_right = 192.0
+margin_right = 210.0
 margin_bottom = 80.0
 hint_tooltip = "MAIN_MENU_BUTTON_NEW_GAME_TOOLTIP"
 size_flags_horizontal = 3
@@ -214,7 +214,7 @@ script = ExtResource( 11 )
 
 [node name="LoadGame" type="Button" parent="MarginContainer/MainMenuContainer"]
 margin_top = 96.0
-margin_right = 192.0
+margin_right = 210.0
 margin_bottom = 176.0
 hint_tooltip = "MAIN_MENU_BUTTON_LOAD_GAME_TOOLTIP"
 size_flags_horizontal = 3
@@ -284,12 +284,12 @@ dialog_text = "LOAD_GAME_SELECT_FILE"
 mode_overrides_title = false
 mode = 0
 access = 2
-current_dir = "/Users/albin/prog/UIPChess/Project"
-current_path = "/Users/albin/prog/UIPChess/Project/"
+current_dir = "/Users/danie/Documents/UIPChess/Project"
+current_path = "/Users/danie/Documents/UIPChess/Project/"
 
 [node name="Tutorial" type="Button" parent="MarginContainer/MainMenuContainer"]
 margin_top = 192.0
-margin_right = 192.0
+margin_right = 210.0
 margin_bottom = 272.0
 hint_tooltip = "MAIN_MENU_BUTTON_TUTORIAL_TOOLTIP"
 size_flags_horizontal = 3
@@ -339,7 +339,7 @@ script = ExtResource( 19 )
 
 [node name="Settings" type="Button" parent="MarginContainer/MainMenuContainer"]
 margin_top = 288.0
-margin_right = 192.0
+margin_right = 210.0
 margin_bottom = 368.0
 hint_tooltip = "MAIN_MENU_BUTTON_SETTINGS_TOOLTIP"
 size_flags_horizontal = 3
@@ -448,7 +448,7 @@ size_flags_horizontal = 8
 
 [node name="ExitButton" type="Button" parent="MarginContainer/MainMenuContainer"]
 margin_top = 384.0
-margin_right = 192.0
+margin_right = 210.0
 margin_bottom = 464.0
 hint_tooltip = "MAIN_MENU_BUTTON_EXIT_GAME_TOOLTIP"
 size_flags_horizontal = 3

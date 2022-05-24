@@ -20,6 +20,8 @@
 [ext_resource path="res://TutorialPanel.gd" type="Script" id=18]
 [ext_resource path="res://Resources/images/tutorial_arrow.png" type="Texture" id=19]
 [ext_resource path="res://Resources/Animations/Rocking.tres" type="Animation" id=20]
+[ext_resource path="res://Resources/images/menu.png" type="Texture" id=21]
+[ext_resource path="res://Resources/images/close.png" type="Texture" id=22]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.4, 0.643137, 0.290196, 1 )
@@ -114,12 +116,35 @@ margin_bottom = 599.0
 mouse_filter = 2
 custom_styles/panel = SubResource( 1 )
 
-[node name="Chessboard" type="GridContainer" parent="Panel"]
-anchor_left = 0.135346
-anchor_top = 0.0684474
-anchor_right = 0.642649
-anchor_bottom = 0.93823
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+margin_right = 1025.0
+margin_bottom = 599.0
+
+[node name="MuteButton" type="TextureRect" parent="Panel/HBoxContainer"]
+margin_right = 50.0
+margin_bottom = 600.0
+rect_min_size = Vector2( 50, 50 )
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 5
+
+[node name="CenterContainer" type="CenterContainer" parent="Panel/HBoxContainer"]
+margin_left = 54.0
+margin_right = 792.0
+margin_bottom = 600.0
+rect_min_size = Vector2( 600, 600 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Chessboard" type="GridContainer" parent="Panel/HBoxContainer/CenterContainer"]
+margin_left = 109.0
+margin_top = 40.0
+margin_right = 629.0
+margin_bottom = 560.0
+rect_min_size = Vector2( 520, 520 )
 mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 custom_constants/vseparation = 0
 custom_constants/hseparation = 0
 columns = 8
@@ -127,10 +152,10 @@ __meta__ = {
 "_edit_use_anchors_": true
 }
 
-[node name="A8" type="Area2D" parent="Panel/Chessboard"]
+[node name="A8" type="Area2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard"]
 script = ExtResource( 11 )
 
-[node name="A8_rect" type="ColorRect" parent="Panel/Chessboard/A8"]
+[node name="A8_rect" type="ColorRect" parent="Panel/HBoxContainer/CenterContainer/Chessboard/A8"]
 margin_right = 65.0
 margin_bottom = 65.0
 rect_min_size = Vector2( 50, 50 )
@@ -139,14 +164,14 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color( 0.0980392, 0.160784, 0.0705882, 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Chessboard/A8"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard/A8"]
 shape = SubResource( 9 )
 
-[node name="B8" type="Area2D" parent="Panel/Chessboard"]
+[node name="B8" type="Area2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard"]
 position = Vector2( 65, 0 )
 script = ExtResource( 11 )
 
-[node name="B8_rect" type="ColorRect" parent="Panel/Chessboard/B8"]
+[node name="B8_rect" type="ColorRect" parent="Panel/HBoxContainer/CenterContainer/Chessboard/B8"]
 margin_right = 65.0
 margin_bottom = 65.0
 rect_min_size = Vector2( 50, 50 )
@@ -155,14 +180,14 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color( 0.678431, 0.741176, 0.647059, 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Chessboard/B8"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard/B8"]
 shape = SubResource( 10 )
 
-[node name="C8" type="Area2D" parent="Panel/Chessboard"]
+[node name="C8" type="Area2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard"]
 position = Vector2( 130, 0 )
 script = ExtResource( 11 )
 
-[node name="C8_rect" type="ColorRect" parent="Panel/Chessboard/C8"]
+[node name="C8_rect" type="ColorRect" parent="Panel/HBoxContainer/CenterContainer/Chessboard/C8"]
 margin_right = 65.0
 margin_bottom = 65.0
 rect_min_size = Vector2( 50, 50 )
@@ -171,14 +196,14 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color( 0.0980392, 0.160784, 0.0705882, 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Chessboard/C8"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard/C8"]
 shape = SubResource( 11 )
 
-[node name="D8" type="Area2D" parent="Panel/Chessboard"]
+[node name="D8" type="Area2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard"]
 position = Vector2( 195, 0 )
 script = ExtResource( 11 )
 
-[node name="D8_rect" type="ColorRect" parent="Panel/Chessboard/D8"]
+[node name="D8_rect" type="ColorRect" parent="Panel/HBoxContainer/CenterContainer/Chessboard/D8"]
 margin_right = 65.0
 margin_bottom = 65.0
 rect_min_size = Vector2( 50, 50 )
@@ -187,14 +212,14 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color( 0.678431, 0.741176, 0.647059, 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Chessboard/D8"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard/D8"]
 shape = SubResource( 11 )
 
-[node name="E8" type="Area2D" parent="Panel/Chessboard"]
+[node name="E8" type="Area2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard"]
 position = Vector2( 260, 0 )
 script = ExtResource( 11 )
 
-[node name="E8_rect" type="ColorRect" parent="Panel/Chessboard/E8"]
+[node name="E8_rect" type="ColorRect" parent="Panel/HBoxContainer/CenterContainer/Chessboard/E8"]
 margin_right = 65.0
 margin_bottom = 65.0
 rect_min_size = Vector2( 50, 50 )
@@ -203,14 +228,14 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color( 0.0980392, 0.160784, 0.0705882, 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Chessboard/E8"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard/E8"]
 shape = SubResource( 11 )
 
-[node name="F8" type="Area2D" parent="Panel/Chessboard"]
+[node name="F8" type="Area2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard"]
 position = Vector2( 325, 0 )
 script = ExtResource( 11 )
 
-[node name="F8_rect" type="ColorRect" parent="Panel/Chessboard/F8"]
+[node name="F8_rect" type="ColorRect" parent="Panel/HBoxContainer/CenterContainer/Chessboard/F8"]
 margin_right = 65.0
 margin_bottom = 65.0
 rect_min_size = Vector2( 50, 50 )
@@ -219,14 +244,14 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color( 0.678431, 0.741176, 0.647059, 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Chessboard/F8"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard/F8"]
 shape = SubResource( 11 )
 
-[node name="G8" type="Area2D" parent="Panel/Chessboard"]
+[node name="G8" type="Area2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard"]
 position = Vector2( 390, 0 )
 script = ExtResource( 11 )
 
-[node name="G8_rect" type="ColorRect" parent="Panel/Chessboard/G8"]
+[node name="G8_rect" type="ColorRect" parent="Panel/HBoxContainer/CenterContainer/Chessboard/G8"]
 margin_right = 65.0
 margin_bottom = 65.0
 rect_min_size = Vector2( 50, 50 )
@@ -235,14 +260,14 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color( 0.0980392, 0.160784, 0.0705882, 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Chessboard/G8"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard/G8"]
 shape = SubResource( 11 )
 
-[node name="H8" type="Area2D" parent="Panel/Chessboard"]
+[node name="H8" type="Area2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard"]
 position = Vector2( 455, 0 )
 script = ExtResource( 11 )
 
-[node name="H8_rect" type="ColorRect" parent="Panel/Chessboard/H8"]
+[node name="H8_rect" type="ColorRect" parent="Panel/HBoxContainer/CenterContainer/Chessboard/H8"]
 margin_right = 65.0
 margin_bottom = 65.0
 rect_min_size = Vector2( 50, 50 )
@@ -251,14 +276,14 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color( 0.678431, 0.741176, 0.647059, 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Chessboard/H8"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard/H8"]
 shape = SubResource( 11 )
 
-[node name="A7" type="Area2D" parent="Panel/Chessboard"]
+[node name="A7" type="Area2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard"]
 position = Vector2( 0, 65 )
 script = ExtResource( 11 )
 
-[node name="A7_rect" type="ColorRect" parent="Panel/Chessboard/A7"]
+[node name="A7_rect" type="ColorRect" parent="Panel/HBoxContainer/CenterContainer/Chessboard/A7"]
 margin_right = 65.0
 margin_bottom = 65.0
 rect_min_size = Vector2( 50, 50 )
@@ -267,14 +292,14 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color( 0.678431, 0.741176, 0.647059, 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Chessboard/A7"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard/A7"]
 shape = SubResource( 11 )
 
-[node name="B7" type="Area2D" parent="Panel/Chessboard"]
+[node name="B7" type="Area2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard"]
 position = Vector2( 65, 65 )
 script = ExtResource( 11 )
 
-[node name="B7_rect" type="ColorRect" parent="Panel/Chessboard/B7"]
+[node name="B7_rect" type="ColorRect" parent="Panel/HBoxContainer/CenterContainer/Chessboard/B7"]
 margin_right = 65.0
 margin_bottom = 65.0
 rect_min_size = Vector2( 50, 50 )
@@ -283,14 +308,14 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color( 0.0980392, 0.160784, 0.0705882, 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Chessboard/B7"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard/B7"]
 shape = SubResource( 11 )
 
-[node name="C7" type="Area2D" parent="Panel/Chessboard"]
+[node name="C7" type="Area2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard"]
 position = Vector2( 130, 65 )
 script = ExtResource( 11 )
 
-[node name="C7_rect" type="ColorRect" parent="Panel/Chessboard/C7"]
+[node name="C7_rect" type="ColorRect" parent="Panel/HBoxContainer/CenterContainer/Chessboard/C7"]
 margin_right = 65.0
 margin_bottom = 65.0
 rect_min_size = Vector2( 50, 50 )
@@ -299,14 +324,14 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color( 0.678431, 0.741176, 0.647059, 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Chessboard/C7"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard/C7"]
 shape = SubResource( 11 )
 
-[node name="D7" type="Area2D" parent="Panel/Chessboard"]
+[node name="D7" type="Area2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard"]
 position = Vector2( 195, 65 )
 script = ExtResource( 11 )
 
-[node name="D7_rect" type="ColorRect" parent="Panel/Chessboard/D7"]
+[node name="D7_rect" type="ColorRect" parent="Panel/HBoxContainer/CenterContainer/Chessboard/D7"]
 margin_right = 65.0
 margin_bottom = 65.0
 rect_min_size = Vector2( 50, 50 )
@@ -315,14 +340,14 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color( 0.0980392, 0.160784, 0.0705882, 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Chessboard/D7"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard/D7"]
 shape = SubResource( 11 )
 
-[node name="E7" type="Area2D" parent="Panel/Chessboard"]
+[node name="E7" type="Area2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard"]
 position = Vector2( 260, 65 )
 script = ExtResource( 11 )
 
-[node name="E7_rect" type="ColorRect" parent="Panel/Chessboard/E7"]
+[node name="E7_rect" type="ColorRect" parent="Panel/HBoxContainer/CenterContainer/Chessboard/E7"]
 margin_right = 65.0
 margin_bottom = 65.0
 rect_min_size = Vector2( 50, 50 )
@@ -331,14 +356,14 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color( 0.678431, 0.741176, 0.647059, 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Chessboard/E7"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard/E7"]
 shape = SubResource( 11 )
 
-[node name="F7" type="Area2D" parent="Panel/Chessboard"]
+[node name="F7" type="Area2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard"]
 position = Vector2( 325, 65 )
 script = ExtResource( 11 )
 
-[node name="F7_rect" type="ColorRect" parent="Panel/Chessboard/F7"]
+[node name="F7_rect" type="ColorRect" parent="Panel/HBoxContainer/CenterContainer/Chessboard/F7"]
 margin_right = 65.0
 margin_bottom = 65.0
 rect_min_size = Vector2( 50, 50 )
@@ -347,14 +372,14 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color( 0.0980392, 0.160784, 0.0705882, 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Chessboard/F7"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard/F7"]
 shape = SubResource( 11 )
 
-[node name="G7" type="Area2D" parent="Panel/Chessboard"]
+[node name="G7" type="Area2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard"]
 position = Vector2( 390, 65 )
 script = ExtResource( 11 )
 
-[node name="G7_rect" type="ColorRect" parent="Panel/Chessboard/G7"]
+[node name="G7_rect" type="ColorRect" parent="Panel/HBoxContainer/CenterContainer/Chessboard/G7"]
 margin_right = 65.0
 margin_bottom = 65.0
 rect_min_size = Vector2( 50, 50 )
@@ -363,14 +388,14 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color( 0.678431, 0.741176, 0.647059, 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Chessboard/G7"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard/G7"]
 shape = SubResource( 11 )
 
-[node name="H7" type="Area2D" parent="Panel/Chessboard"]
+[node name="H7" type="Area2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard"]
 position = Vector2( 455, 65 )
 script = ExtResource( 11 )
 
-[node name="H7_rect" type="ColorRect" parent="Panel/Chessboard/H7"]
+[node name="H7_rect" type="ColorRect" parent="Panel/HBoxContainer/CenterContainer/Chessboard/H7"]
 margin_right = 65.0
 margin_bottom = 65.0
 rect_min_size = Vector2( 50, 50 )
@@ -379,14 +404,14 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color( 0.0980392, 0.160784, 0.0705882, 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Chessboard/H7"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard/H7"]
 shape = SubResource( 11 )
 
-[node name="A6" type="Area2D" parent="Panel/Chessboard"]
+[node name="A6" type="Area2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard"]
 position = Vector2( 0, 130 )
 script = ExtResource( 11 )
 
-[node name="A6_rect" type="ColorRect" parent="Panel/Chessboard/A6"]
+[node name="A6_rect" type="ColorRect" parent="Panel/HBoxContainer/CenterContainer/Chessboard/A6"]
 margin_right = 65.0
 margin_bottom = 65.0
 rect_min_size = Vector2( 50, 50 )
@@ -395,14 +420,14 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color( 0.0980392, 0.160784, 0.0705882, 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Chessboard/A6"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard/A6"]
 shape = SubResource( 11 )
 
-[node name="B6" type="Area2D" parent="Panel/Chessboard"]
+[node name="B6" type="Area2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard"]
 position = Vector2( 65, 130 )
 script = ExtResource( 11 )
 
-[node name="B6_rect" type="ColorRect" parent="Panel/Chessboard/B6"]
+[node name="B6_rect" type="ColorRect" parent="Panel/HBoxContainer/CenterContainer/Chessboard/B6"]
 margin_right = 65.0
 margin_bottom = 65.0
 rect_min_size = Vector2( 50, 50 )
@@ -411,14 +436,14 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color( 0.678431, 0.741176, 0.647059, 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Chessboard/B6"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard/B6"]
 shape = SubResource( 11 )
 
-[node name="C6" type="Area2D" parent="Panel/Chessboard"]
+[node name="C6" type="Area2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard"]
 position = Vector2( 130, 130 )
 script = ExtResource( 11 )
 
-[node name="C6_rect" type="ColorRect" parent="Panel/Chessboard/C6"]
+[node name="C6_rect" type="ColorRect" parent="Panel/HBoxContainer/CenterContainer/Chessboard/C6"]
 margin_right = 65.0
 margin_bottom = 65.0
 rect_min_size = Vector2( 50, 50 )
@@ -427,14 +452,14 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color( 0.0980392, 0.160784, 0.0705882, 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Chessboard/C6"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard/C6"]
 shape = SubResource( 11 )
 
-[node name="D6" type="Area2D" parent="Panel/Chessboard"]
+[node name="D6" type="Area2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard"]
 position = Vector2( 195, 130 )
 script = ExtResource( 11 )
 
-[node name="D6_rect" type="ColorRect" parent="Panel/Chessboard/D6"]
+[node name="D6_rect" type="ColorRect" parent="Panel/HBoxContainer/CenterContainer/Chessboard/D6"]
 margin_right = 65.0
 margin_bottom = 65.0
 rect_min_size = Vector2( 50, 50 )
@@ -443,14 +468,14 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color( 0.678431, 0.741176, 0.647059, 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Chessboard/D6"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard/D6"]
 shape = SubResource( 11 )
 
-[node name="E6" type="Area2D" parent="Panel/Chessboard"]
+[node name="E6" type="Area2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard"]
 position = Vector2( 260, 130 )
 script = ExtResource( 11 )
 
-[node name="E6_rect" type="ColorRect" parent="Panel/Chessboard/E6"]
+[node name="E6_rect" type="ColorRect" parent="Panel/HBoxContainer/CenterContainer/Chessboard/E6"]
 margin_right = 65.0
 margin_bottom = 65.0
 rect_min_size = Vector2( 50, 50 )
@@ -459,14 +484,14 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color( 0.0980392, 0.160784, 0.0705882, 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Chessboard/E6"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard/E6"]
 shape = SubResource( 11 )
 
-[node name="F6" type="Area2D" parent="Panel/Chessboard"]
+[node name="F6" type="Area2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard"]
 position = Vector2( 325, 130 )
 script = ExtResource( 11 )
 
-[node name="F6_rect" type="ColorRect" parent="Panel/Chessboard/F6"]
+[node name="F6_rect" type="ColorRect" parent="Panel/HBoxContainer/CenterContainer/Chessboard/F6"]
 margin_right = 65.0
 margin_bottom = 65.0
 rect_min_size = Vector2( 50, 50 )
@@ -475,14 +500,14 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color( 0.678431, 0.741176, 0.647059, 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Chessboard/F6"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard/F6"]
 shape = SubResource( 11 )
 
-[node name="G6" type="Area2D" parent="Panel/Chessboard"]
+[node name="G6" type="Area2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard"]
 position = Vector2( 390, 130 )
 script = ExtResource( 11 )
 
-[node name="G6_rect" type="ColorRect" parent="Panel/Chessboard/G6"]
+[node name="G6_rect" type="ColorRect" parent="Panel/HBoxContainer/CenterContainer/Chessboard/G6"]
 margin_right = 65.0
 margin_bottom = 65.0
 rect_min_size = Vector2( 50, 50 )
@@ -491,14 +516,14 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color( 0.0980392, 0.160784, 0.0705882, 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Chessboard/G6"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard/G6"]
 shape = SubResource( 11 )
 
-[node name="H6" type="Area2D" parent="Panel/Chessboard"]
+[node name="H6" type="Area2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard"]
 position = Vector2( 455, 130 )
 script = ExtResource( 11 )
 
-[node name="H6_rect" type="ColorRect" parent="Panel/Chessboard/H6"]
+[node name="H6_rect" type="ColorRect" parent="Panel/HBoxContainer/CenterContainer/Chessboard/H6"]
 margin_right = 65.0
 margin_bottom = 65.0
 rect_min_size = Vector2( 50, 50 )
@@ -507,14 +532,14 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color( 0.678431, 0.741176, 0.647059, 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Chessboard/H6"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard/H6"]
 shape = SubResource( 11 )
 
-[node name="A5" type="Area2D" parent="Panel/Chessboard"]
+[node name="A5" type="Area2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard"]
 position = Vector2( 0, 195 )
 script = ExtResource( 11 )
 
-[node name="A5_rect" type="ColorRect" parent="Panel/Chessboard/A5"]
+[node name="A5_rect" type="ColorRect" parent="Panel/HBoxContainer/CenterContainer/Chessboard/A5"]
 margin_right = 65.0
 margin_bottom = 65.0
 rect_min_size = Vector2( 50, 50 )
@@ -523,14 +548,14 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color( 0.678431, 0.741176, 0.647059, 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Chessboard/A5"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard/A5"]
 shape = SubResource( 11 )
 
-[node name="B5" type="Area2D" parent="Panel/Chessboard"]
+[node name="B5" type="Area2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard"]
 position = Vector2( 65, 195 )
 script = ExtResource( 11 )
 
-[node name="B5_rect" type="ColorRect" parent="Panel/Chessboard/B5"]
+[node name="B5_rect" type="ColorRect" parent="Panel/HBoxContainer/CenterContainer/Chessboard/B5"]
 margin_right = 65.0
 margin_bottom = 65.0
 rect_min_size = Vector2( 50, 50 )
@@ -539,14 +564,14 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color( 0.0980392, 0.160784, 0.0705882, 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Chessboard/B5"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard/B5"]
 shape = SubResource( 11 )
 
-[node name="C5" type="Area2D" parent="Panel/Chessboard"]
+[node name="C5" type="Area2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard"]
 position = Vector2( 130, 195 )
 script = ExtResource( 11 )
 
-[node name="C5_rect" type="ColorRect" parent="Panel/Chessboard/C5"]
+[node name="C5_rect" type="ColorRect" parent="Panel/HBoxContainer/CenterContainer/Chessboard/C5"]
 margin_right = 65.0
 margin_bottom = 65.0
 rect_min_size = Vector2( 50, 50 )
@@ -555,14 +580,14 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color( 0.678431, 0.741176, 0.647059, 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Chessboard/C5"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard/C5"]
 shape = SubResource( 11 )
 
-[node name="D5" type="Area2D" parent="Panel/Chessboard"]
+[node name="D5" type="Area2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard"]
 position = Vector2( 195, 195 )
 script = ExtResource( 11 )
 
-[node name="D5_rect" type="ColorRect" parent="Panel/Chessboard/D5"]
+[node name="D5_rect" type="ColorRect" parent="Panel/HBoxContainer/CenterContainer/Chessboard/D5"]
 margin_right = 65.0
 margin_bottom = 65.0
 rect_min_size = Vector2( 50, 50 )
@@ -571,14 +596,14 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color( 0.0980392, 0.160784, 0.0705882, 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Chessboard/D5"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard/D5"]
 shape = SubResource( 11 )
 
-[node name="E5" type="Area2D" parent="Panel/Chessboard"]
+[node name="E5" type="Area2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard"]
 position = Vector2( 260, 195 )
 script = ExtResource( 11 )
 
-[node name="E5_rect" type="ColorRect" parent="Panel/Chessboard/E5"]
+[node name="E5_rect" type="ColorRect" parent="Panel/HBoxContainer/CenterContainer/Chessboard/E5"]
 margin_right = 65.0
 margin_bottom = 65.0
 rect_min_size = Vector2( 50, 50 )
@@ -587,14 +612,14 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color( 0.678431, 0.741176, 0.647059, 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Chessboard/E5"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard/E5"]
 shape = SubResource( 11 )
 
-[node name="F5" type="Area2D" parent="Panel/Chessboard"]
+[node name="F5" type="Area2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard"]
 position = Vector2( 325, 195 )
 script = ExtResource( 11 )
 
-[node name="F5_rect" type="ColorRect" parent="Panel/Chessboard/F5"]
+[node name="F5_rect" type="ColorRect" parent="Panel/HBoxContainer/CenterContainer/Chessboard/F5"]
 margin_right = 65.0
 margin_bottom = 65.0
 rect_min_size = Vector2( 50, 50 )
@@ -603,14 +628,14 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color( 0.0980392, 0.160784, 0.0705882, 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Chessboard/F5"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard/F5"]
 shape = SubResource( 11 )
 
-[node name="G5" type="Area2D" parent="Panel/Chessboard"]
+[node name="G5" type="Area2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard"]
 position = Vector2( 390, 195 )
 script = ExtResource( 11 )
 
-[node name="G5_rect" type="ColorRect" parent="Panel/Chessboard/G5"]
+[node name="G5_rect" type="ColorRect" parent="Panel/HBoxContainer/CenterContainer/Chessboard/G5"]
 margin_right = 65.0
 margin_bottom = 65.0
 rect_min_size = Vector2( 50, 50 )
@@ -619,14 +644,14 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color( 0.678431, 0.741176, 0.647059, 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Chessboard/G5"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard/G5"]
 shape = SubResource( 11 )
 
-[node name="H5" type="Area2D" parent="Panel/Chessboard"]
+[node name="H5" type="Area2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard"]
 position = Vector2( 455, 195 )
 script = ExtResource( 11 )
 
-[node name="H5_rect" type="ColorRect" parent="Panel/Chessboard/H5"]
+[node name="H5_rect" type="ColorRect" parent="Panel/HBoxContainer/CenterContainer/Chessboard/H5"]
 margin_right = 65.0
 margin_bottom = 65.0
 rect_min_size = Vector2( 50, 50 )
@@ -635,14 +660,14 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color( 0.0980392, 0.160784, 0.0705882, 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Chessboard/H5"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard/H5"]
 shape = SubResource( 11 )
 
-[node name="A4" type="Area2D" parent="Panel/Chessboard"]
+[node name="A4" type="Area2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard"]
 position = Vector2( 0, 260 )
 script = ExtResource( 11 )
 
-[node name="A4_rect" type="ColorRect" parent="Panel/Chessboard/A4"]
+[node name="A4_rect" type="ColorRect" parent="Panel/HBoxContainer/CenterContainer/Chessboard/A4"]
 margin_right = 65.0
 margin_bottom = 65.0
 rect_min_size = Vector2( 50, 50 )
@@ -651,14 +676,14 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color( 0.0980392, 0.160784, 0.0705882, 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Chessboard/A4"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard/A4"]
 shape = SubResource( 11 )
 
-[node name="B4" type="Area2D" parent="Panel/Chessboard"]
+[node name="B4" type="Area2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard"]
 position = Vector2( 65, 260 )
 script = ExtResource( 11 )
 
-[node name="B4_rect" type="ColorRect" parent="Panel/Chessboard/B4"]
+[node name="B4_rect" type="ColorRect" parent="Panel/HBoxContainer/CenterContainer/Chessboard/B4"]
 margin_right = 65.0
 margin_bottom = 65.0
 rect_min_size = Vector2( 50, 50 )
@@ -667,14 +692,14 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color( 0.678431, 0.741176, 0.647059, 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Chessboard/B4"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard/B4"]
 shape = SubResource( 11 )
 
-[node name="C4" type="Area2D" parent="Panel/Chessboard"]
+[node name="C4" type="Area2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard"]
 position = Vector2( 130, 260 )
 script = ExtResource( 11 )
 
-[node name="C4_rect" type="ColorRect" parent="Panel/Chessboard/C4"]
+[node name="C4_rect" type="ColorRect" parent="Panel/HBoxContainer/CenterContainer/Chessboard/C4"]
 margin_right = 65.0
 margin_bottom = 65.0
 rect_min_size = Vector2( 50, 50 )
@@ -683,14 +708,14 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color( 0.0980392, 0.160784, 0.0705882, 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Chessboard/C4"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard/C4"]
 shape = SubResource( 11 )
 
-[node name="D4" type="Area2D" parent="Panel/Chessboard"]
+[node name="D4" type="Area2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard"]
 position = Vector2( 195, 260 )
 script = ExtResource( 11 )
 
-[node name="D4_rect" type="ColorRect" parent="Panel/Chessboard/D4"]
+[node name="D4_rect" type="ColorRect" parent="Panel/HBoxContainer/CenterContainer/Chessboard/D4"]
 margin_right = 65.0
 margin_bottom = 65.0
 rect_min_size = Vector2( 50, 50 )
@@ -699,14 +724,14 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color( 0.678431, 0.741176, 0.647059, 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Chessboard/D4"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard/D4"]
 shape = SubResource( 11 )
 
-[node name="E4" type="Area2D" parent="Panel/Chessboard"]
+[node name="E4" type="Area2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard"]
 position = Vector2( 260, 260 )
 script = ExtResource( 11 )
 
-[node name="E4_rect" type="ColorRect" parent="Panel/Chessboard/E4"]
+[node name="E4_rect" type="ColorRect" parent="Panel/HBoxContainer/CenterContainer/Chessboard/E4"]
 margin_right = 65.0
 margin_bottom = 65.0
 rect_min_size = Vector2( 50, 50 )
@@ -715,14 +740,14 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color( 0.0980392, 0.160784, 0.0705882, 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Chessboard/E4"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard/E4"]
 shape = SubResource( 11 )
 
-[node name="F4" type="Area2D" parent="Panel/Chessboard"]
+[node name="F4" type="Area2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard"]
 position = Vector2( 325, 260 )
 script = ExtResource( 11 )
 
-[node name="F4_rect" type="ColorRect" parent="Panel/Chessboard/F4"]
+[node name="F4_rect" type="ColorRect" parent="Panel/HBoxContainer/CenterContainer/Chessboard/F4"]
 margin_right = 65.0
 margin_bottom = 65.0
 rect_min_size = Vector2( 50, 50 )
@@ -731,14 +756,14 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color( 0.678431, 0.741176, 0.647059, 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Chessboard/F4"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard/F4"]
 shape = SubResource( 11 )
 
-[node name="G4" type="Area2D" parent="Panel/Chessboard"]
+[node name="G4" type="Area2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard"]
 position = Vector2( 390, 260 )
 script = ExtResource( 11 )
 
-[node name="G4_rect" type="ColorRect" parent="Panel/Chessboard/G4"]
+[node name="G4_rect" type="ColorRect" parent="Panel/HBoxContainer/CenterContainer/Chessboard/G4"]
 margin_right = 65.0
 margin_bottom = 65.0
 rect_min_size = Vector2( 50, 50 )
@@ -747,14 +772,14 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color( 0.0980392, 0.160784, 0.0705882, 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Chessboard/G4"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard/G4"]
 shape = SubResource( 11 )
 
-[node name="H4" type="Area2D" parent="Panel/Chessboard"]
+[node name="H4" type="Area2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard"]
 position = Vector2( 455, 260 )
 script = ExtResource( 11 )
 
-[node name="H4_rect" type="ColorRect" parent="Panel/Chessboard/H4"]
+[node name="H4_rect" type="ColorRect" parent="Panel/HBoxContainer/CenterContainer/Chessboard/H4"]
 margin_right = 65.0
 margin_bottom = 65.0
 rect_min_size = Vector2( 50, 50 )
@@ -763,14 +788,14 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color( 0.678431, 0.741176, 0.647059, 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Chessboard/H4"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard/H4"]
 shape = SubResource( 11 )
 
-[node name="A3" type="Area2D" parent="Panel/Chessboard"]
+[node name="A3" type="Area2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard"]
 position = Vector2( 0, 325 )
 script = ExtResource( 11 )
 
-[node name="A3_rect" type="ColorRect" parent="Panel/Chessboard/A3"]
+[node name="A3_rect" type="ColorRect" parent="Panel/HBoxContainer/CenterContainer/Chessboard/A3"]
 margin_right = 65.0
 margin_bottom = 65.0
 rect_min_size = Vector2( 50, 50 )
@@ -779,14 +804,14 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color( 0.678431, 0.741176, 0.647059, 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Chessboard/A3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard/A3"]
 shape = SubResource( 11 )
 
-[node name="B3" type="Area2D" parent="Panel/Chessboard"]
+[node name="B3" type="Area2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard"]
 position = Vector2( 65, 325 )
 script = ExtResource( 11 )
 
-[node name="B3_rect" type="ColorRect" parent="Panel/Chessboard/B3"]
+[node name="B3_rect" type="ColorRect" parent="Panel/HBoxContainer/CenterContainer/Chessboard/B3"]
 margin_right = 65.0
 margin_bottom = 65.0
 rect_min_size = Vector2( 50, 50 )
@@ -795,14 +820,14 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color( 0.0980392, 0.160784, 0.0705882, 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Chessboard/B3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard/B3"]
 shape = SubResource( 11 )
 
-[node name="C3" type="Area2D" parent="Panel/Chessboard"]
+[node name="C3" type="Area2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard"]
 position = Vector2( 130, 325 )
 script = ExtResource( 11 )
 
-[node name="C3_rect" type="ColorRect" parent="Panel/Chessboard/C3"]
+[node name="C3_rect" type="ColorRect" parent="Panel/HBoxContainer/CenterContainer/Chessboard/C3"]
 margin_right = 65.0
 margin_bottom = 65.0
 rect_min_size = Vector2( 50, 50 )
@@ -811,14 +836,14 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color( 0.678431, 0.741176, 0.647059, 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Chessboard/C3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard/C3"]
 shape = SubResource( 11 )
 
-[node name="D3" type="Area2D" parent="Panel/Chessboard"]
+[node name="D3" type="Area2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard"]
 position = Vector2( 195, 325 )
 script = ExtResource( 11 )
 
-[node name="D3_rect" type="ColorRect" parent="Panel/Chessboard/D3"]
+[node name="D3_rect" type="ColorRect" parent="Panel/HBoxContainer/CenterContainer/Chessboard/D3"]
 margin_right = 65.0
 margin_bottom = 65.0
 rect_min_size = Vector2( 50, 50 )
@@ -827,14 +852,14 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color( 0.0980392, 0.160784, 0.0705882, 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Chessboard/D3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard/D3"]
 shape = SubResource( 11 )
 
-[node name="E3" type="Area2D" parent="Panel/Chessboard"]
+[node name="E3" type="Area2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard"]
 position = Vector2( 260, 325 )
 script = ExtResource( 11 )
 
-[node name="E3_rect" type="ColorRect" parent="Panel/Chessboard/E3"]
+[node name="E3_rect" type="ColorRect" parent="Panel/HBoxContainer/CenterContainer/Chessboard/E3"]
 margin_right = 65.0
 margin_bottom = 65.0
 rect_min_size = Vector2( 50, 50 )
@@ -843,14 +868,14 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color( 0.678431, 0.741176, 0.647059, 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Chessboard/E3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard/E3"]
 shape = SubResource( 11 )
 
-[node name="F3" type="Area2D" parent="Panel/Chessboard"]
+[node name="F3" type="Area2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard"]
 position = Vector2( 325, 325 )
 script = ExtResource( 11 )
 
-[node name="F3_rect" type="ColorRect" parent="Panel/Chessboard/F3"]
+[node name="F3_rect" type="ColorRect" parent="Panel/HBoxContainer/CenterContainer/Chessboard/F3"]
 margin_right = 65.0
 margin_bottom = 65.0
 rect_min_size = Vector2( 50, 50 )
@@ -859,14 +884,14 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color( 0.0980392, 0.160784, 0.0705882, 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Chessboard/F3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard/F3"]
 shape = SubResource( 11 )
 
-[node name="G3" type="Area2D" parent="Panel/Chessboard"]
+[node name="G3" type="Area2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard"]
 position = Vector2( 390, 325 )
 script = ExtResource( 11 )
 
-[node name="G3_rect" type="ColorRect" parent="Panel/Chessboard/G3"]
+[node name="G3_rect" type="ColorRect" parent="Panel/HBoxContainer/CenterContainer/Chessboard/G3"]
 margin_right = 65.0
 margin_bottom = 65.0
 rect_min_size = Vector2( 50, 50 )
@@ -875,14 +900,14 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color( 0.678431, 0.741176, 0.647059, 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Chessboard/G3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard/G3"]
 shape = SubResource( 11 )
 
-[node name="H3" type="Area2D" parent="Panel/Chessboard"]
+[node name="H3" type="Area2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard"]
 position = Vector2( 455, 325 )
 script = ExtResource( 11 )
 
-[node name="H3_rect" type="ColorRect" parent="Panel/Chessboard/H3"]
+[node name="H3_rect" type="ColorRect" parent="Panel/HBoxContainer/CenterContainer/Chessboard/H3"]
 margin_right = 65.0
 margin_bottom = 65.0
 rect_min_size = Vector2( 50, 50 )
@@ -891,14 +916,14 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color( 0.0980392, 0.160784, 0.0705882, 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Chessboard/H3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard/H3"]
 shape = SubResource( 11 )
 
-[node name="A2" type="Area2D" parent="Panel/Chessboard"]
+[node name="A2" type="Area2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard"]
 position = Vector2( 0, 390 )
 script = ExtResource( 11 )
 
-[node name="A2_rect" type="ColorRect" parent="Panel/Chessboard/A2"]
+[node name="A2_rect" type="ColorRect" parent="Panel/HBoxContainer/CenterContainer/Chessboard/A2"]
 margin_right = 65.0
 margin_bottom = 65.0
 rect_min_size = Vector2( 50, 50 )
@@ -907,14 +932,14 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color( 0.0980392, 0.160784, 0.0705882, 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Chessboard/A2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard/A2"]
 shape = SubResource( 11 )
 
-[node name="B2" type="Area2D" parent="Panel/Chessboard"]
+[node name="B2" type="Area2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard"]
 position = Vector2( 65, 390 )
 script = ExtResource( 11 )
 
-[node name="B2_rect" type="ColorRect" parent="Panel/Chessboard/B2"]
+[node name="B2_rect" type="ColorRect" parent="Panel/HBoxContainer/CenterContainer/Chessboard/B2"]
 margin_right = 65.0
 margin_bottom = 65.0
 rect_min_size = Vector2( 50, 50 )
@@ -923,14 +948,14 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color( 0.678431, 0.741176, 0.647059, 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Chessboard/B2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard/B2"]
 shape = SubResource( 11 )
 
-[node name="C2" type="Area2D" parent="Panel/Chessboard"]
+[node name="C2" type="Area2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard"]
 position = Vector2( 130, 390 )
 script = ExtResource( 11 )
 
-[node name="C2_rect" type="ColorRect" parent="Panel/Chessboard/C2"]
+[node name="C2_rect" type="ColorRect" parent="Panel/HBoxContainer/CenterContainer/Chessboard/C2"]
 margin_right = 65.0
 margin_bottom = 65.0
 rect_min_size = Vector2( 50, 50 )
@@ -939,14 +964,14 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color( 0.0980392, 0.160784, 0.0705882, 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Chessboard/C2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard/C2"]
 shape = SubResource( 11 )
 
-[node name="D2" type="Area2D" parent="Panel/Chessboard"]
+[node name="D2" type="Area2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard"]
 position = Vector2( 195, 390 )
 script = ExtResource( 11 )
 
-[node name="D2_rect" type="ColorRect" parent="Panel/Chessboard/D2"]
+[node name="D2_rect" type="ColorRect" parent="Panel/HBoxContainer/CenterContainer/Chessboard/D2"]
 margin_right = 65.0
 margin_bottom = 65.0
 rect_min_size = Vector2( 50, 50 )
@@ -955,14 +980,14 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color( 0.678431, 0.741176, 0.647059, 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Chessboard/D2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard/D2"]
 shape = SubResource( 11 )
 
-[node name="E2" type="Area2D" parent="Panel/Chessboard"]
+[node name="E2" type="Area2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard"]
 position = Vector2( 260, 390 )
 script = ExtResource( 11 )
 
-[node name="E2_rect" type="ColorRect" parent="Panel/Chessboard/E2"]
+[node name="E2_rect" type="ColorRect" parent="Panel/HBoxContainer/CenterContainer/Chessboard/E2"]
 margin_right = 65.0
 margin_bottom = 65.0
 rect_min_size = Vector2( 50, 50 )
@@ -971,14 +996,14 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color( 0.0980392, 0.160784, 0.0705882, 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Chessboard/E2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard/E2"]
 shape = SubResource( 11 )
 
-[node name="F2" type="Area2D" parent="Panel/Chessboard"]
+[node name="F2" type="Area2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard"]
 position = Vector2( 325, 390 )
 script = ExtResource( 11 )
 
-[node name="F2_rect" type="ColorRect" parent="Panel/Chessboard/F2"]
+[node name="F2_rect" type="ColorRect" parent="Panel/HBoxContainer/CenterContainer/Chessboard/F2"]
 margin_right = 65.0
 margin_bottom = 65.0
 rect_min_size = Vector2( 50, 50 )
@@ -987,14 +1012,14 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color( 0.678431, 0.741176, 0.647059, 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Chessboard/F2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard/F2"]
 shape = SubResource( 11 )
 
-[node name="G2" type="Area2D" parent="Panel/Chessboard"]
+[node name="G2" type="Area2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard"]
 position = Vector2( 390, 390 )
 script = ExtResource( 11 )
 
-[node name="G2_rect" type="ColorRect" parent="Panel/Chessboard/G2"]
+[node name="G2_rect" type="ColorRect" parent="Panel/HBoxContainer/CenterContainer/Chessboard/G2"]
 margin_right = 65.0
 margin_bottom = 65.0
 rect_min_size = Vector2( 50, 50 )
@@ -1003,14 +1028,14 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color( 0.0980392, 0.160784, 0.0705882, 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Chessboard/G2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard/G2"]
 shape = SubResource( 11 )
 
-[node name="H2" type="Area2D" parent="Panel/Chessboard"]
+[node name="H2" type="Area2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard"]
 position = Vector2( 455, 390 )
 script = ExtResource( 11 )
 
-[node name="H2_rect" type="ColorRect" parent="Panel/Chessboard/H2"]
+[node name="H2_rect" type="ColorRect" parent="Panel/HBoxContainer/CenterContainer/Chessboard/H2"]
 margin_right = 65.0
 margin_bottom = 65.0
 rect_min_size = Vector2( 50, 50 )
@@ -1019,14 +1044,14 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color( 0.678431, 0.741176, 0.647059, 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Chessboard/H2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard/H2"]
 shape = SubResource( 11 )
 
-[node name="A1" type="Area2D" parent="Panel/Chessboard"]
+[node name="A1" type="Area2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard"]
 position = Vector2( 0, 455 )
 script = ExtResource( 11 )
 
-[node name="A1_rect" type="ColorRect" parent="Panel/Chessboard/A1"]
+[node name="A1_rect" type="ColorRect" parent="Panel/HBoxContainer/CenterContainer/Chessboard/A1"]
 margin_right = 65.0
 margin_bottom = 65.0
 rect_min_size = Vector2( 50, 50 )
@@ -1035,14 +1060,14 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color( 0.678431, 0.741176, 0.647059, 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Chessboard/A1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard/A1"]
 shape = SubResource( 11 )
 
-[node name="B1" type="Area2D" parent="Panel/Chessboard"]
+[node name="B1" type="Area2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard"]
 position = Vector2( 65, 455 )
 script = ExtResource( 11 )
 
-[node name="B1_rect" type="ColorRect" parent="Panel/Chessboard/B1"]
+[node name="B1_rect" type="ColorRect" parent="Panel/HBoxContainer/CenterContainer/Chessboard/B1"]
 margin_right = 65.0
 margin_bottom = 65.0
 rect_min_size = Vector2( 50, 50 )
@@ -1051,14 +1076,14 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color( 0.0980392, 0.160784, 0.0705882, 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Chessboard/B1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard/B1"]
 shape = SubResource( 9 )
 
-[node name="C1" type="Area2D" parent="Panel/Chessboard"]
+[node name="C1" type="Area2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard"]
 position = Vector2( 130, 455 )
 script = ExtResource( 11 )
 
-[node name="C1_rect" type="ColorRect" parent="Panel/Chessboard/C1"]
+[node name="C1_rect" type="ColorRect" parent="Panel/HBoxContainer/CenterContainer/Chessboard/C1"]
 margin_right = 65.0
 margin_bottom = 65.0
 rect_min_size = Vector2( 50, 50 )
@@ -1067,14 +1092,14 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color( 0.678431, 0.741176, 0.647059, 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Chessboard/C1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard/C1"]
 shape = SubResource( 9 )
 
-[node name="D1" type="Area2D" parent="Panel/Chessboard"]
+[node name="D1" type="Area2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard"]
 position = Vector2( 195, 455 )
 script = ExtResource( 11 )
 
-[node name="D1_rect" type="ColorRect" parent="Panel/Chessboard/D1"]
+[node name="D1_rect" type="ColorRect" parent="Panel/HBoxContainer/CenterContainer/Chessboard/D1"]
 margin_right = 65.0
 margin_bottom = 65.0
 rect_min_size = Vector2( 50, 50 )
@@ -1083,14 +1108,14 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color( 0.0980392, 0.160784, 0.0705882, 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Chessboard/D1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard/D1"]
 shape = SubResource( 9 )
 
-[node name="E1" type="Area2D" parent="Panel/Chessboard"]
+[node name="E1" type="Area2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard"]
 position = Vector2( 260, 455 )
 script = ExtResource( 11 )
 
-[node name="E1_rect" type="ColorRect" parent="Panel/Chessboard/E1"]
+[node name="E1_rect" type="ColorRect" parent="Panel/HBoxContainer/CenterContainer/Chessboard/E1"]
 margin_right = 65.0
 margin_bottom = 65.0
 rect_min_size = Vector2( 50, 50 )
@@ -1099,14 +1124,14 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color( 0.678431, 0.741176, 0.647059, 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Chessboard/E1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard/E1"]
 shape = SubResource( 9 )
 
-[node name="F1" type="Area2D" parent="Panel/Chessboard"]
+[node name="F1" type="Area2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard"]
 position = Vector2( 325, 455 )
 script = ExtResource( 11 )
 
-[node name="F1_rect" type="ColorRect" parent="Panel/Chessboard/F1"]
+[node name="F1_rect" type="ColorRect" parent="Panel/HBoxContainer/CenterContainer/Chessboard/F1"]
 margin_right = 65.0
 margin_bottom = 65.0
 rect_min_size = Vector2( 50, 50 )
@@ -1115,14 +1140,14 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color( 0.0980392, 0.160784, 0.0705882, 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Chessboard/F1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard/F1"]
 shape = SubResource( 9 )
 
-[node name="G1" type="Area2D" parent="Panel/Chessboard"]
+[node name="G1" type="Area2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard"]
 position = Vector2( 390, 455 )
 script = ExtResource( 11 )
 
-[node name="G1_rect" type="ColorRect" parent="Panel/Chessboard/G1"]
+[node name="G1_rect" type="ColorRect" parent="Panel/HBoxContainer/CenterContainer/Chessboard/G1"]
 margin_right = 65.0
 margin_bottom = 65.0
 rect_min_size = Vector2( 50, 50 )
@@ -1131,14 +1156,14 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color( 0.678431, 0.741176, 0.647059, 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Chessboard/G1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard/G1"]
 shape = SubResource( 9 )
 
-[node name="H1" type="Area2D" parent="Panel/Chessboard"]
+[node name="H1" type="Area2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard"]
 position = Vector2( 455, 455 )
 script = ExtResource( 11 )
 
-[node name="H1_rect" type="ColorRect" parent="Panel/Chessboard/H1"]
+[node name="H1_rect" type="ColorRect" parent="Panel/HBoxContainer/CenterContainer/Chessboard/H1"]
 margin_right = 65.0
 margin_bottom = 65.0
 rect_min_size = Vector2( 50, 50 )
@@ -1147,45 +1172,38 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color( 0.0980392, 0.160784, 0.0705882, 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Chessboard/H1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/HBoxContainer/CenterContainer/Chessboard/H1"]
 shape = SubResource( 12 )
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
-margin_left = 776.0
-margin_right = 1027.0
-margin_bottom = 599.0
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/HBoxContainer"]
+margin_left = 796.0
+margin_right = 1025.0
+margin_bottom = 600.0
 mouse_filter = 2
 custom_constants/separation = 0
 
-[node name="PanelContainer" type="PanelContainer" parent="Panel/VBoxContainer"]
-margin_right = 251.0
-margin_bottom = 155.0
+[node name="PanelContainer" type="PanelContainer" parent="Panel/HBoxContainer/VBoxContainer"]
+margin_right = 229.0
+margin_bottom = 153.0
 custom_styles/panel = SubResource( 2 )
 
-[node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer/PanelContainer"]
-margin_right = 251.0
-margin_bottom = 155.0
+[node name="MarginContainer" type="MarginContainer" parent="Panel/HBoxContainer/VBoxContainer/PanelContainer"]
+margin_right = 229.0
+margin_bottom = 153.0
 theme = SubResource( 3 )
 custom_constants/margin_right = 20
 custom_constants/margin_top = 20
 custom_constants/margin_left = 20
 custom_constants/margin_bottom = 20
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer/PanelContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer"]
 margin_left = 20.0
 margin_top = 20.0
-margin_right = 231.0
-margin_bottom = 135.0
+margin_right = 209.0
+margin_bottom = 133.0
 custom_constants/separation = 15
 alignment = 1
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
-margin_right = 211.0
-margin_bottom = 50.0
-custom_constants/separation = -12
-alignment = 1
-
-[node name="arrow_red_turn" type="TextureRect" parent="Panel/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="arrow_red_turn" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 margin_right = 50.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 50, 50 )
@@ -1195,33 +1213,45 @@ texture = ExtResource( 12 )
 expand = true
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="Panel/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
-margin_left = 66.0
-margin_right = 144.0
-margin_bottom = 50.0
+[node name="CloseMenuButton" type="Button" parent="Panel/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+visible = false
+margin_right = 30.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 30, 30 )
+icon = ExtResource( 22 )
+flat = true
+expand_icon = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+margin_right = 189.0
+margin_bottom = 49.0
+alignment = 1
+
+[node name="Label" type="Label" parent="Panel/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_right = 92.0
+margin_bottom = 49.0
 size_flags_horizontal = 3
 size_flags_vertical = 7
 theme = ExtResource( 10 )
 text = "01:27"
 
-[node name="Label2" type="Label" parent="Panel/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
-margin_left = 132.0
-margin_right = 211.0
-margin_bottom = 50.0
+[node name="Label2" type="Label" parent="Panel/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_left = 96.0
+margin_right = 189.0
+margin_bottom = 49.0
 size_flags_horizontal = 3
 size_flags_vertical = 7
 theme = ExtResource( 10 )
 text = "CONSTANT_RED"
 clip_text = true
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
-margin_top = 65.0
-margin_right = 211.0
-margin_bottom = 115.0
-custom_constants/separation = -12
+[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+margin_top = 64.0
+margin_right = 189.0
+margin_bottom = 113.0
 alignment = 1
 
-[node name="arrow_white_turn" type="TextureRect" parent="Panel/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="arrow_white_turn" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
 margin_right = 50.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 50, 50 )
@@ -1231,38 +1261,38 @@ texture = ExtResource( 12 )
 expand = true
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="Panel/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
-margin_left = 66.0
-margin_right = 144.0
-margin_bottom = 50.0
+
+[node name="Label" type="Label" parent="Panel/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+margin_right = 92.0
+margin_bottom = 49.0
 size_flags_horizontal = 3
 size_flags_vertical = 7
 theme = ExtResource( 10 )
 text = "01:27"
 
-[node name="Label2" type="Label" parent="Panel/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
-margin_left = 132.0
-margin_right = 211.0
-margin_bottom = 50.0
+[node name="Label2" type="Label" parent="Panel/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+margin_left = 96.0
+margin_right = 189.0
+margin_bottom = 49.0
 size_flags_horizontal = 3
 size_flags_vertical = 7
 theme = ExtResource( 10 )
 text = "CONSTANT_WHITE"
 clip_text = true
 
-[node name="PanelContainer2" type="PanelContainer" parent="Panel/VBoxContainer"]
-margin_top = 155.0
-margin_right = 251.0
-margin_bottom = 529.0
+[node name="PanelContainer2" type="PanelContainer" parent="Panel/HBoxContainer/VBoxContainer"]
+margin_top = 153.0
+margin_right = 229.0
+margin_bottom = 530.0
 size_flags_vertical = 3
 custom_styles/panel = SubResource( 4 )
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer/PanelContainer2"]
-margin_right = 251.0
-margin_bottom = 374.0
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/HBoxContainer/VBoxContainer/PanelContainer2"]
+margin_right = 229.0
+margin_bottom = 377.0
 
-[node name="Label" type="Label" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer"]
-margin_right = 251.0
+[node name="Label" type="Label" parent="Panel/HBoxContainer/VBoxContainer/PanelContainer2/VBoxContainer"]
+margin_right = 229.0
 margin_bottom = 49.0
 theme = ExtResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
@@ -1270,54 +1300,53 @@ text = "CHESS_GAME_HISTORY"
 align = 1
 clip_text = true
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/HBoxContainer/VBoxContainer/PanelContainer2/VBoxContainer"]
 margin_top = 53.0
-margin_right = 251.0
-margin_bottom = 374.0
+margin_right = 229.0
+margin_bottom = 377.0
 size_flags_vertical = 3
 scroll_horizontal_enabled = false
 
-[node name="History" type="VBoxContainer" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/ScrollContainer"]
+[node name="History" type="VBoxContainer" parent="Panel/HBoxContainer/VBoxContainer/PanelContainer2/VBoxContainer/ScrollContainer"]
 margin_right = 251.0
 margin_bottom = 321.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="UndoStackContents" type="Label" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/ScrollContainer/History"]
+[node name="UndoStackContents" type="Label" parent="Panel/HBoxContainer/VBoxContainer/PanelContainer2/VBoxContainer/ScrollContainer/History"]
 margin_right = 251.0
 margin_bottom = 38.0
 theme = ExtResource( 8 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 
-[node name="RedoStackContents" type="Label" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/ScrollContainer/History"]
+[node name="RedoStackContents" type="Label" parent="Panel/HBoxContainer/VBoxContainer/PanelContainer2/VBoxContainer/ScrollContainer/History"]
 margin_top = 42.0
 margin_right = 251.0
 margin_bottom = 80.0
 theme = ExtResource( 8 )
 custom_colors/font_color = Color( 0.588235, 0.588235, 0.588235, 1 )
 
-[node name="PanelContainer3" type="PanelContainer" parent="Panel/VBoxContainer"]
-margin_top = 529.0
-margin_right = 251.0
-margin_bottom = 599.0
+[node name="PanelContainer3" type="PanelContainer" parent="Panel/HBoxContainer/VBoxContainer"]
+margin_top = 530.0
+margin_right = 229.0
+margin_bottom = 600.0
 custom_styles/panel = SubResource( 5 )
 
-[node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer/PanelContainer3"]
-margin_right = 251.0
+[node name="MarginContainer" type="MarginContainer" parent="Panel/HBoxContainer/VBoxContainer/PanelContainer3"]
+margin_right = 229.0
 margin_bottom = 70.0
 custom_constants/margin_top = 15
 custom_constants/margin_bottom = 15
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer/PanelContainer3/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/HBoxContainer/VBoxContainer/PanelContainer3/MarginContainer"]
 margin_top = 15.0
-margin_right = 251.0
+margin_right = 229.0
 margin_bottom = 55.0
 custom_constants/separation = 23
 alignment = 1
 
-[node name="UndoButton" type="Button" parent="Panel/VBoxContainer/PanelContainer3/MarginContainer/HBoxContainer"]
-margin_left = 11.0
-margin_right = 51.0
+[node name="UndoButton" type="Button" parent="Panel/HBoxContainer/VBoxContainer/PanelContainer3/MarginContainer/HBoxContainer"]
+margin_right = 40.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 40, 40 )
 hint_tooltip = "ACTIVE_GAME_UNDO_BUTTON_TOOLTIP"
@@ -1329,9 +1358,9 @@ shortcut = SubResource( 16 )
 icon = ExtResource( 3 )
 expand_icon = true
 
-[node name="RedoButton" type="Button" parent="Panel/VBoxContainer/PanelContainer3/MarginContainer/HBoxContainer"]
-margin_left = 74.0
-margin_right = 114.0
+[node name="RedoButton" type="Button" parent="Panel/HBoxContainer/VBoxContainer/PanelContainer3/MarginContainer/HBoxContainer"]
+margin_left = 63.0
+margin_right = 103.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 40, 40 )
 hint_tooltip = "ACTIVE_GAME_REDO_BUTTON_TOOLTIP"
@@ -1343,9 +1372,9 @@ shortcut = SubResource( 19 )
 icon = ExtResource( 5 )
 expand_icon = true
 
-[node name="SaveButton" type="Button" parent="Panel/VBoxContainer/PanelContainer3/MarginContainer/HBoxContainer"]
-margin_left = 137.0
-margin_right = 177.0
+[node name="SaveButton" type="Button" parent="Panel/HBoxContainer/VBoxContainer/PanelContainer3/MarginContainer/HBoxContainer"]
+margin_left = 126.0
+margin_right = 166.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 40, 40 )
 hint_tooltip = "ACTIVE_GAME_SAVE_BUTTON_TOOLTIP"
@@ -1355,9 +1384,9 @@ custom_styles/normal = SubResource( 14 )
 icon = ExtResource( 4 )
 expand_icon = true
 
-[node name="ExitButton" type="Button" parent="Panel/VBoxContainer/PanelContainer3/MarginContainer/HBoxContainer"]
-margin_left = 200.0
-margin_right = 240.0
+[node name="ExitButton" type="Button" parent="Panel/HBoxContainer/VBoxContainer/PanelContainer3/MarginContainer/HBoxContainer"]
+margin_left = 189.0
+margin_right = 229.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 40, 40 )
 hint_tooltip = "ACTIVE_GAME_EXIT_BUTTON_TOOLTIP"
@@ -1368,7 +1397,7 @@ icon = ExtResource( 2 )
 expand_icon = true
 script = ExtResource( 9 )
 
-[node name="ExitConfirmationPopup" type="ConfirmationDialog" parent="Panel/VBoxContainer/PanelContainer3/MarginContainer/HBoxContainer/ExitButton"]
+[node name="ExitConfirmationPopup" type="ConfirmationDialog" parent="Panel/HBoxContainer/VBoxContainer/PanelContainer3/MarginContainer/HBoxContainer/ExitButton"]
 margin_left = -529.0
 margin_top = -290.0
 margin_right = -320.0
@@ -1414,6 +1443,16 @@ custom_styles/hover = SubResource( 13 )
 custom_styles/pressed = SubResource( 21 )
 custom_styles/normal = SubResource( 14 )
 icon = ExtResource( 6 )
+expand_icon = true
+
+[node name="RightMenuButton" type="Button" parent="Panel/HBoxContainer"]
+visible = false
+margin_left = 975.0
+margin_right = 1025.0
+margin_bottom = 600.0
+rect_min_size = Vector2( 50, 50 )
+icon = ExtResource( 21 )
+flat = true
 expand_icon = true
 
 [node name="ButtonPress" type="AudioStreamPlayer" parent="."]
@@ -1885,7 +1924,9 @@ You can now either keep playing or use the exit button to return to the main men
 Good luck!"
 autowrap = true
 
-[connection signal="pressed" from="Panel/VBoxContainer/PanelContainer3/MarginContainer/HBoxContainer/UndoButton" to="." method="_on_UndoButton_pressed"]
-[connection signal="pressed" from="Panel/VBoxContainer/PanelContainer3/MarginContainer/HBoxContainer/RedoButton" to="." method="_on_RedoButton_pressed"]
 [connection signal="pressed" from="Panel/MuteContainer/Mute" to="Panel/MuteContainer" method="_on_Mute_pressed"]
 [connection signal="pressed" from="Panel/MuteContainer/Unmute" to="Panel/MuteContainer" method="_on_Unmute_pressed"]
+[connection signal="pressed" from="Panel/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/CloseMenuButton" to="." method="_on_CloseMenuButton_pressed"]
+[connection signal="pressed" from="Panel/HBoxContainer/VBoxContainer/PanelContainer3/MarginContainer/HBoxContainer/UndoButton" to="." method="_on_UndoButton_pressed"]
+[connection signal="pressed" from="Panel/HBoxContainer/VBoxContainer/PanelContainer3/MarginContainer/HBoxContainer/RedoButton" to="." method="_on_RedoButton_pressed"]
+[connection signal="pressed" from="Panel/HBoxContainer/RightMenuButton" to="." method="_on_RightMenuButton_pressed"]

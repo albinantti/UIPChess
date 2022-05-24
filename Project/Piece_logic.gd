@@ -35,6 +35,7 @@ func _is_white()->bool:
 	return true
 
 func _input_event(viewport, event, shape_idx):
+	print("hejjl")
 	if  event is InputEventMouseButton and event.pressed and event.button_index == BUTTON_LEFT:
 		emit_signal('piece_chosen', self)
 		piece_chosen = true
