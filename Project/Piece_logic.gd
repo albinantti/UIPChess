@@ -5,6 +5,9 @@ var piece_chosen = false
 
 var velocity = Vector2()
 
+var white_turn = 0 
+var red_turn = 1
+var turn = white_turn
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -25,9 +28,19 @@ func _process(state):
 #		print(self.name)
 #		emit_signal('piece_chosen', self.name)
 
-func _move_piece(new_position, chosen_piece):
+func _is_white()->bool: 
+	if self.name.left(1) == "W":
+		return true
+	return false
+	
+func _move_piece(new_position, chosen_piece, curr_turn):
+	turn = curr_turn 
 	if chosen_piece.name == self.name:
-		self.modulate = Color(1,1,1,1)
+		print("move!")
+		if _is_white(): 
+			self.modulate = Color(1,1,1,1)
+		else: 
+			self.modulate = Color(0.89, 0.21, 0.21, 1)
 		piece_chosen = false
 		var TweenNode = get_node("Tween")
 		TweenNode.interpolate_property(
@@ -35,7 +48,7 @@ func _move_piece(new_position, chosen_piece):
 			2, Tween.TRANS_EXPO, Tween.EASE_IN_OUT
 		)
 		TweenNode.start()
-	elif new_position == self.get_position():
+	elif new_position == self.get_position() :
 		self.input_pickable = false
 		var t = Timer.new()
 		t.set_wait_time(1)
@@ -47,18 +60,18 @@ func _move_piece(new_position, chosen_piece):
 
 func _input_event(viewport, event, shape_idx):
 	if  event is InputEventMouseButton and event.pressed and event.button_index == BUTTON_LEFT:
-		self.modulate = Color(0.90,0.50,0.04,1)
 		emit_signal('piece_chosen', self)
 		piece_chosen = true
 
 ## Hovering over piece
 func _mouse_enter():
-	self.modulate = Color(0.89,0.67,0.09,1) #light orange
+	if (turn==white_turn and _is_white()) or (turn==red_turn and !_is_white()):
+		self.modulate = Color(0.89,0.67,0.09,1) #light orange
 
 ## Hovering over piece, exiting piece
 func _mouse_exit():
 	if !piece_chosen:
-		if self.name.left(1) == "W": #if first letter is W (White) go back to white
+		if turn==white_turn and _is_white(): #if first letter is W (White) go back to white
 			self.modulate = Color(1, 1, 1, 1) #white 
-		else:
+		elif turn==red_turn and !_is_white():
 			self.modulate = Color(0.89, 0.21, 0.21, 1) #red

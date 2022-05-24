@@ -1,7 +1,12 @@
 extends Node2D
 
 var chosen_piece
-signal square_pos(pos,chosen_piece)
+
+var white_turn = 0
+var red_turn = 1
+var turn = white_turn
+
+signal square_pos(pos, chosen_piece, new_turn)
 #signal move_piece(piece_name, target_pos)
 
 var pawn = preload("res://Resources/ChessPieces/pawn.svg")
@@ -61,15 +66,56 @@ func _create_collisionshape(node: Node, sprite_x:float, sprite_y:float)->Collisi
 	return collisionShape
 
 func _chosen_piece(piece):
-	if piece != chosen_piece and piece.input_pickable and chosen_piece==null: 
+	print("Ive chosen" + piece.name)
+	if chosen_piece == null: 
 		chosen_piece = piece
-		print("chosen piece ", chosen_piece.name)
+	elif piece != chosen_piece and piece.input_pickable and _is_same_color(chosen_piece,piece): 
+		var is_white = _is_white_piece(piece)
+		if turn==white_turn and is_white:  
+			chosen_piece = piece
+			piece.modulate = Color(0.90,0.50,0.04,1)
+			print("chosen piece is white", chosen_piece.name)
+		elif turn==red_turn and !is_white:
+			chosen_piece = piece
+			piece.modulate = Color(0.90,0.50,0.04,1)
+			print("chosen piece is white", chosen_piece.name)
+			
+func _is_same_color(chosen_piece,piece)->bool:
+	if _is_white_piece(chosen_piece) and _is_white_piece(piece): 
+		return true
+	if !_is_white_piece(chosen_piece) and !_is_white_piece(piece): 
+		return true
+	return false
 
+func _is_white_piece(piece)->bool:
+	if piece.name.left(1) == "W":
+		return true 
+	return false
 
 func _send_position(square):
-	if chosen_piece != null and square.get_position() != chosen_piece.get_position():
-		emit_signal("square_pos", square.get_position(), chosen_piece) #to piece with pos
-		chosen_piece = null
+	if chosen_piece != null:
+		if square.get_position() != chosen_piece.get_position():
+			_change_turn() #when a piece has moved, change turn
+			emit_signal("square_pos", square.get_position(), chosen_piece, turn) #to piece with pos
+			chosen_piece = null
+		
+	
+func _change_turn(): 
+	var arrow_red = self.get_node("Panel/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/arrow_red_turn")
+	var arrow_white = self.get_node("Panel/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/arrow_white_turn")
+	
+	if turn==white_turn: #change to reds turn
+		arrow_white.visible = false
+		arrow_red.visible = true
+		turn = red_turn
+		 
+	else: #change to whites turn
+		arrow_white.visible = true
+		arrow_red.visible = false	
+		turn = white_turn		
+
+func get_turn(): 
+	return turn 
 	
 func _connect_piece_to_game_manager(piece_name):
 	var dir = "Panel/Chessboard/" + piece_name
@@ -167,3 +213,7 @@ func _ready():
 		_connect_square_to_game_manager(square.name)
 
 	_place_all_pieces(chessboard)
+	
+	#set the first turn to white players turn 
+	var arrow_red = self.get_node("Panel/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/arrow_red_turn")
+	arrow_red.visible = false
