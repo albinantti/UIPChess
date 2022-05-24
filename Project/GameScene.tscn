@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Resources/Themes/Fonts/font_Game_40.tres" type="Theme" id=1]
 [ext_resource path="res://Resources/images/exit.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://GameScene.gd" type="Script" id=7]
 [ext_resource path="res://Resources/ChessPieces/bishop.svg" type="Texture" id=8]
 [ext_resource path="res://Resources/images/arrow.png" type="Texture" id=9]
+[ext_resource path="res://Resources/Themes/Fonts/font_turn.tres" type="Theme" id=10]
 [ext_resource path="res://Square_logic.gd" type="Script" id=11]
 
 [sub_resource type="StyleBoxFlat" id=1]
@@ -1111,6 +1112,7 @@ alignment = 1
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
 margin_right = 211.0
 margin_bottom = 50.0
+custom_constants/separation = -12
 alignment = 1
 
 [node name="arrow_red_turn" type="TextureRect" parent="Panel/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
@@ -1124,21 +1126,21 @@ expand = true
 stretch_mode = 5
 
 [node name="Label" type="Label" parent="Panel/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
-margin_left = 61.0
-margin_right = 150.0
+margin_left = 66.0
+margin_right = 144.0
 margin_bottom = 50.0
 size_flags_horizontal = 3
 size_flags_vertical = 7
-theme = ExtResource( 1 )
+theme = ExtResource( 10 )
 text = "01:27"
 
 [node name="Label2" type="Label" parent="Panel/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
-margin_left = 154.0
+margin_left = 132.0
 margin_right = 211.0
 margin_bottom = 50.0
 size_flags_horizontal = 3
 size_flags_vertical = 7
-theme = ExtResource( 1 )
+theme = ExtResource( 10 )
 text = "CONSTANT_RED"
 clip_text = true
 
@@ -1146,6 +1148,7 @@ clip_text = true
 margin_top = 65.0
 margin_right = 211.0
 margin_bottom = 115.0
+custom_constants/separation = -12
 alignment = 1
 
 [node name="arrow_white_turn" type="TextureRect" parent="Panel/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
@@ -1159,21 +1162,21 @@ expand = true
 stretch_mode = 5
 
 [node name="Label" type="Label" parent="Panel/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
-margin_left = 61.0
-margin_right = 150.0
+margin_left = 66.0
+margin_right = 144.0
 margin_bottom = 50.0
 size_flags_horizontal = 3
 size_flags_vertical = 7
-theme = ExtResource( 1 )
+theme = ExtResource( 10 )
 text = "01:27"
 
 [node name="Label2" type="Label" parent="Panel/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
-margin_left = 154.0
+margin_left = 132.0
 margin_right = 211.0
 margin_bottom = 50.0
 size_flags_horizontal = 3
 size_flags_vertical = 7
-theme = ExtResource( 1 )
+theme = ExtResource( 10 )
 text = "CONSTANT_WHITE"
 clip_text = true
 

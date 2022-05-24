@@ -1,6 +1,7 @@
 extends Area2D
 
 signal piece_chosen(piece)
+
 var piece_chosen = false
 
 var velocity = Vector2()
@@ -29,34 +30,9 @@ func _process(state):
 #		emit_signal('piece_chosen', self.name)
 
 func _is_white()->bool: 
-	if self.name.left(1) == "W":
-		return true
-	return false
-	
-func _move_piece(new_position, chosen_piece, curr_turn):
-	turn = curr_turn 
-	if chosen_piece.name == self.name:
-		print("move!")
-		if _is_white(): 
-			self.modulate = Color(1,1,1,1)
-		else: 
-			self.modulate = Color(0.89, 0.21, 0.21, 1)
-		piece_chosen = false
-		var TweenNode = get_node("Tween")
-		TweenNode.interpolate_property(
-			self, "position", get_position(), new_position, 
-			2, Tween.TRANS_EXPO, Tween.EASE_IN_OUT
-		)
-		TweenNode.start()
-	elif new_position == self.get_position() :
-		self.input_pickable = false
-		var t = Timer.new()
-		t.set_wait_time(1)
-		add_child(t)
-		t.start()
-		yield(t, "timeout")
-		self.visible = false
-		self.input_pickable = false
+	if self.name.left(1) == "R":
+		return false
+	return true
 
 func _input_event(viewport, event, shape_idx):
 	if  event is InputEventMouseButton and event.pressed and event.button_index == BUTTON_LEFT:
@@ -65,13 +41,13 @@ func _input_event(viewport, event, shape_idx):
 
 ## Hovering over piece
 func _mouse_enter():
-	if (turn==white_turn and _is_white()) or (turn==red_turn and !_is_white()):
+	if self.modulate != Color(0.90,0.50,0.04,1): #piece not chosen
 		self.modulate = Color(0.89,0.67,0.09,1) #light orange
 
 ## Hovering over piece, exiting piece
 func _mouse_exit():
-	if !piece_chosen:
-		if turn==white_turn and _is_white(): #if first letter is W (White) go back to white
+	if self.modulate != Color(0.90,0.50,0.04,1): #piece not chosen
+		if  _is_white(): #if first letter is W (White) go back to white
 			self.modulate = Color(1, 1, 1, 1) #white 
-		elif turn==red_turn and !_is_white():
+		elif !_is_white():
 			self.modulate = Color(0.89, 0.21, 0.21, 1) #red

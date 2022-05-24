@@ -5,9 +5,9 @@ var chosen_piece
 var white_turn = 0
 var red_turn = 1
 var turn = white_turn
+var is_moving = false 
 
-signal square_pos(pos, chosen_piece, new_turn)
-#signal move_piece(piece_name, target_pos)
+signal check_positon_against_piece(position_of_square)
 
 var pawn = preload("res://Resources/ChessPieces/pawn.svg")
 var rook = preload("res://Resources/ChessPieces/rook.svg")
@@ -65,58 +65,135 @@ func _create_collisionshape(node: Node, sprite_x:float, sprite_y:float)->Collisi
 	collisionShape.set_shape(shape)
 	return collisionShape
 
-func _chosen_piece(piece):
-	print("Ive chosen" + piece.name)
-	if chosen_piece == null: 
-		chosen_piece = piece
-	elif piece != chosen_piece and piece.input_pickable and _is_same_color(chosen_piece,piece): 
-		var is_white = _is_white_piece(piece)
-		if turn==white_turn and is_white:  
-			chosen_piece = piece
-			piece.modulate = Color(0.90,0.50,0.04,1)
-			print("chosen piece is white", chosen_piece.name)
-		elif turn==red_turn and !is_white:
-			chosen_piece = piece
-			piece.modulate = Color(0.90,0.50,0.04,1)
-			print("chosen piece is white", chosen_piece.name)
-			
-func _is_same_color(chosen_piece,piece)->bool:
-	if _is_white_piece(chosen_piece) and _is_white_piece(piece): 
+##-----------Help functions--------------
+func _is_same_color(piece1,piece2)->bool:
+	if piece1==null or piece2==null:
+		return false
+	if _is_white_piece(piece1) and _is_white_piece(piece2): 
 		return true
-	if !_is_white_piece(chosen_piece) and !_is_white_piece(piece): 
+	if !_is_white_piece(piece1) and !_is_white_piece(piece2): 
 		return true
 	return false
 
 func _is_white_piece(piece)->bool:
+	if piece == null: 
+		return false
 	if piece.name.left(1) == "W":
 		return true 
 	return false
 
-func _send_position(square):
-	if chosen_piece != null:
-		if square.get_position() != chosen_piece.get_position():
-			_change_turn() #when a piece has moved, change turn
-			emit_signal("square_pos", square.get_position(), chosen_piece, turn) #to piece with pos
-			chosen_piece = null
-		
-	
-func _change_turn(): 
-	var arrow_red = self.get_node("Panel/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/arrow_red_turn")
-	var arrow_white = self.get_node("Panel/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/arrow_white_turn")
-	
-	if turn==white_turn: #change to reds turn
-		arrow_white.visible = false
-		arrow_red.visible = true
-		turn = red_turn
-		 
-	else: #change to whites turn
-		arrow_white.visible = true
-		arrow_red.visible = false	
-		turn = white_turn		
+func _is_red_piece(piece)->bool:
+	if piece == null: 
+		return false
+	if piece.name.left(1) == "R":
+		return true 
+	return false
 
-func get_turn(): 
-	return turn 
+func _get_arr_pieces()->Array: 
+	var chessboard = get_node("Panel/Chessboard")
+	var children = chessboard.get_children()
 	
+	var pieces = []
+	for child in children: 
+		if child.visible and (_is_white_piece(child) or _is_red_piece(child)): 
+			pieces.append(child)
+	return pieces
+
+func _reset_chosen_piece_color(): 
+	if _is_white_piece(chosen_piece): 
+		chosen_piece.modulate = Color(1, 1, 1, 1)
+	else: 
+		chosen_piece.modulate = Color(0.89, 0.21, 0.21, 1)
+#------------------------------------
+
+## Listens on inputed piece from "Piece_logic.gd"
+func _chosen_piece(piece):
+	if !is_moving: 
+		_set_chosen_piece(piece)
+
+## Sets the variable "Chosen_piece"
+func _set_chosen_piece(piece): 
+	var is_white = _is_white_piece(piece)
+	# if it is the first time this round that chosen_piece is set
+	# can only choose a piece that is the same color as the turn 
+	if chosen_piece == null and ((turn==white_turn and is_white) or (turn==red_turn and !is_white)): 
+		chosen_piece = piece 
+		chosen_piece.modulate = Color(0.90,0.50,0.04,1)
+	# if there already is a chosen piece, choose another piece to attack with 
+	elif chosen_piece != null and _is_same_color(chosen_piece, piece): 
+		if _is_white_piece(chosen_piece):
+			chosen_piece.modulate = Color(1, 1, 1, 1)
+		else:
+			chosen_piece.modulate = Color(0.89, 0.21, 0.21, 1)
+		chosen_piece = piece # set the new chosen piece to chosen_piece
+		chosen_piece.modulate = Color(0.90,0.50,0.04,1) 		
+
+## Listens on inputed square from "Square_logic.gd"
+func _send_position(square):
+	# if there are a piece to move and the position to move it to is not it´s own 
+	if !is_moving and chosen_piece != null and square.get_position() != chosen_piece.get_position(): 
+		_move_piece(square)
+
+## Moves the chosen piece to the destination 
+func _move_piece(square):
+	if !is_moving: 
+		var new_position = square.get_position()
+		var des_piece = _check_after_piece_on_des(new_position)
+		#if there are no piece on the des or if the piece on the des is an opponent piece 
+		if  des_piece == null or !_is_same_color(chosen_piece,des_piece):
+			_reset_chosen_piece_color()
+			var TweenNode = chosen_piece.get_node("Tween")
+			TweenNode.interpolate_property(
+				chosen_piece, "position", chosen_piece.get_position(), new_position, 
+				2, Tween.TRANS_EXPO, Tween.EASE_IN_OUT
+			)
+			TweenNode.start()
+			is_moving = true
+			if des_piece != null: #there is a target opponent piece
+				var t = Timer.new()
+				t.set_wait_time(1)
+				add_child(t)
+				t.start()
+				yield(t, "timeout")
+				des_piece.visible = false
+				des_piece.input_pickable = false
+			#_change_turn() #has to be here so that turn changes only when piece has disapeared 
+								#can otherwise be chosed as a target
+		else: 
+			_set_chosen_piece(des_piece) #change the chosen_piece to the new chosen piece
+
+# Checks if there is a piece on the destination square, 
+# returns the piece if it finds it, else null
+func _check_after_piece_on_des(des_position)->Area2D:
+	var pieces_arr = _get_arr_pieces()
+	var piece = _check_if_same_pos(pieces_arr, des_position)
+	return piece 
+
+# Checks if any of the pieces has the same position as the destination square
+# if there are: return the piece, else null 
+func _check_if_same_pos(pieces, pos)->Area2D: 
+	for piece in pieces: 
+		if piece.get_position() == pos: 
+			return piece
+	return null
+
+func _change_turn(object, key): 
+	if chosen_piece == object:
+		var arrow_red = self.get_node("Panel/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/arrow_red_turn")
+		var arrow_white = self.get_node("Panel/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/arrow_white_turn")
+		
+		if turn==white_turn: #change to reds turn
+			arrow_white.visible = false
+			arrow_red.visible = true
+			turn = red_turn
+			 
+		else: #change to whites turn
+			arrow_white.visible = true
+			arrow_red.visible = false	
+			turn = white_turn	
+		chosen_piece = null	
+		is_moving = false
+
 func _connect_piece_to_game_manager(piece_name):
 	var dir = "Panel/Chessboard/" + piece_name
 	var piece = get_node(dir)
@@ -127,11 +204,12 @@ func _connect_square_to_game_manager(square_name):
 	var square = get_node(dir)
 	square.connect("square_chosen", self, "_send_position")
 
-func _connect_send_square_position(piece_name):
+func _connect_tween_to_game_manager(piece_name): 
 	var dir = "Panel/Chessboard/" + piece_name
 	var piece = get_node(dir)
-	self.connect("square_pos", piece, "_move_piece")
-
+	var tween = piece.get_node("Tween")
+	tween.connect("tween_completed", self, "_change_turn")
+	
 func _place_all_pieces(chessboard):
 	var all_pieces = {
 		"white_pawns": {
@@ -204,7 +282,7 @@ func _place_all_pieces(chessboard):
 			var piece_name = current_pieces.name_prefix + str(counter)
 			place_piece(chessboard, node_name, current_pieces['texture'], piece_name)
 			_connect_piece_to_game_manager(piece_name)
-			_connect_send_square_position(piece_name)
+			_connect_tween_to_game_manager(piece_name)
 			counter += 1
 
 func _ready():
