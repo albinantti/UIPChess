@@ -41,6 +41,7 @@ func place_piece(chessboard: Node, node_name: String, texture: Resource, piece_n
 	# Add Tween for movement animation
 	var tween = Tween.new()
 	tween.name = "Tween"
+	tween.set_speed_scale(5.0)
 
 	area2d.add_child(collisionShape)
 	area2d.add_child(sprite)
@@ -82,6 +83,7 @@ func _send_position(square):
 		redo_stack.clear()
 		chosen_piece = null
 		_refresh_history_panel()
+		self.get_node("PieceSwipe").play()
 
 func _connect_piece_to_game_manager(piece_name):
 	var dir = "Panel/Chessboard/" + piece_name
@@ -182,6 +184,38 @@ func _ready():
 
 	_place_all_pieces(chessboard)
 
+		# when _ready is called, there might already be nodes in the tree, so connect all existing buttons
+	connect_buttons(get_tree().root)
+	var error_code = get_tree().connect("node_added", self, "_on_SceneTree_node_added")
+	if error_code != OK:
+		print("ERROR: ", error_code)
+
+
+func _on_SceneTree_node_added(node):
+	if node is Button:
+		connect_to_button(node)
+
+# recursively connect all buttons
+func connect_buttons(root):
+	for child in root.get_children():
+		if child is BaseButton:
+			connect_to_button(child)
+		connect_buttons(child)
+
+func connect_to_button(button):
+	var error_code = button.connect("pressed", self, "_on_Button_pressed")
+	if error_code != OK:
+		print("ERROR: ", error_code)
+
+
+func _on_Button_pressed():
+	self._play_button_pressed_sound()
+
+
+func _play_button_pressed_sound():
+	self.get_node("ButtonPress").play()
+
+
 ## Undoes the previous move if do_undo is true, if any.
 ## Otherwise it redos the latest move that was undone, if any.
 func _undo_redo(do_undo: bool):
@@ -205,6 +239,7 @@ func _undo_redo(do_undo: bool):
 			secondary_stack.append(move)
 		else:
 			primary_stack.append(move)
+		self.get_node("PiecePlace").play()
 	_refresh_history_panel()
 
 
