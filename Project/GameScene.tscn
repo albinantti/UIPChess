@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Resources/Themes/Fonts/font_Game_40.tres" type="Theme" id=1]
 [ext_resource path="res://Resources/images/exit.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Resources/images/redo.png" type="Texture" id=5]
 [ext_resource path="res://Resources/images/mute.png" type="Texture" id=6]
 [ext_resource path="res://GameScene.gd" type="Script" id=7]
+[ext_resource path="res://Resources/sounds/ButtonPress.wav" type="AudioStream" id=8]
 [ext_resource path="res://ExitActiveGameButton.gd" type="Script" id=9]
 [ext_resource path="res://Square_logic.gd" type="Script" id=11]
 
@@ -63,6 +64,11 @@ shortcut = SubResource( 18 )
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 7 )
+
+[node name="ButtonPressedSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+pitch_scale = 1.2
+mix_target = 2
 
 [node name="Panel" type="Panel" parent="."]
 margin_right = 1027.0

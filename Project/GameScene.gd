@@ -178,6 +178,21 @@ func _ready():
 		_connect_square_to_game_manager(square.name)
 
 	_place_all_pieces(chessboard)
+	connect_buttons(get_tree().root)
+
+
+# recursively connect all buttons
+func connect_buttons(root):
+	for child in root.get_children():
+		if child is BaseButton:
+			var error_code = child.connect("pressed", self, "_on_Button_pressed")
+			if error_code != OK:
+				print("ERROR: ", error_code)
+		connect_buttons(child)
+
+func _on_Button_pressed():
+	print("pressed")
+	self.get_node("ButtonPressedSound").play()
 
 ## Undoes the previous move if do_undo is true, if any.
 ## Otherwise it redos the latest move that was undone, if any.
