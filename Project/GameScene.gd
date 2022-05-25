@@ -188,22 +188,27 @@ func _check_if_same_pos(pieces, pos)->Area2D:
 			return piece
 	return null
 
-func _change_turn(object, key):
+func _change_turn(object, _key):
 	if chosen_piece == object:
-		var arrow_red = self.get_node("Panel/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/arrow_red_turn")
-		var arrow_white = self.get_node("Panel/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/arrow_white_turn")
+		_change_turn_helper()
 
-		if turn==white_turn: #change to reds turn
-			arrow_white.visible = false
-			arrow_red.visible = true
-			turn = red_turn
-
-		else: #change to whites turn
-			arrow_white.visible = true
-			arrow_red.visible = false
-			turn = white_turn
 		chosen_piece = null
 		is_moving = false
+
+
+func _change_turn_helper():
+	var arrow_red = self.get_node("Panel/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/arrow_red_turn")
+	var arrow_white = self.get_node("Panel/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/arrow_white_turn")
+
+	if turn==white_turn: #change to reds turn
+		arrow_white.visible = false
+		arrow_red.visible = true
+		turn = red_turn
+
+	else: #change to whites turn
+		arrow_white.visible = true
+		arrow_red.visible = false
+		turn = white_turn
 
 
 func _connect_piece_to_game_manager(piece_name):
@@ -365,24 +370,33 @@ func _undo_redo(do_undo: bool):
 		else:
 			primary_stack.append(move)
 		self.get_node("PiecePlace").play()
+		_change_turn_helper()
 	_refresh_history_panel()
 
 
 func _refresh_history_panel():
-	var round_counter = 1
+	var round_counter = 1.0
 	var output = ""
 	for line in undo_stack:
-		output += "  " + str(round_counter) + ". " + _format_unredo_stack_line(line)
-		round_counter += 1
+		output += _format_round_counter(round_counter) + _format_unredo_stack_line(line)
+		round_counter += 0.5
 	self.get_node("Panel/VBoxContainer/PanelContainer2/VBoxContainer/ScrollContainer/History/UndoStackContents").set_text(output)
 
 	output = ""
 	var redo_stack_inverted = redo_stack
 	redo_stack_inverted.invert()
 	for line in redo_stack_inverted:
-		output += "  " + str(round_counter) + ". " + _format_unredo_stack_line(line)
-		round_counter += 1
+		output +=  _format_round_counter(round_counter) + _format_unredo_stack_line(line)
+		round_counter += 0.5
 	self.get_node("Panel/VBoxContainer/PanelContainer2/VBoxContainer/ScrollContainer/History/RedoStackContents").set_text(output)
+
+
+func _format_round_counter(counter):
+	# Returns a correct round counter string to be used in refresh history panel
+	if (fmod(counter, 1.0) == 0.0):
+		return "  " + str(floor(counter)) + "W. "
+	return "  " + str(floor(counter)) + "R. "
+
 
 func _format_unredo_stack_line(line):
 	# Formats a line from the undo/redo stack to be listed in the history panel
