@@ -119,6 +119,7 @@ custom_styles/panel = SubResource( 1 )
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
 margin_right = 1025.0
 margin_bottom = 599.0
+mouse_filter = 2
 
 [node name="MuteButton" type="TextureRect" parent="Panel/HBoxContainer"]
 margin_right = 50.0
@@ -133,6 +134,7 @@ margin_left = 54.0
 margin_right = 792.0
 margin_bottom = 600.0
 rect_min_size = Vector2( 600, 600 )
+mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -1184,12 +1186,12 @@ custom_constants/separation = 0
 
 [node name="PanelContainer" type="PanelContainer" parent="Panel/HBoxContainer/VBoxContainer"]
 margin_right = 229.0
-margin_bottom = 153.0
+margin_bottom = 155.0
 custom_styles/panel = SubResource( 2 )
 
 [node name="MarginContainer" type="MarginContainer" parent="Panel/HBoxContainer/VBoxContainer/PanelContainer"]
 margin_right = 229.0
-margin_bottom = 153.0
+margin_bottom = 155.0
 theme = SubResource( 3 )
 custom_constants/margin_right = 20
 custom_constants/margin_top = 20
@@ -1200,18 +1202,9 @@ custom_constants/margin_bottom = 20
 margin_left = 20.0
 margin_top = 20.0
 margin_right = 209.0
-margin_bottom = 133.0
+margin_bottom = 135.0
 custom_constants/separation = 15
 alignment = 1
-[node name="arrow_red_turn" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
-margin_right = 50.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 50, 50 )
-size_flags_horizontal = 2
-size_flags_vertical = 0
-texture = ExtResource( 12 )
-expand = true
-stretch_mode = 5
 
 [node name="CloseMenuButton" type="Button" parent="Panel/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
 visible = false
@@ -1224,21 +1217,32 @@ expand_icon = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
 margin_right = 189.0
-margin_bottom = 49.0
+margin_bottom = 50.0
 alignment = 1
 
+[node name="arrow_red_turn" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_right = 50.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+size_flags_horizontal = 2
+size_flags_vertical = 0
+texture = ExtResource( 12 )
+expand = true
+stretch_mode = 5
+
 [node name="Label" type="Label" parent="Panel/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
-margin_right = 92.0
-margin_bottom = 49.0
+margin_left = 64.0
+margin_right = 124.0
+margin_bottom = 50.0
 size_flags_horizontal = 3
 size_flags_vertical = 7
 theme = ExtResource( 10 )
 text = "01:27"
 
 [node name="Label2" type="Label" parent="Panel/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
-margin_left = 96.0
+margin_left = 128.0
 margin_right = 189.0
-margin_bottom = 49.0
+margin_bottom = 50.0
 size_flags_horizontal = 3
 size_flags_vertical = 7
 theme = ExtResource( 10 )
@@ -1246,9 +1250,9 @@ text = "CONSTANT_RED"
 clip_text = true
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="Panel/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
-margin_top = 64.0
+margin_top = 65.0
 margin_right = 189.0
-margin_bottom = 113.0
+margin_bottom = 115.0
 alignment = 1
 
 [node name="arrow_white_turn" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
@@ -1261,19 +1265,19 @@ texture = ExtResource( 12 )
 expand = true
 stretch_mode = 5
 
-
 [node name="Label" type="Label" parent="Panel/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
-margin_right = 92.0
-margin_bottom = 49.0
+margin_left = 64.0
+margin_right = 124.0
+margin_bottom = 50.0
 size_flags_horizontal = 3
 size_flags_vertical = 7
 theme = ExtResource( 10 )
 text = "01:27"
 
 [node name="Label2" type="Label" parent="Panel/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
-margin_left = 96.0
+margin_left = 128.0
 margin_right = 189.0
-margin_bottom = 49.0
+margin_bottom = 50.0
 size_flags_horizontal = 3
 size_flags_vertical = 7
 theme = ExtResource( 10 )
@@ -1281,7 +1285,7 @@ text = "CONSTANT_WHITE"
 clip_text = true
 
 [node name="PanelContainer2" type="PanelContainer" parent="Panel/HBoxContainer/VBoxContainer"]
-margin_top = 153.0
+margin_top = 155.0
 margin_right = 229.0
 margin_bottom = 530.0
 size_flags_vertical = 3
@@ -1289,7 +1293,7 @@ custom_styles/panel = SubResource( 4 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/HBoxContainer/VBoxContainer/PanelContainer2"]
 margin_right = 229.0
-margin_bottom = 377.0
+margin_bottom = 375.0
 
 [node name="Label" type="Label" parent="Panel/HBoxContainer/VBoxContainer/PanelContainer2/VBoxContainer"]
 margin_right = 229.0
@@ -1303,25 +1307,25 @@ clip_text = true
 [node name="ScrollContainer" type="ScrollContainer" parent="Panel/HBoxContainer/VBoxContainer/PanelContainer2/VBoxContainer"]
 margin_top = 53.0
 margin_right = 229.0
-margin_bottom = 377.0
+margin_bottom = 375.0
 size_flags_vertical = 3
 scroll_horizontal_enabled = false
 
 [node name="History" type="VBoxContainer" parent="Panel/HBoxContainer/VBoxContainer/PanelContainer2/VBoxContainer/ScrollContainer"]
-margin_right = 251.0
-margin_bottom = 321.0
+margin_right = 229.0
+margin_bottom = 322.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="UndoStackContents" type="Label" parent="Panel/HBoxContainer/VBoxContainer/PanelContainer2/VBoxContainer/ScrollContainer/History"]
-margin_right = 251.0
+margin_right = 229.0
 margin_bottom = 38.0
 theme = ExtResource( 8 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 
 [node name="RedoStackContents" type="Label" parent="Panel/HBoxContainer/VBoxContainer/PanelContainer2/VBoxContainer/ScrollContainer/History"]
 margin_top = 42.0
-margin_right = 251.0
+margin_right = 229.0
 margin_bottom = 80.0
 theme = ExtResource( 8 )
 custom_colors/font_color = Color( 0.588235, 0.588235, 0.588235, 1 )

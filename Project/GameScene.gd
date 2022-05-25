@@ -8,6 +8,7 @@ var red_turn = 1
 var turn = white_turn
 var is_moving = false
 var chessboard_path = "Panel/HBoxContainer/CenterContainer/Chessboard/"
+var right_side_bar_path = "Panel/HBoxContainer/VBoxContainer/"
 onready var viewport = get_viewport()
 
 var pawn = preload("res://Resources/ChessPieces/pawn.svg")
@@ -92,7 +93,7 @@ func _is_red_piece(piece)->bool:
 	return false
 
 func _get_arr_pieces()->Array:
-	var chessboard = get_node("Panel/Chessboard")
+	var chessboard = get_node(chessboard_path)
 	var children = chessboard.get_children()
 
 	var pieces = []
@@ -199,8 +200,8 @@ func _change_turn(object, _key):
 
 
 func _change_turn_helper():
-	var arrow_red = self.get_node("Panel/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/arrow_red_turn")
-	var arrow_white = self.get_node("Panel/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/arrow_white_turn")
+	var arrow_red = self.get_node(right_side_bar_path + "PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/arrow_red_turn")
+	var arrow_white = self.get_node(right_side_bar_path + "PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/arrow_white_turn")
 
 	if turn==white_turn: #change to reds turn
 		arrow_white.visible = false
@@ -313,7 +314,7 @@ func _ready():
 	_place_all_pieces(chessboard)
 
 	#set the first turn to white players turn
-	var arrow_red = self.get_node("Panel/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/arrow_red_turn")
+	var arrow_red = self.get_node(right_side_bar_path + "PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/arrow_red_turn")
 	arrow_red.visible = false
 
 	# when _ready is called, there might already be nodes in the tree, so connect all existing buttons
@@ -347,23 +348,21 @@ func _on_Button_pressed():
 func _play_button_pressed_sound():
 	self.get_node("ButtonPress").play()
 
-
-var right_side_bar_path = "Panel/HBoxContainer/VBoxContainer"
 func window_resize():
 	var window_size = OS.get_window_size()
 	var right_side_bar = get_node(right_side_bar_path)
 	var menu_icon = get_node("Panel/HBoxContainer/RightMenuButton")
-	var close_menu_button = get_node(right_side_bar_path + "/PanelContainer/MarginContainer/VBoxContainer/CloseMenuButton")
+	var close_menu_button = get_node(right_side_bar_path + "PanelContainer/MarginContainer/VBoxContainer/CloseMenuButton")
 	menu_icon.rect_size = Vector2(50, 50)
 	if window_size.x < 600:
-		right_side_bar_path = "Panel/VBoxContainer"
+		right_side_bar_path = "Panel/VBoxContainer/"
 		get_node("Panel/HBoxContainer").remove_child(right_side_bar)
 		get_node("Panel").add_child(right_side_bar)
 		right_side_bar.visible = false
 		menu_icon.visible = true
 		close_menu_button.visible = true
 	else:
-		right_side_bar_path = "Panel/HBoxContainer/VBoxContainer"
+		right_side_bar_path = "Panel/HBoxContainer/VBoxContainer/"
 		get_node("Panel").remove_child(right_side_bar)
 		get_node("Panel/HBoxContainer").add_child(right_side_bar)
 		right_side_bar.visible = true
@@ -404,7 +403,7 @@ func _refresh_history_panel():
 	for line in undo_stack:
 		output += _format_round_counter(round_counter) + _format_unredo_stack_line(line)
 		round_counter += 0.5
-	self.get_node("Panel/VBoxContainer/PanelContainer2/VBoxContainer/ScrollContainer/History/UndoStackContents").set_text(output)
+	self.get_node(right_side_bar_path + "PanelContainer2/VBoxContainer/ScrollContainer/History/UndoStackContents").set_text(output)
 
 	output = ""
 	var redo_stack_inverted = redo_stack
@@ -412,7 +411,7 @@ func _refresh_history_panel():
 	for line in redo_stack_inverted:
 		output +=  _format_round_counter(round_counter) + _format_unredo_stack_line(line)
 		round_counter += 0.5
-	self.get_node("Panel/VBoxContainer/PanelContainer2/VBoxContainer/ScrollContainer/History/RedoStackContents").set_text(output)
+	self.get_node(right_side_bar_path + "PanelContainer2/VBoxContainer/ScrollContainer/History/RedoStackContents").set_text(output)
 
 
 func _format_round_counter(counter):
