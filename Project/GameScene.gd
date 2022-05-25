@@ -351,23 +351,28 @@ func _play_button_pressed_sound():
 func window_resize():
 	var window_size = OS.get_window_size()
 	var right_side_bar = get_node(right_side_bar_path)
-	var menu_icon = get_node("Panel/HBoxContainer/RightMenuButton")
-	var close_menu_button = get_node(right_side_bar_path + "PanelContainer/MarginContainer/VBoxContainer/CloseMenuButton")
-	menu_icon.rect_size = Vector2(50, 50)
+	var menu_icon = get_node("Panel/HBoxContainer/Panel")
+	var close_menu_button = get_node(
+		right_side_bar_path + \
+		"PanelContainer/MarginContainer/VBoxContainer/CloseMenuButton"
+	)
 	if window_size.x < 600:
-		right_side_bar_path = "Panel/VBoxContainer/"
-		get_node("Panel/HBoxContainer").remove_child(right_side_bar)
-		get_node("Panel").add_child(right_side_bar)
 		right_side_bar.visible = false
 		menu_icon.visible = true
 		close_menu_button.visible = true
 	else:
-		right_side_bar_path = "Panel/HBoxContainer/VBoxContainer/"
-		get_node("Panel").remove_child(right_side_bar)
-		get_node("Panel/HBoxContainer").add_child(right_side_bar)
 		right_side_bar.visible = true
 		menu_icon.visible = false
 		close_menu_button.visible = false
+
+func _on_RightMenuButton_pressed():
+	get_node(right_side_bar_path).visible = true
+	get_node("Panel/HBoxContainer/Panel").visible = false
+
+func _on_CloseMenuButton_pressed():
+	get_node(right_side_bar_path).visible = false
+	get_node("Panel/HBoxContainer/Panel").visible = true
+
 
 ## Undoes the previous move if do_undo is true, if any.
 ## Otherwise it redos the latest move that was undone, if any.
@@ -468,11 +473,3 @@ func _on_UndoButton_pressed():
 
 func _on_RedoButton_pressed():
 	_undo_redo(false)
-
-
-func _on_RightMenuButton_pressed():
-	get_node(right_side_bar_path).visible = true
-
-
-func _on_CloseMenuButton_pressed():
-	get_node(right_side_bar_path).visible = false
