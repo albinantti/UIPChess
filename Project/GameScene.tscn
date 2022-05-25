@@ -9,10 +9,13 @@
 [ext_resource path="res://GameScene.gd" type="Script" id=7]
 [ext_resource path="res://Resources/Themes/MainMenuTheme.tres" type="Theme" id=8]
 [ext_resource path="res://ExitActiveGameButton.gd" type="Script" id=9]
-[ext_resource path="res://Resources/sounds/PiecePlace.wav" type="AudioStream" id=10]
+[ext_resource path="res://Resources/Themes/Fonts/font_turn.tres" type="Theme" id=10]
 [ext_resource path="res://Square_logic.gd" type="Script" id=11]
-[ext_resource path="res://Resources/sounds/PieceSwipe.wav" type="AudioStream" id=12]
+[ext_resource path="res://Resources/images/arrow.png" type="Texture" id=12]
 [ext_resource path="res://Resources/sounds/ButtonPress.wav" type="AudioStream" id=13]
+[ext_resource path="res://Resources/sounds/PiecePlace.wav" type="AudioStream" id=14]
+[ext_resource path="res://Resources/sounds/PieceSwipe.wav" type="AudioStream" id=15]
+
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.4, 0.643137, 0.290196, 1 )
@@ -69,8 +72,9 @@ shortcut = SubResource( 18 )
 script = ExtResource( 7 )
 
 [node name="Panel" type="Panel" parent="."]
+margin_top = 9.0
 margin_right = 1027.0
-margin_bottom = 599.0
+margin_bottom = 608.0
 mouse_filter = 2
 custom_styles/panel = SubResource( 1 )
 
@@ -1119,12 +1123,12 @@ custom_constants/separation = 0
 
 [node name="PanelContainer" type="PanelContainer" parent="Panel/VBoxContainer"]
 margin_right = 251.0
-margin_bottom = 153.0
+margin_bottom = 155.0
 custom_styles/panel = SubResource( 2 )
 
 [node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer/PanelContainer"]
 margin_right = 251.0
-margin_bottom = 153.0
+margin_bottom = 155.0
 theme = SubResource( 3 )
 custom_constants/margin_right = 20
 custom_constants/margin_top = 20
@@ -1135,59 +1139,83 @@ custom_constants/margin_bottom = 20
 margin_left = 20.0
 margin_top = 20.0
 margin_right = 231.0
-margin_bottom = 133.0
+margin_bottom = 135.0
 custom_constants/separation = 15
 alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
 margin_right = 211.0
-margin_bottom = 49.0
+margin_bottom = 50.0
+custom_constants/separation = -12
 alignment = 1
 
+[node name="arrow_red_turn" type="TextureRect" parent="Panel/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_right = 50.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+size_flags_horizontal = 2
+size_flags_vertical = 0
+texture = ExtResource( 12 )
+expand = true
+stretch_mode = 5
+
 [node name="Label" type="Label" parent="Panel/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
-margin_right = 103.0
-margin_bottom = 49.0
+margin_left = 66.0
+margin_right = 144.0
+margin_bottom = 50.0
 size_flags_horizontal = 3
 size_flags_vertical = 7
-theme = ExtResource( 1 )
+theme = ExtResource( 10 )
 text = "01:27"
 
 [node name="Label2" type="Label" parent="Panel/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
-margin_left = 107.0
+margin_left = 132.0
 margin_right = 211.0
-margin_bottom = 49.0
+margin_bottom = 50.0
 size_flags_horizontal = 3
 size_flags_vertical = 7
-theme = ExtResource( 1 )
+theme = ExtResource( 10 )
 text = "CONSTANT_RED"
 clip_text = true
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="Panel/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
-margin_top = 64.0
+margin_top = 65.0
 margin_right = 211.0
-margin_bottom = 113.0
+margin_bottom = 115.0
+custom_constants/separation = -12
 alignment = 1
 
+[node name="arrow_white_turn" type="TextureRect" parent="Panel/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+margin_right = 50.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+size_flags_horizontal = 2
+size_flags_vertical = 0
+texture = ExtResource( 12 )
+expand = true
+stretch_mode = 5
+
 [node name="Label" type="Label" parent="Panel/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
-margin_right = 103.0
-margin_bottom = 49.0
+margin_left = 66.0
+margin_right = 144.0
+margin_bottom = 50.0
 size_flags_horizontal = 3
 size_flags_vertical = 7
-theme = ExtResource( 1 )
+theme = ExtResource( 10 )
 text = "01:27"
 
 [node name="Label2" type="Label" parent="Panel/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
-margin_left = 107.0
+margin_left = 132.0
 margin_right = 211.0
-margin_bottom = 49.0
+margin_bottom = 50.0
 size_flags_horizontal = 3
 size_flags_vertical = 7
-theme = ExtResource( 1 )
+theme = ExtResource( 10 )
 text = "CONSTANT_WHITE"
 clip_text = true
 
 [node name="PanelContainer2" type="PanelContainer" parent="Panel/VBoxContainer"]
-margin_top = 153.0
+margin_top = 155.0
 margin_right = 251.0
 margin_bottom = 529.0
 size_flags_vertical = 3
@@ -1195,7 +1223,7 @@ custom_styles/panel = SubResource( 4 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer/PanelContainer2"]
 margin_right = 251.0
-margin_bottom = 376.0
+margin_bottom = 374.0
 
 [node name="Label" type="Label" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer"]
 margin_right = 251.0
@@ -1209,13 +1237,13 @@ clip_text = true
 [node name="ScrollContainer" type="ScrollContainer" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer"]
 margin_top = 53.0
 margin_right = 251.0
-margin_bottom = 376.0
+margin_bottom = 374.0
 size_flags_vertical = 3
 scroll_horizontal_enabled = false
 
 [node name="History" type="VBoxContainer" parent="Panel/VBoxContainer/PanelContainer2/VBoxContainer/ScrollContainer"]
 margin_right = 251.0
-margin_bottom = 323.0
+margin_bottom = 321.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -1329,10 +1357,10 @@ stream = ExtResource( 13 )
 pitch_scale = 1.2
 
 [node name="PiecePlace" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 10 )
+stream = ExtResource( 14 )
 
 [node name="PieceSwipe" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 12 )
+stream = ExtResource( 15 )
 
 [connection signal="pressed" from="Panel/VBoxContainer/PanelContainer3/MarginContainer/HBoxContainer/UndoButton" to="." method="_on_UndoButton_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/PanelContainer3/MarginContainer/HBoxContainer/RedoButton" to="." method="_on_RedoButton_pressed"]

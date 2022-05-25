@@ -1,10 +1,14 @@
 extends Area2D
 
 signal piece_chosen(piece)
+
 var piece_chosen = false
 
 var velocity = Vector2()
 
+var white_turn = 0 
+var red_turn = 1
+var turn = white_turn
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -25,40 +29,25 @@ func _process(state):
 #		print(self.name)
 #		emit_signal('piece_chosen', self.name)
 
-func _move_piece(new_position, chosen_piece):
-	if chosen_piece.name == self.name:
-		self.modulate = Color(1,1,1,1)
-		piece_chosen = false
-		var TweenNode = get_node("Tween")
-		TweenNode.interpolate_property(
-			self, "position", get_position(), new_position, 
-			2, Tween.TRANS_EXPO, Tween.EASE_IN_OUT
-		)
-		TweenNode.start()
-	elif new_position == self.get_position():
-		self.input_pickable = false
-		var t = Timer.new()
-		t.set_wait_time(1)
-		add_child(t)
-		t.start()
-		yield(t, "timeout")
-		self.visible = false
-		self.input_pickable = false
+func _is_white()->bool: 
+	if self.name.left(1) == "R":
+		return false
+	return true
 
 func _input_event(viewport, event, shape_idx):
 	if  event is InputEventMouseButton and event.pressed and event.button_index == BUTTON_LEFT:
-		self.modulate = Color(0.90,0.50,0.04,1)
 		emit_signal('piece_chosen', self)
 		piece_chosen = true
 
 ## Hovering over piece
 func _mouse_enter():
-	self.modulate = Color(0.89,0.67,0.09,1) #light orange
+	if self.modulate != Color(0.90,0.50,0.04,1): #piece not chosen
+		self.modulate = Color(0.89,0.67,0.09,1) #light orange
 
 ## Hovering over piece, exiting piece
 func _mouse_exit():
-	if !piece_chosen:
-		if self.name.left(1) == "W": #if first letter is W (White) go back to white
+	if self.modulate != Color(0.90,0.50,0.04,1): #piece not chosen
+		if  _is_white(): #if first letter is W (White) go back to white
 			self.modulate = Color(1, 1, 1, 1) #white 
-		else:
+		elif !_is_white():
 			self.modulate = Color(0.89, 0.21, 0.21, 1) #red
