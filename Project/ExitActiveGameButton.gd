@@ -14,4 +14,6 @@ func _pressed():
 
 
 func confirmed():
-	get_tree().change_scene("res://mainMenu.tscn")
+	var error_message = get_tree().change_scene("res://mainMenu.tscn")
+	if error_message != OK:
+		print("ERROR: " + error_message)

@@ -6,7 +6,7 @@ var chosen_piece
 var white_turn = 0
 var red_turn = 1
 var turn = white_turn
-var is_moving = false 
+var is_moving = false
 
 var pawn = preload("res://Resources/ChessPieces/pawn.svg")
 var rook = preload("res://Resources/ChessPieces/rook.svg")
@@ -44,6 +44,7 @@ func place_piece(chessboard: Node, node_name: String, texture: Resource, piece_n
 	# Add Tween for movement animation
 	var tween = Tween.new()
 	tween.name = "Tween"
+	tween.set_speed_scale(5.0)
 
 	area2d.add_child(collisionShape)
 	area2d.add_child(sprite)
@@ -68,82 +69,82 @@ func _create_collisionshape(node: Node)->CollisionShape2D:
 func _is_same_color(piece1,piece2)->bool:
 	if piece1==null or piece2==null:
 		return false
-	if _is_white_piece(piece1) and _is_white_piece(piece2): 
+	if _is_white_piece(piece1) and _is_white_piece(piece2):
 		return true
-	if !_is_white_piece(piece1) and !_is_white_piece(piece2): 
+	if !_is_white_piece(piece1) and !_is_white_piece(piece2):
 		return true
 	return false
 
 func _is_white_piece(piece)->bool:
-	if piece == null: 
+	if piece == null:
 		return false
 	if piece.name.left(1) == "W":
-		return true 
+		return true
 	return false
 
 func _is_red_piece(piece)->bool:
-	if piece == null: 
+	if piece == null:
 		return false
 	if piece.name.left(1) == "R":
-		return true 
+		return true
 	return false
 
-func _get_arr_pieces()->Array: 
+func _get_arr_pieces()->Array:
 	var chessboard = get_node("Panel/Chessboard")
 	var children = chessboard.get_children()
-	
+
 	var pieces = []
-	for child in children: 
-		if child.visible and (_is_white_piece(child) or _is_red_piece(child)): 
+	for child in children:
+		if child.visible and (_is_white_piece(child) or _is_red_piece(child)):
 			pieces.append(child)
 	return pieces
 
-func _reset_chosen_piece_color(): 
-	if _is_white_piece(chosen_piece): 
+func _reset_chosen_piece_color():
+	if _is_white_piece(chosen_piece):
 		chosen_piece.modulate = Color(1, 1, 1, 1)
-	else: 
+	else:
 		chosen_piece.modulate = Color(0.89, 0.21, 0.21, 1)
 #------------------------------------
 
 ## Listens on inputed piece from "Piece_logic.gd"
 func _chosen_piece(piece):
-	if !is_moving: 
+	if !is_moving:
 		_set_chosen_piece(piece)
 
 ## Sets the variable "Chosen_piece"
-func _set_chosen_piece(piece): 
+func _set_chosen_piece(piece):
 	var is_white = _is_white_piece(piece)
 	# if it is the first time this round that chosen_piece is set
-	# can only choose a piece that is the same color as the turn 
-	if chosen_piece == null and ((turn==white_turn and is_white) or (turn==red_turn and !is_white)): 
-		chosen_piece = piece 
+	# can only choose a piece that is the same color as the turn
+	if chosen_piece == null and ((turn==white_turn and is_white) or (turn==red_turn and !is_white)):
+		chosen_piece = piece
 		chosen_piece.modulate = Color(0.90,0.50,0.04,1)
-	# if there already is a chosen piece, choose another piece to attack with 
-	elif chosen_piece != null and _is_same_color(chosen_piece, piece): 
+	# if there already is a chosen piece, choose another piece to attack with
+	elif chosen_piece != null and _is_same_color(chosen_piece, piece):
 		if _is_white_piece(chosen_piece):
 			chosen_piece.modulate = Color(1, 1, 1, 1)
 		else:
 			chosen_piece.modulate = Color(0.89, 0.21, 0.21, 1)
 		chosen_piece = piece # set the new chosen piece to chosen_piece
-		chosen_piece.modulate = Color(0.90,0.50,0.04,1) 		
+		chosen_piece.modulate = Color(0.90,0.50,0.04,1)
 
 ## Listens on inputed square from "Square_logic.gd"
 func _send_position(square):
-	# if there are a piece to move and the position to move it to is not it´s own 
-	if !is_moving and chosen_piece != null and square.get_position() != chosen_piece.get_position(): 
+	# if there are a piece to move and the position to move it to is not it´s own
+	if !is_moving and chosen_piece != null and square.get_position() != chosen_piece.get_position():
 		_move_piece(square)
-	
-## Moves the chosen piece to the destination 
+
+## Moves the chosen piece to the destination
 func _move_piece(square):
-	if !is_moving: 
+	if !is_moving:
 		var new_position = square.get_position()
 		var des_piece = _check_after_piece_on_des(new_position)
-		#if there are no piece on the des or if the piece on the des is an opponent piece 
+		#if there are no piece on the des or if the piece on the des is an opponent piece
 		if  des_piece == null or !_is_same_color(chosen_piece,des_piece):
 			_reset_chosen_piece_color()
 			var TweenNode = chosen_piece.get_node("Tween")
 			TweenNode.interpolate_property(
-				chosen_piece, "position", chosen_piece.get_position(), new_position, 
+				chosen_piece, "position", chosen_piece.get_position(), new_position,
 				2, Tween.TRANS_EXPO, Tween.EASE_IN_OUT
 			)
 			TweenNode.start()
@@ -168,40 +169,46 @@ func _move_piece(square):
 				undo_stack.append(undo_string)
 				redo_stack.clear()
 				_refresh_history_panel()
-		else: 
+				self.get_node("PieceSwipe").play()
+		else:
 			_set_chosen_piece(des_piece) #change the chosen_piece to the new chosen piece
-	  
-# Checks if there is a piece on the destination square, 
+
+# Checks if there is a piece on the destination square,
 # returns the piece if it finds it, else null
 func _check_after_piece_on_des(des_position)->Area2D:
 	var pieces_arr = _get_arr_pieces()
 	var piece = _check_if_same_pos(pieces_arr, des_position)
-	return piece 
+	return piece
 
 # Checks if any of the pieces has the same position as the destination square
-# if there are: return the piece, else null 
-func _check_if_same_pos(pieces, pos)->Area2D: 
-	for piece in pieces: 
-		if piece.get_position() == pos: 
+# if there are: return the piece, else null
+func _check_if_same_pos(pieces, pos)->Area2D:
+	for piece in pieces:
+		if piece.get_position() == pos:
 			return piece
 	return null
 
-func _change_turn(object, key): 
+func _change_turn(object, _key):
 	if chosen_piece == object:
-		var arrow_red = self.get_node("Panel/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/arrow_red_turn")
-		var arrow_white = self.get_node("Panel/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/arrow_white_turn")
-		
-		if turn==white_turn: #change to reds turn
-			arrow_white.visible = false
-			arrow_red.visible = true
-			turn = red_turn
-			 
-		else: #change to whites turn
-			arrow_white.visible = true
-			arrow_red.visible = false	
-			turn = white_turn	
-		chosen_piece = null	
+		_change_turn_helper()
+
+		chosen_piece = null
 		is_moving = false
+
+
+func _change_turn_helper():
+	var arrow_red = self.get_node("Panel/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/arrow_red_turn")
+	var arrow_white = self.get_node("Panel/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/arrow_white_turn")
+
+	if turn==white_turn: #change to reds turn
+		arrow_white.visible = false
+		arrow_red.visible = true
+		turn = red_turn
+
+	else: #change to whites turn
+		arrow_white.visible = true
+		arrow_red.visible = false
+		turn = white_turn
 
 
 func _connect_piece_to_game_manager(piece_name):
@@ -214,12 +221,12 @@ func _connect_square_to_game_manager(square_name):
 	var square = get_node(dir)
 	square.connect("square_chosen", self, "_send_position")
 
-func _connect_tween_to_game_manager(piece_name): 
+func _connect_tween_to_game_manager(piece_name):
 	var dir = "Panel/Chessboard/" + piece_name
 	var piece = get_node(dir)
 	var tween = piece.get_node("Tween")
 	tween.connect("tween_completed", self, "_change_turn")
-	
+
 func _place_all_pieces(chessboard):
 	var all_pieces = {
 		"white_pawns": {
@@ -302,9 +309,42 @@ func _ready():
 
 	_place_all_pieces(chessboard)
 
-	#set the first turn to white players turn 
+	#set the first turn to white players turn
 	var arrow_red = self.get_node("Panel/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/arrow_red_turn")
 	arrow_red.visible = false
+
+	# when _ready is called, there might already be nodes in the tree, so connect all existing buttons
+	connect_buttons(get_tree().root)
+	var error_code = get_tree().connect("node_added", self, "_on_SceneTree_node_added")
+	if error_code != OK:
+		print("ERROR: ", error_code)
+
+
+func _on_SceneTree_node_added(node):
+	if node is Button:
+		connect_to_button(node)
+
+# recursively connect all buttons
+func connect_buttons(root):
+	for child in root.get_children():
+		if child is BaseButton:
+			connect_to_button(child)
+		connect_buttons(child)
+
+func connect_to_button(button):
+	var error_code = button.connect("pressed", self, "_on_Button_pressed")
+	if error_code != OK:
+		print("ERROR: ", error_code)
+
+
+func _on_Button_pressed():
+	self._play_button_pressed_sound()
+
+
+func _play_button_pressed_sound():
+	self.get_node("ButtonPress").play()
+
+
 
 ## Undoes the previous move if do_undo is true, if any.
 ## Otherwise it redos the latest move that was undone, if any.
@@ -329,24 +369,34 @@ func _undo_redo(do_undo: bool):
 			secondary_stack.append(move)
 		else:
 			primary_stack.append(move)
+		self.get_node("PiecePlace").play()
+		_change_turn_helper()
 	_refresh_history_panel()
 
 
 func _refresh_history_panel():
-	var round_counter = 1
+	var round_counter = 1.0
 	var output = ""
 	for line in undo_stack:
-		output += "  " + str(round_counter) + ". " + _format_unredo_stack_line(line)
-		round_counter += 1
+		output += _format_round_counter(round_counter) + _format_unredo_stack_line(line)
+		round_counter += 0.5
 	self.get_node("Panel/VBoxContainer/PanelContainer2/VBoxContainer/ScrollContainer/History/UndoStackContents").set_text(output)
 
 	output = ""
 	var redo_stack_inverted = redo_stack
 	redo_stack_inverted.invert()
 	for line in redo_stack_inverted:
-		output += "  " + str(round_counter) + ". " + _format_unredo_stack_line(line)
-		round_counter += 1
+		output +=  _format_round_counter(round_counter) + _format_unredo_stack_line(line)
+		round_counter += 0.5
 	self.get_node("Panel/VBoxContainer/PanelContainer2/VBoxContainer/ScrollContainer/History/RedoStackContents").set_text(output)
+
+
+func _format_round_counter(counter):
+	# Returns a correct round counter string to be used in refresh history panel
+	if (fmod(counter, 1.0) == 0.0):
+		return "  " + str(floor(counter)) + "W. "
+	return "  " + str(floor(counter)) + "R. "
+
 
 func _format_unredo_stack_line(line):
 	# Formats a line from the undo/redo stack to be listed in the history panel
