@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/PieceSwipe.wav-20ce806c190e9bf12ed1dc4985b22d6a.sample"
+
+[deps]
+
+source_file="res://Resources/sounds/PieceSwipe.wav"
+dest_files=[ "res://.import/PieceSwipe.wav-20ce806c190e9bf12ed1dc4985b22d6a.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

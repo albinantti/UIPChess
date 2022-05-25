@@ -1,5 +1,6 @@
 extends Node2D
-
+var undo_stack = []
+var redo_stack = []
 var chosen_piece
 
 var white_turn = 0
@@ -18,48 +19,48 @@ var queen = preload("res://Resources/ChessPieces/queen.svg")
 ## and applies the texture to the chesspiece
 func place_piece(chessboard: Node, node_name: String, texture: Resource, piece_name: String) -> void:
 	var chessboard_square = chessboard.get_node(node_name)
-	
+
 	# Get the color rectangle for the square
 	var color_rect_name = node_name + "_rect"
 	var color_rect = chessboard_square.get_node(color_rect_name)
-	
+
 	# Create Area2D that will contain the piece
 	var area2d = Area2D.new()
 	area2d.set_script(load("res://Piece_logic.gd"))
 	area2d.name = piece_name # set name of the piece to the pieces name
 	area2d.input_pickable = true # Make piece clickable
-	
+
 	var area2d_x = chessboard_square.get_position().x
 	var area2d_y = chessboard_square.get_position().y
 	area2d.set_position(Vector2(area2d_x, area2d_y))
-	
+
 	var sprite = Sprite.new()
 	sprite.texture = texture
 	sprite.centered = false
 	sprite.set_scale(Vector2(0.433, 0.433))
-	
-	var collisionShape = _create_collisionshape(color_rect, area2d_x, area2d_y)
-	
+
+	var collisionShape = _create_collisionshape(color_rect)
+
 	# Add Tween for movement animation
 	var tween = Tween.new()
 	tween.name = "Tween"
-	
+
 	area2d.add_child(collisionShape)
 	area2d.add_child(sprite)
 	area2d.add_child(tween)
 	chessboard.add_child(area2d)
 
 ## Create a collisonshape for a piece where the mouse clicks will be identified
-func _create_collisionshape(node: Node, sprite_x:float, sprite_y:float)->CollisionShape2D:
+func _create_collisionshape(node: Node)->CollisionShape2D:
 	var collisionShape = CollisionShape2D.new()
 	var shape = RectangleShape2D.new()
-	
+
 	# set position and extents to half the square size since the origin of the
 	# shape is in the center
 	var shape_size = node.get_size()/2
 	shape.set_extents(shape_size)
 	collisionShape.position = shape_size
-	
+
 	collisionShape.set_shape(shape)
 	return collisionShape
 
@@ -131,7 +132,7 @@ func _send_position(square):
 	# if there are a piece to move and the position to move it to is not it´s own 
 	if !is_moving and chosen_piece != null and square.get_position() != chosen_piece.get_position(): 
 		_move_piece(square)
-
+    
 ## Moves the chosen piece to the destination 
 func _move_piece(square):
 	if !is_moving: 
@@ -155,9 +156,22 @@ func _move_piece(square):
 				yield(t, "timeout")
 				des_piece.visible = false
 				des_piece.input_pickable = false
+      if chosen_piece != null and square.get_position() != chosen_piece.get_position():
+        var strings = PoolStringArray([
+          chosen_piece.name,
+          str(chosen_piece.get_position().x),
+          str(chosen_piece.get_position().y),
+          str(square.get_position().x),
+          str(square.get_position().y)
+        ])
+        var undo_string = strings.join(",")
+        undo_stack.append(undo_string)
+        redo_stack.clear()
+        chosen_piece = null
+        _refresh_history_panel()
 		else: 
 			_set_chosen_piece(des_piece) #change the chosen_piece to the new chosen piece
-
+      
 # Checks if there is a piece on the destination square, 
 # returns the piece if it finds it, else null
 func _check_after_piece_on_des(des_position)->Area2D:
@@ -189,6 +203,7 @@ func _change_turn(object, key):
 			turn = white_turn	
 		chosen_piece = null	
 		is_moving = false
+
 
 func _connect_piece_to_game_manager(piece_name):
 	var dir = "Panel/Chessboard/" + piece_name
@@ -287,7 +302,73 @@ func _ready():
 		_connect_square_to_game_manager(square.name)
 
 	_place_all_pieces(chessboard)
-	
+
 	#set the first turn to white players turn 
 	var arrow_red = self.get_node("Panel/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/arrow_red_turn")
 	arrow_red.visible = false
+
+## Undoes the previous move if do_undo is true, if any.
+## Otherwise it redos the latest move that was undone, if any.
+func _undo_redo(do_undo: bool):
+	# The primary stack is the stack that will get it's latest move
+	# poped and reintroduced into the game.
+	# If an undo is made, the primary stack will be the undo stack,
+	# i.e. the latest move will be undone. This move is then pushed to the
+	# secondary stack, in this case the redo stack, so that the move can be
+	# redone again
+	var primary_stack = undo_stack if do_undo else redo_stack
+	var secondary_stack = redo_stack if do_undo else undo_stack
+	if primary_stack:
+		var move = primary_stack.pop_back()
+		var squares = move.rsplit(",")
+		var moved_piece = get_node("Panel/Chessboard/" + squares[0])
+		if not moved_piece.get_node("Tween").is_active():
+			var x = squares[1] if do_undo else squares[3]
+			var y = squares[2] if do_undo else squares[4]
+			var previous_position = Vector2(x, y)
+			moved_piece.set_position(previous_position)
+			secondary_stack.append(move)
+		else:
+			primary_stack.append(move)
+	_refresh_history_panel()
+
+
+func _refresh_history_panel():
+	var round_counter = 1
+	var output = ""
+	for line in undo_stack:
+		output += "  " + str(round_counter) + ". " + _format_unredo_stack_line(line)
+		round_counter += 1
+	self.get_node("Panel/VBoxContainer/PanelContainer2/VBoxContainer/ScrollContainer/History/UndoStackContents").set_text(output)
+
+	output = ""
+	var redo_stack_inverted = redo_stack
+	redo_stack_inverted.invert()
+	for line in redo_stack_inverted:
+		output += "  " + str(round_counter) + ". " + _format_unredo_stack_line(line)
+		round_counter += 1
+	self.get_node("Panel/VBoxContainer/PanelContainer2/VBoxContainer/ScrollContainer/History/RedoStackContents").set_text(output)
+
+func _format_unredo_stack_line(line):
+	# Formats a line from the undo/redo stack to be listed in the history panel
+	var line_split = line.split(",")
+	var from_tile = str(_pixel_to_tile_converter(line_split[1], line_split[2]))
+	var to_tile = str(_pixel_to_tile_converter(line_split[3], line_split[4]))
+	return (from_tile + " -> " + to_tile + "\n")
+
+
+func _pixel_to_tile_converter(x,y):
+	# Takes an x, y worldunit coordinate and returns a 2 character string for
+	# whichever tile it represents.
+	var ranks = ["A","B","C","D","E","F","G","H"]
+	# warning-ignore:integer_division
+	# warning-ignore:integer_division
+	return str(ranks[(int(x)/65)]) + str(8-int(y) / 65)
+
+
+
+func _on_UndoButton_pressed():
+	_undo_redo(true)
+
+func _on_RedoButton_pressed():
+	_undo_redo(false)
