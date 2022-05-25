@@ -1,5 +1,4 @@
-[gd_scene load_steps=26 format=2]
-
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://Resources/Themes/Fonts/font_Game_40.tres" type="Theme" id=1]
 [ext_resource path="res://Resources/images/exit.png" type="Texture" id=2]
@@ -8,11 +7,11 @@
 [ext_resource path="res://Resources/images/redo.png" type="Texture" id=5]
 [ext_resource path="res://Resources/images/mute.png" type="Texture" id=6]
 [ext_resource path="res://GameScene.gd" type="Script" id=7]
-[ext_resource path="res://Resources/images/arrow.png" type="Texture" id=9]
-[ext_resource path="res://Resources/Themes/Fonts/font_turn.tres" type="Theme" id=10]
 [ext_resource path="res://Resources/Themes/MainMenuTheme.tres" type="Theme" id=8]
 [ext_resource path="res://ExitActiveGameButton.gd" type="Script" id=9]
+[ext_resource path="res://Resources/Themes/Fonts/font_turn.tres" type="Theme" id=10]
 [ext_resource path="res://Square_logic.gd" type="Script" id=11]
+[ext_resource path="res://Resources/images/arrow.png" type="Texture" id=12]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.4, 0.643137, 0.290196, 1 )
@@ -1152,7 +1151,7 @@ margin_bottom = 50.0
 rect_min_size = Vector2( 50, 50 )
 size_flags_horizontal = 2
 size_flags_vertical = 0
-texture = ExtResource( 9 )
+texture = ExtResource( 12 )
 expand = true
 stretch_mode = 5
 
@@ -1188,7 +1187,7 @@ margin_bottom = 50.0
 rect_min_size = Vector2( 50, 50 )
 size_flags_horizontal = 2
 size_flags_vertical = 0
-texture = ExtResource( 9 )
+texture = ExtResource( 12 )
 expand = true
 stretch_mode = 5
 

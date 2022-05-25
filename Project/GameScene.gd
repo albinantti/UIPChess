@@ -132,7 +132,7 @@ func _send_position(square):
 	# if there are a piece to move and the position to move it to is not it´s own 
 	if !is_moving and chosen_piece != null and square.get_position() != chosen_piece.get_position(): 
 		_move_piece(square)
-    
+	
 ## Moves the chosen piece to the destination 
 func _move_piece(square):
 	if !is_moving: 
@@ -156,22 +156,21 @@ func _move_piece(square):
 				yield(t, "timeout")
 				des_piece.visible = false
 				des_piece.input_pickable = false
-      if chosen_piece != null and square.get_position() != chosen_piece.get_position():
-        var strings = PoolStringArray([
-          chosen_piece.name,
-          str(chosen_piece.get_position().x),
-          str(chosen_piece.get_position().y),
-          str(square.get_position().x),
-          str(square.get_position().y)
-        ])
-        var undo_string = strings.join(",")
-        undo_stack.append(undo_string)
-        redo_stack.clear()
-        chosen_piece = null
-        _refresh_history_panel()
+			if chosen_piece != null and square.get_position() != chosen_piece.get_position():
+				var strings = PoolStringArray([
+					chosen_piece.name,
+					str(chosen_piece.get_position().x),
+					str(chosen_piece.get_position().y),
+					str(square.get_position().x),
+					str(square.get_position().y)
+				])
+				var undo_string = strings.join(",")
+				undo_stack.append(undo_string)
+				redo_stack.clear()
+				_refresh_history_panel()
 		else: 
 			_set_chosen_piece(des_piece) #change the chosen_piece to the new chosen piece
-      
+	  
 # Checks if there is a piece on the destination square, 
 # returns the piece if it finds it, else null
 func _check_after_piece_on_des(des_position)->Area2D:
