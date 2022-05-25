@@ -7,8 +7,6 @@ var red_turn = 1
 var turn = white_turn
 var is_moving = false 
 
-signal check_positon_against_piece(position_of_square)
-
 var pawn = preload("res://Resources/ChessPieces/pawn.svg")
 var rook = preload("res://Resources/ChessPieces/rook.svg")
 var knight = preload("res://Resources/ChessPieces/knight.svg")
@@ -157,8 +155,6 @@ func _move_piece(square):
 				yield(t, "timeout")
 				des_piece.visible = false
 				des_piece.input_pickable = false
-			#_change_turn() #has to be here so that turn changes only when piece has disapeared 
-								#can otherwise be chosed as a target
 		else: 
 			_set_chosen_piece(des_piece) #change the chosen_piece to the new chosen piece
 
