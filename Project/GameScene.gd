@@ -7,6 +7,9 @@ var white_turn = 0
 var red_turn = 1
 var turn = white_turn
 var is_moving = false
+var chessboard_path = "Panel/HBoxContainer/CenterContainer/Chessboard/"
+var right_side_bar_path = "Panel/HBoxContainer/VBoxContainer/"
+onready var viewport = get_viewport()
 
 var pawn = preload("res://Resources/ChessPieces/pawn.svg")
 var rook = preload("res://Resources/ChessPieces/rook.svg")
@@ -90,7 +93,7 @@ func _is_red_piece(piece)->bool:
 	return false
 
 func _get_arr_pieces()->Array:
-	var chessboard = get_node("Panel/Chessboard")
+	var chessboard = get_node(chessboard_path)
 	var children = chessboard.get_children()
 
 	var pieces = []
@@ -199,8 +202,8 @@ func _change_turn(object, _key):
 
 
 func _change_turn_helper():
-	var arrow_red = self.get_node("Panel/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/arrow_red_turn")
-	var arrow_white = self.get_node("Panel/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/arrow_white_turn")
+	var arrow_red = self.get_node(right_side_bar_path + "PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/arrow_red_turn")
+	var arrow_white = self.get_node(right_side_bar_path + "PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/arrow_white_turn")
 
 	if turn==white_turn: #change to reds turn
 		arrow_white.visible = false
@@ -214,17 +217,17 @@ func _change_turn_helper():
 
 
 func _connect_piece_to_game_manager(piece_name):
-	var dir = "Panel/Chessboard/" + piece_name
+	var dir = chessboard_path + piece_name
 	var piece = get_node(dir)
 	piece.connect("piece_chosen", self, "_chosen_piece")
 
 func _connect_square_to_game_manager(square_name):
-	var dir = "Panel/Chessboard/" + square_name
+	var dir = chessboard_path + square_name
 	var square = get_node(dir)
 	square.connect("square_chosen", self, "_send_position")
 
 func _connect_tween_to_game_manager(piece_name):
-	var dir = "Panel/Chessboard/" + piece_name
+	var dir = chessboard_path + piece_name
 	var piece = get_node(dir)
 	var tween = piece.get_node("Tween")
 	tween.connect("tween_completed", self, "_change_turn")
@@ -305,14 +308,15 @@ func _place_all_pieces(chessboard):
 			counter += 1
 
 func _ready():
-	var chessboard = get_node("Panel/Chessboard")
+	viewport.connect("size_changed", self, "window_resize")
+	var chessboard = get_node(chessboard_path)
 	for square in chessboard.get_children():
 		_connect_square_to_game_manager(square.name)
 
 	_place_all_pieces(chessboard)
 
 	#set the first turn to white players turn
-	var arrow_red = self.get_node("Panel/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/arrow_red_turn")
+	var arrow_red = self.get_node(right_side_bar_path + "PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/arrow_red_turn")
 	arrow_red.visible = false
 
 	# when _ready is called, there might already be nodes in the tree, so connect all existing buttons
@@ -346,6 +350,34 @@ func _on_Button_pressed():
 func _play_button_pressed_sound():
 	self.get_node("ButtonPress").play()
 
+func window_resize():
+	# Dont resize the window when the tutorial is played
+	if AudioServer.is_bus_mute(1):
+		return
+
+	var window_size = OS.get_window_size()
+	var right_side_bar = get_node(right_side_bar_path)
+	var menu_icon = get_node("Panel/HBoxContainer/Panel")
+	var close_menu_button = get_node(
+		right_side_bar_path + \
+		"PanelContainer/MarginContainer/VBoxContainer/CloseMenuButton"
+	)
+	if window_size.x < 600:
+		right_side_bar.visible = false
+		menu_icon.visible = true
+		close_menu_button.visible = true
+	else:
+		right_side_bar.visible = true
+		menu_icon.visible = false
+		close_menu_button.visible = false
+
+func _on_RightMenuButton_pressed():
+	get_node(right_side_bar_path).visible = true
+	get_node("Panel/HBoxContainer/Panel").visible = false
+
+func _on_CloseMenuButton_pressed():
+	get_node(right_side_bar_path).visible = false
+	get_node("Panel/HBoxContainer/Panel").visible = true
 
 
 ## Undoes the previous move if do_undo is true, if any.
@@ -362,7 +394,7 @@ func _undo_redo(do_undo: bool):
 	if primary_stack:
 		var move = primary_stack.pop_back()
 		var squares = move.rsplit(",")
-		var moved_piece = get_node("Panel/Chessboard/" + squares[0])
+		var moved_piece = get_node(chessboard_path + squares[0])
 		if not moved_piece.get_node("Tween").is_active():
 			var x = squares[1] if do_undo else squares[3]
 			var y = squares[2] if do_undo else squares[4]
@@ -391,7 +423,7 @@ func _refresh_history_panel():
 	for line in undo_stack:
 		output += _format_round_counter(round_counter) + _format_unredo_stack_line(line)
 		round_counter += 0.5
-	self.get_node("Panel/VBoxContainer/PanelContainer2/VBoxContainer/ScrollContainer/History/UndoStackContents").set_text(output)
+	self.get_node(right_side_bar_path + "PanelContainer2/VBoxContainer/ScrollContainer/History/UndoStackContents").set_text(output)
 
 	output = ""
 	# Go through the redo stack inverted to get the latest move at the top
@@ -399,7 +431,7 @@ func _refresh_history_panel():
 		var line = redo_stack[index - 1]
 		output +=  _format_round_counter(round_counter) + _format_unredo_stack_line(line)
 		round_counter += 0.5
-	self.get_node("Panel/VBoxContainer/PanelContainer2/VBoxContainer/ScrollContainer/History/RedoStackContents").set_text(output)
+	self.get_node(right_side_bar_path + "PanelContainer2/VBoxContainer/ScrollContainer/History/RedoStackContents").set_text(output)
 
 
 func _format_round_counter(counter):
@@ -432,9 +464,9 @@ func tutorial_helper(arg: int):
 	# arg == 3 -> Move e4 to e2
 	# arg == 4 -> Unselect e2
 
-	var piece = get_node("Panel/Chessboard/Wpawn4")
-	var e4 = get_node("Panel/Chessboard/E4")
-	var e2 = get_node("Panel/Chessboard/E2")
+	var piece = get_node(chessboard_path + "Wpawn4")
+	var e4 = get_node(chessboard_path + "E4")
+	var e2 = get_node(chessboard_path + "E2")
 
 	if (arg == 1):
 		_set_chosen_piece(piece)
