@@ -17,6 +17,9 @@ func _ready():
 
 
 func _pressed():
+	# Set my primitive tutorial audio bus flag to true
+	AudioServer.add_bus()
+	AudioServer.set_bus_mute(1, 1)
 	var error_code = get_tree().change_scene("res://GameScene.tscn")
 	if error_code != OK:
 		print("ERROR: ", error_code)

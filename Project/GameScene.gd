@@ -415,6 +415,30 @@ func _pixel_to_tile_converter(x,y):
 	return str(ranks[(int(x)/65)]) + str(8-int(y) / 65)
 
 
+func tutorial_helper(arg: int):
+	# arg == 1 -> Select e2
+	# arg == 2 -> Move e2 to e4
+	# arg == 3 -> Move e4 to e2
+	# arg == 4 -> Unselect e2
+
+	var piece = get_node("Panel/Chessboard/Wpawn4")
+	var e4 = get_node("Panel/Chessboard/E4")
+	var e2 = get_node("Panel/Chessboard/E2")
+
+	if (arg == 1):
+		_set_chosen_piece(piece)
+
+	if (arg == 2):
+		_set_chosen_piece(piece)
+		_move_piece(e4)
+
+	if (arg == 3):
+		_undo_redo(true)
+
+	if (arg == 4):
+		_reset_chosen_piece_color()
+
+
 
 func _on_UndoButton_pressed():
 	_undo_redo(true)
