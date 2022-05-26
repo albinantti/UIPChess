@@ -2,7 +2,11 @@ extends CenterContainer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	# Display the correct mute button based on mute state
+	if AudioServer.is_bus_mute(0):
+		get_node("Unmute").visible = true
+	else:
+		get_node("Mute").visible = true
 
 
 func _on_Mute_pressed():

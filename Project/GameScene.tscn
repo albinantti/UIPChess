@@ -1356,6 +1356,7 @@ margin_bottom = 52.0
 script = ExtResource( 17 )
 
 [node name="Mute" type="Button" parent="Panel/MuteContainer"]
+visible = false
 margin_left = 3.0
 margin_top = 2.0
 margin_right = 43.0
