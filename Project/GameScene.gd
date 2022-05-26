@@ -383,9 +383,9 @@ func _refresh_history_panel():
 	self.get_node("Panel/VBoxContainer/PanelContainer2/VBoxContainer/ScrollContainer/History/UndoStackContents").set_text(output)
 
 	output = ""
-	var redo_stack_inverted = redo_stack
-	redo_stack_inverted.invert()
-	for line in redo_stack_inverted:
+	# Go through the redo stack inverted to get the latest move at the top
+	for index in range(redo_stack.size(), 0, -1):
+		var line = redo_stack[index - 1]
 		output +=  _format_round_counter(round_counter) + _format_unredo_stack_line(line)
 		round_counter += 0.5
 	self.get_node("Panel/VBoxContainer/PanelContainer2/VBoxContainer/ScrollContainer/History/RedoStackContents").set_text(output)
