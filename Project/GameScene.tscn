@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://Resources/Themes/Fonts/font_Game_40.tres" type="Theme" id=1]
 [ext_resource path="res://Resources/images/exit.png" type="Texture" id=2]
@@ -15,6 +15,8 @@
 [ext_resource path="res://Resources/sounds/ButtonPress.wav" type="AudioStream" id=13]
 [ext_resource path="res://Resources/sounds/PiecePlace.wav" type="AudioStream" id=14]
 [ext_resource path="res://Resources/sounds/PieceSwipe.wav" type="AudioStream" id=15]
+[ext_resource path="res://Resources/images/speaker.png" type="Texture" id=16]
+[ext_resource path="res://MuteContainer.gd" type="Script" id=17]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.4, 0.643137, 0.290196, 1 )
@@ -66,6 +68,10 @@ action = "redo"
 
 [sub_resource type="ShortCut" id=19]
 shortcut = SubResource( 18 )
+
+[sub_resource type="StyleBoxEmpty" id=20]
+
+[sub_resource type="StyleBoxEmpty" id=21]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 7 )
@@ -1311,7 +1317,7 @@ margin_left = 137.0
 margin_right = 177.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 40, 40 )
-hint_tooltip = "ACTIVE_GAME_SAVE_BUTTON"
+hint_tooltip = "ACTIVE_GAME_SAVE_BUTTON_TOOLTIP"
 mouse_default_cursor_shape = 2
 custom_styles/hover = SubResource( 13 )
 custom_styles/normal = SubResource( 14 )
@@ -1342,14 +1348,41 @@ window_title = "ACTIVE_GAME_EXIT_POPUP_TITLE"
 dialog_text = "ACTIVE_GAME_EXIT_POPUP_CONTENT"
 dialog_autowrap = true
 
-[node name="TextureRect" type="TextureRect" parent="Panel"]
-margin_left = 20.0
-margin_top = 13.0
-margin_right = 79.0
-margin_bottom = 63.0
-texture = ExtResource( 6 )
-expand = true
-stretch_mode = 5
+[node name="MuteContainer" type="CenterContainer" parent="Panel"]
+margin_left = 11.0
+margin_top = 8.0
+margin_right = 57.0
+margin_bottom = 52.0
+script = ExtResource( 17 )
+
+[node name="Mute" type="Button" parent="Panel/MuteContainer"]
+margin_left = 3.0
+margin_top = 2.0
+margin_right = 43.0
+margin_bottom = 42.0
+rect_min_size = Vector2( 40, 40 )
+hint_tooltip = "ACTIVE_GAME_MUTE_BUTTON_TOOLTIP"
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 13 )
+custom_styles/pressed = SubResource( 20 )
+custom_styles/normal = SubResource( 14 )
+icon = ExtResource( 16 )
+expand_icon = true
+
+[node name="Unmute" type="Button" parent="Panel/MuteContainer"]
+visible = false
+margin_left = 3.0
+margin_top = 2.0
+margin_right = 43.0
+margin_bottom = 42.0
+rect_min_size = Vector2( 40, 40 )
+hint_tooltip = "ACTIVE_GAME_UNMUTE_BUTTON_TOOLTIP"
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 13 )
+custom_styles/pressed = SubResource( 21 )
+custom_styles/normal = SubResource( 14 )
+icon = ExtResource( 6 )
+expand_icon = true
 
 [node name="ButtonPress" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 13 )
@@ -1363,3 +1396,5 @@ stream = ExtResource( 15 )
 
 [connection signal="pressed" from="Panel/VBoxContainer/PanelContainer3/MarginContainer/HBoxContainer/UndoButton" to="." method="_on_UndoButton_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/PanelContainer3/MarginContainer/HBoxContainer/RedoButton" to="." method="_on_RedoButton_pressed"]
+[connection signal="pressed" from="Panel/MuteContainer/Mute" to="Panel/MuteContainer" method="_on_Mute_pressed"]
+[connection signal="pressed" from="Panel/MuteContainer/Unmute" to="Panel/MuteContainer" method="_on_Unmute_pressed"]

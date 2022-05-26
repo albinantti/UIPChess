@@ -1,7 +1,9 @@
 keys,en,sv
+ACTIVE_GAME_MUTE_BUTTON_TOOLTIP,Mute the game sounds.,Tysta spelljudet.
+ACTIVE_GAME_UNMUTE_BUTTON_TOOLTIP,Unmute the game sounds.,Spela spelljudet.
 ACTIVE_GAME_UNDO_BUTTON_TOOLTIP,Undo the previous move (CTRL+Z),Ångra det senaste draget (CTRL+Z)
 ACTIVE_GAME_REDO_BUTTON_TOOLTIP,Redo the previous move (CTRL+Y),Gör om det senaste draget (CTRL+Y)
-ACTIVE_GAME_SAVE_BUTTON,Save the current game,Spara det nuvarande partiet
+ACTIVE_GAME_SAVE_BUTTON_TOOLTIP,Save the current game.,Spara det nuvarande partiet.
 ACTIVE_GAME_EXIT_BUTTON_TOOLTIP,Exit game without saving.,Avsluta partiet utan att spara.
 ACTIVE_GAME_EXIT_POPUP_CONTENT,Do you wish to exit the game? All unsaved moves will be lost!,Vill du avsluta partiet? Alla osparade drag kommer tas bort!
 ACTIVE_GAME_EXIT_POPUP_TITLE,Exit game?,Avsluta parti?
