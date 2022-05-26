@@ -46,6 +46,7 @@ NEW_GAME_TIME_VALUE,{value} Minutes,{value} Minuter
 NEW_GAME_TIME,Clock time,Klocktid
 POPUP_CANCEL,Cancel,Avbryt
 POPUP_OK,OK,OK
+SETTINGS_MUTE,Mute sounds,Tysta spelljud
 SETTINGS_THEME,Theme,Tema
 SETTINGS_THEME_TOOLTIP,How the game piecesshould look.,Hur spelpjäserna ska se ut.
 SETTINGS_THEME_RED_GREEN,Red/Green,Röd/Grön

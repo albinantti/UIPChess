@@ -1,19 +1,11 @@
 extends GridContainer
 
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+	# Set the mute switch to the current mute state
+	var mute_switch = get_node("Settings/SettingsPanel/SettingsScrollBox/SettingsBox/Mute/MuteSwitch")
+	mute_switch.pressed = AudioServer.is_bus_mute(0)
 
 
 func _on_New_Game_pressed():
@@ -45,3 +37,7 @@ func _on_ExitButton_pressed():
 	get_node("LoadGame/LoadGamePanel").visible = false
 	get_node("Tutorial/TutorialPanel").visible = false
 	get_node("Settings/SettingsPanel").visible = false
+
+# Sets audio bus mute state to value of mute button on press
+func _on_MuteSwitch_toggled(button_pressed):
+	AudioServer.set_bus_mute(0, button_pressed)
