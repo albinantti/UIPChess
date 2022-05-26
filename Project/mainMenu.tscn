@@ -426,23 +426,24 @@ margin_right = 570.0
 margin_bottom = 38.0
 size_flags_horizontal = 8
 
-[node name="OtherSetting" type="HSplitContainer" parent="MarginContainer/MainMenuContainer/Settings/SettingsPanel/SettingsScrollBox/SettingsBox"]
+[node name="Mute" type="HSplitContainer" parent="MarginContainer/MainMenuContainer/Settings/SettingsPanel/SettingsScrollBox/SettingsBox"]
 margin_top = 158.0
 margin_right = 570.0
 margin_bottom = 196.0
 hint_tooltip = "Some other setting."
 collapsed = true
 
-[node name="OtherSettingLabel" type="Label" parent="MarginContainer/MainMenuContainer/Settings/SettingsPanel/SettingsScrollBox/SettingsBox/OtherSetting"]
-margin_right = 197.0
+[node name="MuteLabel" type="Label" parent="MarginContainer/MainMenuContainer/Settings/SettingsPanel/SettingsScrollBox/SettingsBox/Mute"]
+margin_right = 266.0
 margin_bottom = 38.0
 theme = ExtResource( 2 )
-text = "Other setting"
+text = "SETTINGS_MUTE"
 
-[node name="CheckButton" type="CheckButton" parent="MarginContainer/MainMenuContainer/Settings/SettingsPanel/SettingsScrollBox/SettingsBox/OtherSetting"]
+[node name="MuteSwitch" type="CheckButton" parent="MarginContainer/MainMenuContainer/Settings/SettingsPanel/SettingsScrollBox/SettingsBox/Mute"]
 margin_left = 506.0
 margin_right = 570.0
 margin_bottom = 38.0
+hint_tooltip = "ACTIVE_GAME_MUTE_BUTTON_TOOLTIP"
 size_flags_horizontal = 8
 
 [node name="ExitButton" type="Button" parent="MarginContainer/MainMenuContainer"]
@@ -492,4 +493,5 @@ script = ExtResource( 3 )
 [connection signal="file_selected" from="MarginContainer/MainMenuContainer/LoadGame/LoadGamePanel/LoadGameLoadButton/LoadGameFileDialog" to="MarginContainer/MainMenuContainer/LoadGame/LoadGamePanel/LoadGameLoadButton" method="_on_LoadGameFileDialog_file_selected"]
 [connection signal="pressed" from="MarginContainer/MainMenuContainer/Tutorial" to="MarginContainer/MainMenuContainer" method="_on_Tutorial_pressed"]
 [connection signal="pressed" from="MarginContainer/MainMenuContainer/Settings" to="MarginContainer/MainMenuContainer" method="_on_Settings_pressed"]
+[connection signal="toggled" from="MarginContainer/MainMenuContainer/Settings/SettingsPanel/SettingsScrollBox/SettingsBox/Mute/MuteSwitch" to="MarginContainer/MainMenuContainer" method="_on_MuteSwitch_toggled"]
 [connection signal="pressed" from="MarginContainer/MainMenuContainer/ExitButton" to="MarginContainer/MainMenuContainer" method="_on_ExitButton_pressed"]
