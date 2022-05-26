@@ -121,16 +121,7 @@ margin_right = 1025.0
 margin_bottom = 599.0
 mouse_filter = 2
 
-[node name="MuteButton" type="TextureRect" parent="Panel/HBoxContainer"]
-margin_right = 50.0
-margin_bottom = 600.0
-rect_min_size = Vector2( 50, 50 )
-texture = ExtResource( 6 )
-expand = true
-stretch_mode = 5
-
 [node name="CenterContainer" type="CenterContainer" parent="Panel/HBoxContainer"]
-margin_left = 54.0
 margin_right = 792.0
 margin_bottom = 600.0
 rect_min_size = Vector2( 600, 600 )
@@ -139,9 +130,9 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Chessboard" type="GridContainer" parent="Panel/HBoxContainer/CenterContainer"]
-margin_left = 109.0
+margin_left = 136.0
 margin_top = 40.0
-margin_right = 629.0
+margin_right = 656.0
 margin_bottom = 560.0
 rect_min_size = Vector2( 520, 520 )
 mouse_filter = 2
@@ -1412,6 +1403,22 @@ window_title = "ACTIVE_GAME_EXIT_POPUP_TITLE"
 dialog_text = "ACTIVE_GAME_EXIT_POPUP_CONTENT"
 dialog_autowrap = true
 
+[node name="Panel" type="Panel" parent="Panel/HBoxContainer"]
+visible = false
+margin_left = 975.0
+margin_right = 1025.0
+margin_bottom = 600.0
+rect_min_size = Vector2( 50, 50 )
+custom_styles/panel = SubResource( 20 )
+
+[node name="RightMenuButton" type="Button" parent="Panel/HBoxContainer/Panel"]
+margin_right = 50.0
+margin_bottom = 50.0
+rect_clip_content = true
+icon = ExtResource( 18 )
+flat = true
+expand_icon = true
+
 [node name="MuteContainer" type="CenterContainer" parent="Panel"]
 margin_left = 11.0
 margin_top = 8.0
@@ -1934,9 +1941,9 @@ You can now either keep playing or use the exit button to return to the main men
 Good luck!"
 autowrap = true
 
-[connection signal="pressed" from="Panel/MuteContainer/Mute" to="Panel/MuteContainer" method="_on_Mute_pressed"]
-[connection signal="pressed" from="Panel/MuteContainer/Unmute" to="Panel/MuteContainer" method="_on_Unmute_pressed"]
 [connection signal="pressed" from="Panel/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/CloseMenuButton" to="." method="_on_CloseMenuButton_pressed"]
 [connection signal="pressed" from="Panel/HBoxContainer/VBoxContainer/PanelContainer3/MarginContainer/HBoxContainer/UndoButton" to="." method="_on_UndoButton_pressed"]
 [connection signal="pressed" from="Panel/HBoxContainer/VBoxContainer/PanelContainer3/MarginContainer/HBoxContainer/RedoButton" to="." method="_on_RedoButton_pressed"]
 [connection signal="pressed" from="Panel/HBoxContainer/Panel/RightMenuButton" to="." method="_on_RightMenuButton_pressed"]
+[connection signal="pressed" from="Panel/MuteContainer/Mute" to="Panel/MuteContainer" method="_on_Mute_pressed"]
+[connection signal="pressed" from="Panel/MuteContainer/Unmute" to="Panel/MuteContainer" method="_on_Unmute_pressed"]
