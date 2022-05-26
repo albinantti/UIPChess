@@ -349,6 +349,10 @@ func _play_button_pressed_sound():
 	self.get_node("ButtonPress").play()
 
 func window_resize():
+	# Dont resize the window when the tutorial is played
+	if AudioServer.is_bus_mute(1):
+		return
+
 	var window_size = OS.get_window_size()
 	var right_side_bar = get_node(right_side_bar_path)
 	var menu_icon = get_node("Panel/HBoxContainer/Panel")
@@ -449,9 +453,9 @@ func tutorial_helper(arg: int):
 	# arg == 3 -> Move e4 to e2
 	# arg == 4 -> Unselect e2
 
-	var piece = get_node("Panel/Chessboard/Wpawn4")
-	var e4 = get_node("Panel/Chessboard/E4")
-	var e2 = get_node("Panel/Chessboard/E2")
+	var piece = get_node(chessboard_path + "Wpawn4")
+	var e4 = get_node(chessboard_path + "E4")
+	var e2 = get_node(chessboard_path + "E2")
 
 	if (arg == 1):
 		_set_chosen_piece(piece)
