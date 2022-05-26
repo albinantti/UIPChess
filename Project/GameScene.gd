@@ -149,6 +149,21 @@ func _move_piece(square):
 			)
 			TweenNode.start()
 			is_moving = true
+			if chosen_piece != null and square.get_position() != chosen_piece.get_position():
+				var piece_knocked_out = des_piece.name if des_piece else ""
+				var strings = PoolStringArray([
+					chosen_piece.name,
+					str(chosen_piece.get_position().x),
+					str(chosen_piece.get_position().y),
+					str(square.get_position().x),
+					str(square.get_position().y),
+					piece_knocked_out
+				])
+				var undo_string = strings.join(",")
+				undo_stack.append(undo_string)
+				redo_stack.clear()
+				_refresh_history_panel()
+				self.get_node("PieceSwipe").play()
 			if des_piece != null: #there is a target opponent piece
 				var t = Timer.new()
 				t.set_wait_time(1)
@@ -157,19 +172,6 @@ func _move_piece(square):
 				yield(t, "timeout")
 				des_piece.visible = false
 				des_piece.input_pickable = false
-			if chosen_piece != null and square.get_position() != chosen_piece.get_position():
-				var strings = PoolStringArray([
-					chosen_piece.name,
-					str(chosen_piece.get_position().x),
-					str(chosen_piece.get_position().y),
-					str(square.get_position().x),
-					str(square.get_position().y)
-				])
-				var undo_string = strings.join(",")
-				undo_stack.append(undo_string)
-				redo_stack.clear()
-				_refresh_history_panel()
-				self.get_node("PieceSwipe").play()
 		else:
 			_set_chosen_piece(des_piece) #change the chosen_piece to the new chosen piece
 
@@ -364,6 +366,15 @@ func _undo_redo(do_undo: bool):
 		if not moved_piece.get_node("Tween").is_active():
 			var x = squares[1] if do_undo else squares[3]
 			var y = squares[2] if do_undo else squares[4]
+			var piece_knocked_out_name = squares[5]
+			if piece_knocked_out_name != "":
+				var piece_knocked_out = get_node("Panel/Chessboard/" + piece_knocked_out_name)
+				if do_undo:
+					piece_knocked_out.visible = true
+					piece_knocked_out.input_pickable = true
+				else:
+					piece_knocked_out.visible = false
+					piece_knocked_out.input_pickable = false
 			var previous_position = Vector2(x, y)
 			moved_piece.set_position(previous_position)
 			secondary_stack.append(move)
@@ -383,9 +394,9 @@ func _refresh_history_panel():
 	self.get_node("Panel/VBoxContainer/PanelContainer2/VBoxContainer/ScrollContainer/History/UndoStackContents").set_text(output)
 
 	output = ""
-	var redo_stack_inverted = redo_stack
-	redo_stack_inverted.invert()
-	for line in redo_stack_inverted:
+	# Go through the redo stack inverted to get the latest move at the top
+	for index in range(redo_stack.size(), 0, -1):
+		var line = redo_stack[index - 1]
 		output +=  _format_round_counter(round_counter) + _format_unredo_stack_line(line)
 		round_counter += 0.5
 	self.get_node("Panel/VBoxContainer/PanelContainer2/VBoxContainer/ScrollContainer/History/RedoStackContents").set_text(output)
