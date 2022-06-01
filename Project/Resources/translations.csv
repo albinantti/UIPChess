@@ -57,3 +57,18 @@ SETTINGS_VALIDATE_MOVES,Validate moves,Validera drag
 SETTINGS_VALIDATE_MOVES_TOOLTIP,Whether or not illegal moves should be allowed.,Huruvida olagliga drag ska tillåtas.
 TUTORIAL_START_BUTTON,Start tutorial,Starta handledning
 TUTORIAL_RICH_TEXT,This tutorial will guide you through the basics of chess. Press start to get started!,Denna handledning kommer lära dig grunderna i schack. Tryck på starta för att komma igång!
+TUTORIAL_TEXT_STEP_1,Welcome! This tutorial will briefly walk you through the user interface of ChessGame.,Välkommen! Denna handledning kommer översiktligt gå igenom gränssnittet hos ChessGame.
+TUTORIAL_TEXT_STEP_2,In the top right"," you can see whose turn it is and how much time they've got left on their clock. The black arrow changes as the turns progress.,Överst till höger kan du se vems tur det är och hur mycket tid respektive har på sin klocka.
+TUTORIAL_TEXT_STEP_3,These are the chess pieces. To select a piece"," click on it.\n\nYou can only select a piece of the active turn's color.,Dessa är schackpjäserna. För att välja en pjäs"," klicka på den.\n\nDu kan bara välja en pjäs som har samma färg som den aktiva turen.
+TUTORIAL_TEXT_STEP_4,Selected pieces are highlighted in orange.\n\nTo move a selected piece"," press on any of the squares on the chessboard - preferably a valid one.,De valda pjäserna är markerade som orange.\n\nFör att flytta den valda pjäsen"," klicka på en någon av rutorna på schackbrädet - med fördel en giltig.
+TUTORIAL_TEXT_STEP_5,The piece will then be moved"," and the turn changes to the other color!\n\nMoving on to the interface buttons.,Pjäsen kommer då förflyttas till den valda rutan och turen går till den motsatta färgen!\n\nVi rör oss vidare till gränssnittsknapparna.
+TUTORIAL_TEXT_STEP_6,This is the mute button. Press it to toggle the sound on or off.,Detta är tyst-knappen. Tryck på den för att stänga av och sätta på ljudet.
+TUTORIAL_TEXT_STEP_7,This is the undo and redo button. You can use them to undo a move"," or redo a move that has been undone.\n\nYou can see a history of all made moves in the history column just above these buttons.\n\nMoving a piece after undoing will remove the redo history.,Detta är ångra och gör-om knappen. Du kan använda dessa när du vill ånga ett drag eller göra om ett drag som har gjorts.\n\nDu kan se en Historik över alla drag som har gjorts i kolumen över dessa knappar.\n\nOm du flyttar en pjäs efter att du har ångrat dess drag tar du bort dess ångra-historik.
+TUTORIAL_TEXT_STEP_8,This is the save button. Pressing it allows you to save your game up until that point as a file on your computer"," which can be resumed at a later stage.,Detta är sparaknappen. När du trycker på den kan du spara spelet i dess befintliga skick på din dator"," för att kunna återgå till det senare.
+TUTORIAL_TEXT_STEP_9, This is the exit button. Pressing it will take you back to the main menu.\n\nMake sure to hit the save button first"," as exiting an unsaved game will cause you to lose your progress!,Detta är avslutaknappen. Genom att trycka på den"," återvänder du till huvudmenyn.\n\nSe till att trycka på sparaknappen innan du avslutar spelet om du inte vill förlora dina framsteg.
+TUTORIAL_TEXT_STEP_10,That concludes the tutorial!\n\nYou can now either keep playing or use the exit button to return to the main menu.\n\nGood luck!,Där är handledningen avslutad!\n\nDu kan antingen fortsätta spela eller använda avslutaknappen för att återvända till huvudmenyn.\n\nLycka till!
+NEXT_STEP,Next,Nästa
+PREVIOUS_STEP,Previous,Föregående
+QUIT_TUTORIAL,Quit tutorial,Lämna handledning
+FINISH,Finish,Avsluta
+TUTORIAL_STEP,Tutorial - step {value},Handledning - steg {value}

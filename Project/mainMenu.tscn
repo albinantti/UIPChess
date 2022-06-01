@@ -284,8 +284,8 @@ dialog_text = "LOAD_GAME_SELECT_FILE"
 mode_overrides_title = false
 mode = 0
 access = 2
-current_dir = "/Users/danie/Documents/UIPChess/Project"
-current_path = "/Users/danie/Documents/UIPChess/Project/"
+current_dir = "/Users/masha/Documents/ChessGame/UIPChess/Project"
+current_path = "/Users/masha/Documents/ChessGame/UIPChess/Project/"
 
 [node name="Tutorial" type="Button" parent="MarginContainer/MainMenuContainer"]
 margin_top = 192.0
