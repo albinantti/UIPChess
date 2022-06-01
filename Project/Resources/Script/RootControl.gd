@@ -39,8 +39,3 @@ func _on_Item_pressed(_item):
 	
 func _play_sound():
 	self.get_node("ButtonPressedSound").play()
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass

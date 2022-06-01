@@ -16,19 +16,6 @@ func _ready():
 		self.modulate = Color(0.89, 0.21, 0.21, 1) #red
 	pass # Replace with function body.
 
-
-func _process(state):
-	pass
-#func move():
-#	if Input.is_action_pressed('ui_right'):
-#		apply_central_impulse(Vector2(0, 10))
-	
-#func _on_Area2D_input_event(viewport, event, shape_idx):
-#	if  event is InputEventMouseButton and event.pressed and event.button_index == BUTTON_LEFT:
-#		print("lol it works")
-#		print(self.name)
-#		emit_signal('piece_chosen', self.name)
-
 func _is_white()->bool: 
 	if self.name.left(1) == "R":
 		return false
