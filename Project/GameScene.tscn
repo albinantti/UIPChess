@@ -1510,7 +1510,7 @@ margin_left = -63.0
 margin_top = -29.0
 margin_right = -6.0
 margin_bottom = -9.0
-text = "Next"
+text = "NEXT_STEP"
 
 [node name="PreviousStep" type="Button" parent="TutorialPanel/Step1"]
 anchor_top = 1.0
@@ -1521,14 +1521,14 @@ margin_right = 76.0
 margin_bottom = -9.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-text = "Quit tutorial"
+text = "QUIT_TUTORIAL"
 
 [node name="Label" type="Label" parent="TutorialPanel/Step1"]
 margin_left = 8.0
 margin_top = 10.0
 margin_right = 309.0
 margin_bottom = 58.0
-text = "Welcome! This tutorial will briefly walk you through the user interface of ChessGame."
+text = "TUTORIAL_TEXT_STEP_1"
 autowrap = true
 
 [node name="Step2" type="WindowDialog" parent="TutorialPanel"]
@@ -1550,7 +1550,7 @@ margin_right = -6.89099
 margin_bottom = -10.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-text = "Next"
+text = "NEXT_STEP"
 
 [node name="PreviousStep" type="Button" parent="TutorialPanel/Step2"]
 anchor_top = 1.0
@@ -1561,7 +1561,7 @@ margin_right = 75.0
 margin_bottom = -10.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-text = "Previous"
+text = "PREVIOUS_STEP"
 
 [node name="Label" type="Label" parent="TutorialPanel/Step2"]
 anchor_right = 1.0
@@ -1570,7 +1570,7 @@ margin_left = 8.0
 margin_top = 10.0
 margin_right = -7.0
 margin_bottom = -39.0
-text = "In the top right, you can see whose turn it is and how much time they've got left on their clock. The black arrow changes as the turns progress."
+text = "TUTORIAL_TEXT_STEP_2"
 autowrap = true
 
 [node name="Step3" type="WindowDialog" parent="TutorialPanel"]
@@ -1592,7 +1592,7 @@ margin_right = -6.89099
 margin_bottom = -10.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-text = "Next"
+text = "NEXT_STEP"
 
 [node name="PreviousStep" type="Button" parent="TutorialPanel/Step3"]
 anchor_top = 1.0
@@ -1603,7 +1603,7 @@ margin_right = 75.0
 margin_bottom = -10.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-text = "Previous"
+text = "PREVIOUS_STEP"
 
 [node name="Label" type="Label" parent="TutorialPanel/Step3"]
 anchor_right = 1.0
@@ -1612,9 +1612,7 @@ margin_left = 8.0
 margin_top = 10.0
 margin_right = -7.0
 margin_bottom = -39.0
-text = "These are the chess pieces. To select a piece, click on it.
-
-You can only select a piece of the active turn's color."
+text = "TUTORIAL_TEXT_STEP_3"
 autowrap = true
 
 [node name="Step4" type="WindowDialog" parent="TutorialPanel"]
@@ -1636,7 +1634,7 @@ margin_right = -6.89099
 margin_bottom = -10.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-text = "Next"
+text = "NEXT_STEP"
 
 [node name="PreviousStep" type="Button" parent="TutorialPanel/Step4"]
 anchor_top = 1.0
@@ -1647,7 +1645,7 @@ margin_right = 75.0
 margin_bottom = -10.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-text = "Previous"
+text = "PREVIOUS_STEP"
 
 [node name="Label" type="Label" parent="TutorialPanel/Step4"]
 anchor_right = 1.0
@@ -1656,9 +1654,7 @@ margin_left = 8.0
 margin_top = 10.0
 margin_right = -7.0
 margin_bottom = -39.0
-text = "Selected pieces are highlighted in orange.
-
-To move a selected piece, press on any of the squares on the chessboard - preferably a valid one."
+text = "TUTORIAL_TEXT_STEP_4"
 autowrap = true
 
 [node name="Step5" type="WindowDialog" parent="TutorialPanel"]
@@ -1680,7 +1676,7 @@ margin_right = -6.89099
 margin_bottom = -10.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-text = "Next"
+text = "NEXT_STEP"
 
 [node name="PreviousStep" type="Button" parent="TutorialPanel/Step5"]
 anchor_top = 1.0
@@ -1691,7 +1687,7 @@ margin_right = 75.0
 margin_bottom = -10.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-text = "Previous"
+text = "PREVIOUS_STEP"
 
 [node name="Label" type="Label" parent="TutorialPanel/Step5"]
 anchor_right = 1.0
@@ -1700,9 +1696,7 @@ margin_left = 8.0
 margin_top = 10.0
 margin_right = -7.0
 margin_bottom = -39.0
-text = "The piece will then be moved, and the turn changes to the other color!
-
-Moving on to the interface buttons."
+text = "TUTORIAL_TEXT_STEP_5"
 autowrap = true
 
 [node name="Step6" type="WindowDialog" parent="TutorialPanel"]
@@ -1724,7 +1718,7 @@ margin_right = -6.89099
 margin_bottom = -10.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-text = "Next"
+text = "NEXT_STEP"
 
 [node name="PreviousStep" type="Button" parent="TutorialPanel/Step6"]
 anchor_top = 1.0
@@ -1735,7 +1729,7 @@ margin_right = 75.0
 margin_bottom = -10.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-text = "Previous"
+text = "PREVIOUS_STEP"
 
 [node name="Label" type="Label" parent="TutorialPanel/Step6"]
 anchor_right = 1.0
@@ -1744,7 +1738,7 @@ margin_left = 8.0
 margin_top = 10.0
 margin_right = -7.0
 margin_bottom = -39.0
-text = "This is the mute button. Press it to toggle the sound on or off."
+text = "TUTORIAL_TEXT_STEP_6"
 autowrap = true
 
 [node name="Step7" type="WindowDialog" parent="TutorialPanel"]
@@ -1766,7 +1760,7 @@ margin_right = -6.89099
 margin_bottom = -10.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-text = "Next"
+text = "NEXT_STEP"
 
 [node name="PreviousStep" type="Button" parent="TutorialPanel/Step7"]
 anchor_top = 1.0
@@ -1777,7 +1771,7 @@ margin_right = 75.0
 margin_bottom = -10.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-text = "Previous"
+text = "PREVIOUS_STEP"
 
 [node name="Label" type="Label" parent="TutorialPanel/Step7"]
 anchor_right = 1.0
@@ -1786,11 +1780,7 @@ margin_left = 8.0
 margin_top = 10.0
 margin_right = -7.0
 margin_bottom = -39.0
-text = "This is the undo and redo button. You can use them to undo a move, or redo a move that has been undone.
-
-You can see a history of all made moves in the history column just above these buttons.
-
-Moving a piece after undoing will remove the redo history."
+text = "TUTORIAL_TEXT_STEP_7"
 autowrap = true
 
 [node name="Step8" type="WindowDialog" parent="TutorialPanel"]
@@ -1812,7 +1802,7 @@ margin_right = -6.89099
 margin_bottom = -10.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-text = "Next"
+text = "NEXT_STEP"
 
 [node name="PreviousStep" type="Button" parent="TutorialPanel/Step8"]
 anchor_top = 1.0
@@ -1823,7 +1813,7 @@ margin_right = 75.0
 margin_bottom = -10.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-text = "Previous"
+text = "PREVIOUS_STEP"
 
 [node name="Label" type="Label" parent="TutorialPanel/Step8"]
 anchor_right = 1.0
@@ -1832,7 +1822,7 @@ margin_left = 8.0
 margin_top = 10.0
 margin_right = -7.0
 margin_bottom = -39.0
-text = "This is the save button. Pressing it allows you to save your game up until that point as a file on your computer, which can be resumed at a later stage."
+text = "TUTORIAL_TEXT_STEP_8"
 autowrap = true
 
 [node name="Step9" type="WindowDialog" parent="TutorialPanel"]
@@ -1854,7 +1844,7 @@ margin_right = -6.89099
 margin_bottom = -10.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-text = "Next"
+text = "NEXT_STEP"
 
 [node name="PreviousStep" type="Button" parent="TutorialPanel/Step9"]
 anchor_top = 1.0
@@ -1865,7 +1855,7 @@ margin_right = 75.0
 margin_bottom = -10.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-text = "Previous"
+text = "PREVIOUS_STEP"
 
 [node name="Label" type="Label" parent="TutorialPanel/Step9"]
 anchor_right = 1.0
@@ -1874,9 +1864,7 @@ margin_left = 8.0
 margin_top = 10.0
 margin_right = -7.0
 margin_bottom = -39.0
-text = "This is the exit button. Pressing it will take you back to the main menu.
-
-Make sure to hit the save button first, as exiting an unsaved game will cause you to lose your progress!"
+text = "TUTORIAL_TEXT_STEP_9"
 autowrap = true
 
 [node name="Step10" type="WindowDialog" parent="TutorialPanel"]
@@ -1898,7 +1886,7 @@ margin_right = -6.89099
 margin_bottom = -10.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-text = "Finish"
+text = "FINISH"
 
 [node name="PreviousStep" type="Button" parent="TutorialPanel/Step10"]
 anchor_top = 1.0
@@ -1909,7 +1897,7 @@ margin_right = 75.0
 margin_bottom = -10.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-text = "Previous"
+text = "PREVIOUS_STEP"
 
 [node name="Label" type="Label" parent="TutorialPanel/Step10"]
 anchor_right = 1.0
@@ -1918,11 +1906,7 @@ margin_left = 8.0
 margin_top = 10.0
 margin_right = -7.0
 margin_bottom = -39.0
-text = "That concludes the tutorial!
-
-You can now either keep playing or use the exit button to return to the main menu.
-
-Good luck!"
+text = "TUTORIAL_TEXT_STEP_10"
 autowrap = true
 
 [connection signal="pressed" from="Panel/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/CloseMenuButton" to="." method="_on_CloseMenuButton_pressed"]

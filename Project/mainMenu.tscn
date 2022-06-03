@@ -324,6 +324,7 @@ access = 2
 current_dir = "/Users/albin/prog/UIPChess/Project"
 current_path = "/Users/albin/prog/UIPChess/Project/"
 
+
 [node name="Tutorial" type="Button" parent="MarginContainer/MainMenuContainer"]
 margin_top = 192.0
 margin_right = 210.0

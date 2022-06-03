@@ -400,7 +400,7 @@ func _undo_redo(do_undo: bool):
 			var y = squares[2] if do_undo else squares[4]
 			var piece_knocked_out_name = squares[5]
 			if piece_knocked_out_name != "":
-				var piece_knocked_out = get_node("Panel/Chessboard/" + piece_knocked_out_name)
+				var piece_knocked_out = get_node(chessboard_path + piece_knocked_out_name)
 				if do_undo:
 					piece_knocked_out.visible = true
 					piece_knocked_out.input_pickable = true
