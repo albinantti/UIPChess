@@ -57,11 +57,6 @@ func _ready():
 		self.visible = true
 		step1.popup()
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
 func step1previous():
 	self.visible = false
 	step1.visible = false

@@ -1,10 +1,6 @@
 extends Area2D
 
 signal square_chosen(square)
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -23,10 +19,6 @@ func _set_collisionshape_size():
 
 	# position is relative to the area2D and the origin of the collisionshape is in the center
 	collisionShape.set_position(Vector2(size))
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
 
 func _input_event(viewport, event, shape_idx):
 	if  event is InputEventMouseButton and event.pressed and event.button_index == BUTTON_LEFT:
